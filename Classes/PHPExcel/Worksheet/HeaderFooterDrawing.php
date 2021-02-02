@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Worksheet_HeaderFooterDrawing
+ * PHPExcel_Worksheet_HeaderFooterDrawing.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,80 +19,78 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing implements PHPExcel_IComparable
 {
     /**
-     * Path
+     * Path.
      *
      * @var string
      */
     private $path;
 
     /**
-     * Name
+     * Name.
      *
      * @var string
      */
     protected $name;
 
     /**
-     * Offset X
+     * Offset X.
      *
      * @var int
      */
     protected $offsetX;
 
     /**
-     * Offset Y
+     * Offset Y.
      *
      * @var int
      */
     protected $offsetY;
 
     /**
-     * Width
+     * Width.
      *
      * @var int
      */
     protected $width;
 
     /**
-     * Height
+     * Height.
      *
      * @var int
      */
     protected $height;
 
     /**
-     * Proportional resize
+     * Proportional resize.
      *
-     * @var boolean
+     * @var bool
      */
     protected $resizeProportional;
 
     /**
-     * Create a new PHPExcel_Worksheet_HeaderFooterDrawing
+     * Create a new PHPExcel_Worksheet_HeaderFooterDrawing.
      */
     public function __construct()
     {
         // Initialise values
-        $this->path                = '';
-        $this->name                = '';
-        $this->offsetX             = 0;
-        $this->offsetY             = 0;
-        $this->width               = 0;
-        $this->height              = 0;
-        $this->resizeProportional  = true;
+        $this->path = '';
+        $this->name = '';
+        $this->offsetX = 0;
+        $this->offsetY = 0;
+        $this->width = 0;
+        $this->height = 0;
+        $this->resizeProportional = true;
     }
 
     /**
-     * Get Name
+     * Get Name.
      *
      * @return string
      */
@@ -102,19 +100,21 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     }
 
     /**
-     * Set Name
+     * Set Name.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setName($pValue = '')
     {
         $this->name = $pValue;
+
         return $this;
     }
 
     /**
-     * Get OffsetX
+     * Get OffsetX.
      *
      * @return int
      */
@@ -124,19 +124,21 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     }
 
     /**
-     * Set OffsetX
+     * Set OffsetX.
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setOffsetX($pValue = 0)
     {
         $this->offsetX = $pValue;
+
         return $this;
     }
 
     /**
-     * Get OffsetY
+     * Get OffsetY.
      *
      * @return int
      */
@@ -146,19 +148,21 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     }
 
     /**
-     * Set OffsetY
+     * Set OffsetY.
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setOffsetY($pValue = 0)
     {
         $this->offsetY = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Width
+     * Get Width.
      *
      * @return int
      */
@@ -168,9 +172,10 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     }
 
     /**
-     * Set Width
+     * Set Width.
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setWidth($pValue = 0)
@@ -188,7 +193,7 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     }
 
     /**
-     * Get Height
+     * Get Height.
      *
      * @return int
      */
@@ -198,9 +203,10 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     }
 
     /**
-     * Set Height
+     * Set Height.
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setHeight($pValue = 0)
@@ -223,11 +229,13 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
      * <code>
      * $objDrawing->setResizeProportional(true);
      * $objDrawing->setWidthAndHeight(160,120);
-     * </code>
+     * </code>.
      *
      * @author Vincent@luo MSN:kele_100@hotmail.com
+     *
      * @param int $width
      * @param int $height
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setWidthAndHeight($width = 0, $height = 0)
@@ -237,19 +245,20 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
         if ($this->resizeProportional && !($width == 0 || $height == 0)) {
             if (($xratio * $this->height) < $height) {
                 $this->height = ceil($xratio * $this->height);
-                $this->width  = $width;
+                $this->width = $width;
             } else {
-                $this->width    = ceil($yratio * $this->width);
-                $this->height    = $height;
+                $this->width = ceil($yratio * $this->width);
+                $this->height = $height;
             }
         }
+
         return $this;
     }
 
     /**
-     * Get ResizeProportional
+     * Get ResizeProportional.
      *
-     * @return boolean
+     * @return bool
      */
     public function getResizeProportional()
     {
@@ -257,19 +266,21 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     }
 
     /**
-     * Set ResizeProportional
+     * Set ResizeProportional.
      *
-     * @param boolean $pValue
+     * @param bool $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setResizeProportional($pValue = true)
     {
         $this->resizeProportional = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Filename
+     * Get Filename.
      *
      * @return string
      */
@@ -279,18 +290,19 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     }
 
     /**
-     * Get Extension
+     * Get Extension.
      *
      * @return string
      */
     public function getExtension()
     {
-        $parts = explode(".", basename($this->path));
+        $parts = explode('.', basename($this->path));
+
         return end($parts);
     }
 
     /**
-     * Get Path
+     * Get Path.
      *
      * @return string
      */
@@ -300,11 +312,11 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
     }
 
     /**
-     * Set Path
+     * Set Path.
      *
      * @param     string         $pValue            File path
-     * @param     boolean        $pVerifyFile    Verify file
-     * @throws     PHPExcel_Exception
+     * @param     bool        $pVerifyFile    Verify file
+     *
      * @return PHPExcel_Worksheet_HeaderFooterDrawing
      */
     public function setPath($pValue = '', $pVerifyFile = true)
@@ -315,7 +327,7 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
 
                 if ($this->width == 0 && $this->height == 0) {
                     // Get width/height
-                    list($this->width, $this->height) = getimagesize($pValue);
+                    [$this->width, $this->height] = getimagesize($pValue);
                 }
             } else {
                 throw new PHPExcel_Exception("File $pValue not found!");
@@ -323,11 +335,12 @@ class PHPExcel_Worksheet_HeaderFooterDrawing extends PHPExcel_Worksheet_Drawing 
         } else {
             $this->path = $pValue;
         }
+
         return $this;
     }
 
     /**
-     * Get hash code
+     * Get hash code.
      *
      * @return string    Hash code
      */

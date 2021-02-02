@@ -1,6 +1,6 @@
 <?php
 /**
- * PHPExcel
+ * PHPExcel.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -18,16 +18,13 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
- * PHPExcel_Worksheet_PageSetup
+ * PHPExcel_Worksheet_PageSetup.
  *
  * <code>
  * Paper size taken from Office Open XML Part 4 - Markup Language Reference, page 1988:
@@ -99,107 +96,102 @@
  * 67 = A3 transverse paper (297 mm by 420 mm)
  * 68 = A3 extra transverse paper (322 mm by 445 mm)
  * </code>
- *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Worksheet_PageSetup
 {
-    /* Paper size */
-    const PAPERSIZE_LETTER                          = 1;
-    const PAPERSIZE_LETTER_SMALL                    = 2;
-    const PAPERSIZE_TABLOID                         = 3;
-    const PAPERSIZE_LEDGER                          = 4;
-    const PAPERSIZE_LEGAL                           = 5;
-    const PAPERSIZE_STATEMENT                       = 6;
-    const PAPERSIZE_EXECUTIVE                       = 7;
-    const PAPERSIZE_A3                              = 8;
-    const PAPERSIZE_A4                              = 9;
-    const PAPERSIZE_A4_SMALL                        = 10;
-    const PAPERSIZE_A5                              = 11;
-    const PAPERSIZE_B4                              = 12;
-    const PAPERSIZE_B5                              = 13;
-    const PAPERSIZE_FOLIO                           = 14;
-    const PAPERSIZE_QUARTO                          = 15;
-    const PAPERSIZE_STANDARD_1                      = 16;
-    const PAPERSIZE_STANDARD_2                      = 17;
-    const PAPERSIZE_NOTE                            = 18;
-    const PAPERSIZE_NO9_ENVELOPE                    = 19;
-    const PAPERSIZE_NO10_ENVELOPE                   = 20;
-    const PAPERSIZE_NO11_ENVELOPE                   = 21;
-    const PAPERSIZE_NO12_ENVELOPE                   = 22;
-    const PAPERSIZE_NO14_ENVELOPE                   = 23;
-    const PAPERSIZE_C                               = 24;
-    const PAPERSIZE_D                               = 25;
-    const PAPERSIZE_E                               = 26;
-    const PAPERSIZE_DL_ENVELOPE                     = 27;
-    const PAPERSIZE_C5_ENVELOPE                     = 28;
-    const PAPERSIZE_C3_ENVELOPE                     = 29;
-    const PAPERSIZE_C4_ENVELOPE                     = 30;
-    const PAPERSIZE_C6_ENVELOPE                     = 31;
-    const PAPERSIZE_C65_ENVELOPE                    = 32;
-    const PAPERSIZE_B4_ENVELOPE                     = 33;
-    const PAPERSIZE_B5_ENVELOPE                     = 34;
-    const PAPERSIZE_B6_ENVELOPE                     = 35;
-    const PAPERSIZE_ITALY_ENVELOPE                  = 36;
-    const PAPERSIZE_MONARCH_ENVELOPE                = 37;
-    const PAPERSIZE_6_3_4_ENVELOPE                  = 38;
-    const PAPERSIZE_US_STANDARD_FANFOLD             = 39;
-    const PAPERSIZE_GERMAN_STANDARD_FANFOLD         = 40;
-    const PAPERSIZE_GERMAN_LEGAL_FANFOLD            = 41;
-    const PAPERSIZE_ISO_B4                          = 42;
-    const PAPERSIZE_JAPANESE_DOUBLE_POSTCARD        = 43;
-    const PAPERSIZE_STANDARD_PAPER_1                = 44;
-    const PAPERSIZE_STANDARD_PAPER_2                = 45;
-    const PAPERSIZE_STANDARD_PAPER_3                = 46;
-    const PAPERSIZE_INVITE_ENVELOPE                 = 47;
-    const PAPERSIZE_LETTER_EXTRA_PAPER              = 48;
-    const PAPERSIZE_LEGAL_EXTRA_PAPER               = 49;
-    const PAPERSIZE_TABLOID_EXTRA_PAPER             = 50;
-    const PAPERSIZE_A4_EXTRA_PAPER                  = 51;
-    const PAPERSIZE_LETTER_TRANSVERSE_PAPER         = 52;
-    const PAPERSIZE_A4_TRANSVERSE_PAPER             = 53;
-    const PAPERSIZE_LETTER_EXTRA_TRANSVERSE_PAPER   = 54;
-    const PAPERSIZE_SUPERA_SUPERA_A4_PAPER          = 55;
-    const PAPERSIZE_SUPERB_SUPERB_A3_PAPER          = 56;
-    const PAPERSIZE_LETTER_PLUS_PAPER               = 57;
-    const PAPERSIZE_A4_PLUS_PAPER                   = 58;
-    const PAPERSIZE_A5_TRANSVERSE_PAPER             = 59;
-    const PAPERSIZE_JIS_B5_TRANSVERSE_PAPER         = 60;
-    const PAPERSIZE_A3_EXTRA_PAPER                  = 61;
-    const PAPERSIZE_A5_EXTRA_PAPER                  = 62;
-    const PAPERSIZE_ISO_B5_EXTRA_PAPER              = 63;
-    const PAPERSIZE_A2_PAPER                        = 64;
-    const PAPERSIZE_A3_TRANSVERSE_PAPER             = 65;
-    const PAPERSIZE_A3_EXTRA_TRANSVERSE_PAPER       = 66;
+    // Paper size
+    const PAPERSIZE_LETTER = 1;
+    const PAPERSIZE_LETTER_SMALL = 2;
+    const PAPERSIZE_TABLOID = 3;
+    const PAPERSIZE_LEDGER = 4;
+    const PAPERSIZE_LEGAL = 5;
+    const PAPERSIZE_STATEMENT = 6;
+    const PAPERSIZE_EXECUTIVE = 7;
+    const PAPERSIZE_A3 = 8;
+    const PAPERSIZE_A4 = 9;
+    const PAPERSIZE_A4_SMALL = 10;
+    const PAPERSIZE_A5 = 11;
+    const PAPERSIZE_B4 = 12;
+    const PAPERSIZE_B5 = 13;
+    const PAPERSIZE_FOLIO = 14;
+    const PAPERSIZE_QUARTO = 15;
+    const PAPERSIZE_STANDARD_1 = 16;
+    const PAPERSIZE_STANDARD_2 = 17;
+    const PAPERSIZE_NOTE = 18;
+    const PAPERSIZE_NO9_ENVELOPE = 19;
+    const PAPERSIZE_NO10_ENVELOPE = 20;
+    const PAPERSIZE_NO11_ENVELOPE = 21;
+    const PAPERSIZE_NO12_ENVELOPE = 22;
+    const PAPERSIZE_NO14_ENVELOPE = 23;
+    const PAPERSIZE_C = 24;
+    const PAPERSIZE_D = 25;
+    const PAPERSIZE_E = 26;
+    const PAPERSIZE_DL_ENVELOPE = 27;
+    const PAPERSIZE_C5_ENVELOPE = 28;
+    const PAPERSIZE_C3_ENVELOPE = 29;
+    const PAPERSIZE_C4_ENVELOPE = 30;
+    const PAPERSIZE_C6_ENVELOPE = 31;
+    const PAPERSIZE_C65_ENVELOPE = 32;
+    const PAPERSIZE_B4_ENVELOPE = 33;
+    const PAPERSIZE_B5_ENVELOPE = 34;
+    const PAPERSIZE_B6_ENVELOPE = 35;
+    const PAPERSIZE_ITALY_ENVELOPE = 36;
+    const PAPERSIZE_MONARCH_ENVELOPE = 37;
+    const PAPERSIZE_6_3_4_ENVELOPE = 38;
+    const PAPERSIZE_US_STANDARD_FANFOLD = 39;
+    const PAPERSIZE_GERMAN_STANDARD_FANFOLD = 40;
+    const PAPERSIZE_GERMAN_LEGAL_FANFOLD = 41;
+    const PAPERSIZE_ISO_B4 = 42;
+    const PAPERSIZE_JAPANESE_DOUBLE_POSTCARD = 43;
+    const PAPERSIZE_STANDARD_PAPER_1 = 44;
+    const PAPERSIZE_STANDARD_PAPER_2 = 45;
+    const PAPERSIZE_STANDARD_PAPER_3 = 46;
+    const PAPERSIZE_INVITE_ENVELOPE = 47;
+    const PAPERSIZE_LETTER_EXTRA_PAPER = 48;
+    const PAPERSIZE_LEGAL_EXTRA_PAPER = 49;
+    const PAPERSIZE_TABLOID_EXTRA_PAPER = 50;
+    const PAPERSIZE_A4_EXTRA_PAPER = 51;
+    const PAPERSIZE_LETTER_TRANSVERSE_PAPER = 52;
+    const PAPERSIZE_A4_TRANSVERSE_PAPER = 53;
+    const PAPERSIZE_LETTER_EXTRA_TRANSVERSE_PAPER = 54;
+    const PAPERSIZE_SUPERA_SUPERA_A4_PAPER = 55;
+    const PAPERSIZE_SUPERB_SUPERB_A3_PAPER = 56;
+    const PAPERSIZE_LETTER_PLUS_PAPER = 57;
+    const PAPERSIZE_A4_PLUS_PAPER = 58;
+    const PAPERSIZE_A5_TRANSVERSE_PAPER = 59;
+    const PAPERSIZE_JIS_B5_TRANSVERSE_PAPER = 60;
+    const PAPERSIZE_A3_EXTRA_PAPER = 61;
+    const PAPERSIZE_A5_EXTRA_PAPER = 62;
+    const PAPERSIZE_ISO_B5_EXTRA_PAPER = 63;
+    const PAPERSIZE_A2_PAPER = 64;
+    const PAPERSIZE_A3_TRANSVERSE_PAPER = 65;
+    const PAPERSIZE_A3_EXTRA_TRANSVERSE_PAPER = 66;
 
-    /* Page orientation */
-    const ORIENTATION_DEFAULT                       = 'default';
-    const ORIENTATION_LANDSCAPE                     = 'landscape';
-    const ORIENTATION_PORTRAIT                      = 'portrait';
+    // Page orientation
+    const ORIENTATION_DEFAULT = 'default';
+    const ORIENTATION_LANDSCAPE = 'landscape';
+    const ORIENTATION_PORTRAIT = 'portrait';
 
-    /* Print Range Set Method */
-    const SETPRINTRANGE_OVERWRITE                   = 'O';
-    const SETPRINTRANGE_INSERT                      = 'I';
-
+    // Print Range Set Method
+    const SETPRINTRANGE_OVERWRITE = 'O';
+    const SETPRINTRANGE_INSERT = 'I';
 
     /**
-     * Paper size
+     * Paper size.
      *
      * @var int
      */
-    private $paperSize = PHPExcel_Worksheet_PageSetup::PAPERSIZE_LETTER;
+    private $paperSize = self::PAPERSIZE_LETTER;
 
     /**
-     * Orientation
+     * Orientation.
      *
      * @var string
      */
-    private $orientation = PHPExcel_Worksheet_PageSetup::ORIENTATION_DEFAULT;
+    private $orientation = self::ORIENTATION_DEFAULT;
 
     /**
-     * Scale (Print Scale)
+     * Scale (Print Scale).
      *
      * Print scaling. Valid values range from 10 to 400
      * This setting is overridden when fitToWidth and/or fitToHeight are in use
@@ -209,80 +201,80 @@ class PHPExcel_Worksheet_PageSetup
     private $scale = 100;
 
     /**
-      * Fit To Page
-      * Whether scale or fitToWith / fitToHeight applies
-      *
-      * @var boolean
-      */
+     * Fit To Page
+     * Whether scale or fitToWith / fitToHeight applies.
+     *
+     * @var bool
+     */
     private $fitToPage = false;
 
     /**
-      * Fit To Height
-      * Number of vertical pages to fit on
-      *
-      * @var int?
-      */
-    private $fitToHeight    = 1;
+     * Fit To Height
+     * Number of vertical pages to fit on.
+     *
+     * @var int?
+     */
+    private $fitToHeight = 1;
 
     /**
-      * Fit To Width
-      * Number of horizontal pages to fit on
-      *
-      * @var int?
-      */
-    private $fitToWidth    = 1;
+     * Fit To Width
+     * Number of horizontal pages to fit on.
+     *
+     * @var int?
+     */
+    private $fitToWidth = 1;
 
     /**
-     * Columns to repeat at left
+     * Columns to repeat at left.
      *
      * @var array Containing start column and end column, empty array if option unset
      */
-    private $columnsToRepeatAtLeft = array('', '');
+    private $columnsToRepeatAtLeft = ['', ''];
 
     /**
-     * Rows to repeat at top
+     * Rows to repeat at top.
      *
      * @var array Containing start row number and end row number, empty array if option unset
      */
-    private $rowsToRepeatAtTop = array(0, 0);
+    private $rowsToRepeatAtTop = [0, 0];
 
     /**
-     * Center page horizontally
+     * Center page horizontally.
      *
-     * @var boolean
+     * @var bool
      */
     private $horizontalCentered = false;
 
     /**
-     * Center page vertically
+     * Center page vertically.
      *
-     * @var boolean
+     * @var bool
      */
     private $verticalCentered = false;
 
     /**
-     * Print area
+     * Print area.
      *
      * @var string
      */
-    private $printArea = null;
+    private $printArea;
 
     /**
-     * First page number
+     * First page number.
      *
      * @var int
      */
-    private $firstPageNumber = null;
+    private $firstPageNumber;
 
     /**
-     * Create a new PHPExcel_Worksheet_PageSetup
+     * Create a new PHPExcel_Worksheet_PageSetup.
      */
     public function __construct()
     {
     }
 
     /**
-     * Get Paper Size
+     * Get Paper Size.
      *
      * @return int
      */
@@ -292,19 +284,21 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set Paper Size
+     * Set Paper Size.
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
-    public function setPaperSize($pValue = PHPExcel_Worksheet_PageSetup::PAPERSIZE_LETTER)
+    public function setPaperSize($pValue = self::PAPERSIZE_LETTER)
     {
         $this->paperSize = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Orientation
+     * Get Orientation.
      *
      * @return string
      */
@@ -314,19 +308,21 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set Orientation
+     * Set Orientation.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
-    public function setOrientation($pValue = PHPExcel_Worksheet_PageSetup::ORIENTATION_DEFAULT)
+    public function setOrientation($pValue = self::ORIENTATION_DEFAULT)
     {
         $this->orientation = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Scale
+     * Get Scale.
      *
      * @return int?
      */
@@ -336,35 +332,36 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set Scale
+     * Set Scale.
      *
      * Print scaling. Valid values range from 10 to 400
      * This setting is overridden when fitToWidth and/or fitToHeight are in use
      *
      * @param     int?    $pValue
-     * @param boolean    $pUpdate    Update fitToPage so scaling applies rather than fitToHeight / fitToWidth
+     * @param bool    $pUpdate    Update fitToPage so scaling applies rather than fitToHeight / fitToWidth
+     *
      * @return PHPExcel_Worksheet_PageSetup
-     * @throws     PHPExcel_Exception
      */
     public function setScale($pValue = 100, $pUpdate = true)
     {
         // Microsoft Office Excel 2007 only allows setting a scale between 10 and 400 via the user interface,
         // but it is apparently still able to handle any scale >= 0, where 0 results in 100
-        if (($pValue >= 0) || is_null($pValue)) {
+        if (($pValue >= 0) || null === $pValue) {
             $this->scale = $pValue;
             if ($pUpdate) {
                 $this->fitToPage = false;
             }
         } else {
-            throw new PHPExcel_Exception("Scale must not be negative");
+            throw new PHPExcel_Exception('Scale must not be negative');
         }
+
         return $this;
     }
 
     /**
-     * Get Fit To Page
+     * Get Fit To Page.
      *
-     * @return boolean
+     * @return bool
      */
     public function getFitToPage()
     {
@@ -372,19 +369,21 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set Fit To Page
+     * Set Fit To Page.
      *
-     * @param boolean $pValue
+     * @param bool $pValue
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
     public function setFitToPage($pValue = true)
     {
         $this->fitToPage = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Fit To Height
+     * Get Fit To Height.
      *
      * @return int?
      */
@@ -394,10 +393,11 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set Fit To Height
+     * Set Fit To Height.
      *
      * @param int? $pValue
-     * @param boolean $pUpdate Update fitToPage so it applies rather than scaling
+     * @param bool $pUpdate Update fitToPage so it applies rather than scaling
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
     public function setFitToHeight($pValue = 1, $pUpdate = true)
@@ -406,11 +406,12 @@ class PHPExcel_Worksheet_PageSetup
         if ($pUpdate) {
             $this->fitToPage = true;
         }
+
         return $this;
     }
 
     /**
-     * Get Fit To Width
+     * Get Fit To Width.
      *
      * @return int?
      */
@@ -420,10 +421,11 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set Fit To Width
+     * Set Fit To Width.
      *
      * @param int? $pValue
-     * @param boolean $pUpdate Update fitToPage so it applies rather than scaling
+     * @param bool $pUpdate Update fitToPage so it applies rather than scaling
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
     public function setFitToWidth($pValue = 1, $pUpdate = true)
@@ -432,13 +434,14 @@ class PHPExcel_Worksheet_PageSetup
         if ($pUpdate) {
             $this->fitToPage = true;
         }
+
         return $this;
     }
 
     /**
      * Is Columns to repeat at left set?
      *
-     * @return boolean
+     * @return bool
      */
     public function isColumnsToRepeatAtLeftSet()
     {
@@ -452,7 +455,7 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Get Columns to repeat at left
+     * Get Columns to repeat at left.
      *
      * @return array Containing start column and end column, empty array if option unset
      */
@@ -462,9 +465,10 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set Columns to repeat at left
+     * Set Columns to repeat at left.
      *
      * @param array $pValue Containing start column and end column, empty array if option unset
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
     public function setColumnsToRepeatAtLeft($pValue = null)
@@ -472,26 +476,29 @@ class PHPExcel_Worksheet_PageSetup
         if (is_array($pValue)) {
             $this->columnsToRepeatAtLeft = $pValue;
         }
+
         return $this;
     }
 
     /**
-     * Set Columns to repeat at left by start and end
+     * Set Columns to repeat at left by start and end.
      *
      * @param string $pStart
      * @param string $pEnd
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
     public function setColumnsToRepeatAtLeftByStartAndEnd($pStart = 'A', $pEnd = 'A')
     {
-        $this->columnsToRepeatAtLeft = array($pStart, $pEnd);
+        $this->columnsToRepeatAtLeft = [$pStart, $pEnd];
+
         return $this;
     }
 
     /**
      * Is Rows to repeat at top set?
      *
-     * @return boolean
+     * @return bool
      */
     public function isRowsToRepeatAtTopSet()
     {
@@ -505,7 +512,7 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Get Rows to repeat at top
+     * Get Rows to repeat at top.
      *
      * @return array Containing start column and end column, empty array if option unset
      */
@@ -515,9 +522,10 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set Rows to repeat at top
+     * Set Rows to repeat at top.
      *
      * @param array    $pValue    Containing start column and end column, empty array if option unset
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
     public function setRowsToRepeatAtTop($pValue = null)
@@ -525,24 +533,27 @@ class PHPExcel_Worksheet_PageSetup
         if (is_array($pValue)) {
             $this->rowsToRepeatAtTop = $pValue;
         }
+
         return $this;
     }
 
     /**
-     * Set Rows to repeat at top by start and end
+     * Set Rows to repeat at top by start and end.
      *
      * @param int $pStart
      * @param int $pEnd
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
     public function setRowsToRepeatAtTopByStartAndEnd($pStart = 1, $pEnd = 1)
     {
-        $this->rowsToRepeatAtTop = array($pStart, $pEnd);
+        $this->rowsToRepeatAtTop = [$pStart, $pEnd];
+
         return $this;
     }
 
     /**
-     * Get center page horizontally
+     * Get center page horizontally.
      *
      * @return bool
      */
@@ -552,19 +563,21 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set center page horizontally
+     * Set center page horizontally.
      *
      * @param bool $value
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
     public function setHorizontalCentered($value = false)
     {
         $this->horizontalCentered = $value;
+
         return $this;
     }
 
     /**
-     * Get center page vertically
+     * Get center page vertically.
      *
      * @return bool
      */
@@ -574,25 +587,27 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set center page vertically
+     * Set center page vertically.
      *
      * @param bool $value
+     *
      * @return PHPExcel_Worksheet_PageSetup
      */
     public function setVerticalCentered($value = false)
     {
         $this->verticalCentered = $value;
+
         return $this;
     }
 
     /**
-     *    Get print area
+     *    Get print area.
      *
      * @param    int        $index    Identifier for a specific print area range if several ranges have been set
      *                            Default behaviour, or a index value of 0, will return all ranges as a comma-separated string
      *                            Otherwise, the specific range identified by the value of $index will be returned
      *                            Print areas are numbered from 1
-     * @throws    PHPExcel_Exception
+     *
      * @return    string
      */
     public function getPrintArea($index = 0)
@@ -601,10 +616,11 @@ class PHPExcel_Worksheet_PageSetup
             return $this->printArea;
         }
         $printAreas = explode(',', $this->printArea);
-        if (isset($printAreas[$index-1])) {
-            return $printAreas[$index-1];
+        if (isset($printAreas[$index - 1])) {
+            return $printAreas[$index - 1];
         }
-        throw new PHPExcel_Exception("Requested Print Area does not exist");
+
+        throw new PHPExcel_Exception('Requested Print Area does not exist');
     }
 
     /**
@@ -614,24 +630,27 @@ class PHPExcel_Worksheet_PageSetup
      *                            Default behaviour, or an index value of 0, will identify whether any print range is set
      *                            Otherwise, existence of the range identified by the value of $index will be returned
      *                            Print areas are numbered from 1
-     * @return    boolean
+     *
+     * @return    bool
      */
     public function isPrintAreaSet($index = 0)
     {
         if ($index == 0) {
-            return !is_null($this->printArea);
+            return null !== $this->printArea;
         }
         $printAreas = explode(',', $this->printArea);
-        return isset($printAreas[$index-1]);
+
+        return isset($printAreas[$index - 1]);
     }
 
     /**
-     * Clear a print area
+     * Clear a print area.
      *
      * @param    int        $index    Identifier for a specific print area range if several ranges have been set
      *                            Default behaviour, or an index value of 0, will clear all print ranges that are set
      *                            Otherwise, the range identified by the value of $index will be removed from the series
      *                            Print areas are numbered from 1
+     *
      * @return    PHPExcel_Worksheet_PageSetup
      */
     public function clearPrintArea($index = 0)
@@ -640,8 +659,8 @@ class PHPExcel_Worksheet_PageSetup
             $this->printArea = null;
         } else {
             $printAreas = explode(',', $this->printArea);
-            if (isset($printAreas[$index-1])) {
-                unset($printAreas[$index-1]);
+            if (isset($printAreas[$index - 1])) {
+                unset($printAreas[$index - 1]);
                 $this->printArea = implode(',', $printAreas);
             }
         }
@@ -650,7 +669,7 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set print area. e.g. 'A1:D10' or 'A1:D10,G5:M20'
+     * Set print area. e.g. 'A1:D10' or 'A1:D10,G5:M20'.
      *
      * @param    string    $value
      * @param    int        $index    Identifier for a specific print area range allowing several ranges to be set
@@ -666,8 +685,8 @@ class PHPExcel_Worksheet_PageSetup
      * @param    string    $method    Determines the method used when setting multiple print areas
      *                            Default behaviour, or the "O" method, overwrites existing print area
      *                            The "I" method, inserts the new print area before any specified index, or at the end of the list
+     *
      * @return    PHPExcel_Worksheet_PageSetup
-     * @throws    PHPExcel_Exception
      */
     public function setPrintArea($value, $index = 0, $method = self::SETPRINTRANGE_OVERWRITE)
     {
@@ -691,12 +710,12 @@ class PHPExcel_Worksheet_PageSetup
                 if (($index <= 0) || ($index > count($printAreas))) {
                     throw new PHPExcel_Exception('Invalid index for setting print range.');
                 }
-                $printAreas[$index-1] = $value;
+                $printAreas[$index - 1] = $value;
                 $this->printArea = implode(',', $printAreas);
             }
         } elseif ($method == self::SETPRINTRANGE_INSERT) {
             if ($index == 0) {
-                $this->printArea .= ($this->printArea == '') ? $value : ','.$value;
+                $this->printArea .= ($this->printArea == '') ? $value : ',' . $value;
             } else {
                 $printAreas = explode(',', $this->printArea);
                 if ($index < 0) {
@@ -705,7 +724,7 @@ class PHPExcel_Worksheet_PageSetup
                 if ($index > count($printAreas)) {
                     throw new PHPExcel_Exception('Invalid index for setting print range.');
                 }
-                $printAreas = array_merge(array_slice($printAreas, 0, $index), array($value), array_slice($printAreas, $index));
+                $printAreas = array_merge(array_slice($printAreas, 0, $index), [$value], array_slice($printAreas, $index));
                 $this->printArea = implode(',', $printAreas);
             }
         } else {
@@ -716,7 +735,7 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Add a new print area (e.g. 'A1:D10' or 'A1:D10,G5:M20') to the list of print areas
+     * Add a new print area (e.g. 'A1:D10' or 'A1:D10,G5:M20') to the list of print areas.
      *
      * @param    string    $value
      * @param    int        $index    Identifier for a specific print area range allowing several ranges to be set
@@ -725,8 +744,8 @@ class PHPExcel_Worksheet_PageSetup
      *                                Specifying an index value of 0, will always append the new print range at the end of the
      *                                list.
      *                            Print areas are numbered from 1
+     *
      * @return    PHPExcel_Worksheet_PageSetup
-     * @throws    PHPExcel_Exception
      */
     public function addPrintArea($value, $index = -1)
     {
@@ -734,7 +753,7 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set print area
+     * Set print area.
      *
      * @param    int        $column1    Column 1
      * @param    int        $row1        Row 1
@@ -753,8 +772,8 @@ class PHPExcel_Worksheet_PageSetup
      * @param    string    $method        Determines the method used when setting multiple print areas
      *                                Default behaviour, or the "O" method, overwrites existing print area
      *                                The "I" method, inserts the new print area before any specified index, or at the end of the list
+     *
      * @return    PHPExcel_Worksheet_PageSetup
-     * @throws    PHPExcel_Exception
      */
     public function setPrintAreaByColumnAndRow($column1, $row1, $column2, $row2, $index = 0, $method = self::SETPRINTRANGE_OVERWRITE)
     {
@@ -766,7 +785,7 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Add a new print area to the list of print areas
+     * Add a new print area to the list of print areas.
      *
      * @param    int        $column1    Start Column for the print area
      * @param    int        $row1        Start Row for the print area
@@ -778,8 +797,8 @@ class PHPExcel_Worksheet_PageSetup
      *                                    Specifying an index value of 0, will always append the new print range at the end of the
      *                                    list.
      *                                Print areas are numbered from 1
+     *
      * @return    PHPExcel_Worksheet_PageSetup
-     * @throws    PHPExcel_Exception
      */
     public function addPrintAreaByColumnAndRow($column1, $row1, $column2, $row2, $index = -1)
     {
@@ -791,7 +810,7 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Get first page number
+     * Get first page number.
      *
      * @return int
      */
@@ -801,19 +820,21 @@ class PHPExcel_Worksheet_PageSetup
     }
 
     /**
-     * Set first page number
+     * Set first page number.
      *
      * @param int $value
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setFirstPageNumber($value = null)
     {
         $this->firstPageNumber = $value;
+
         return $this;
     }
 
     /**
-     * Reset first page number
+     * Reset first page number.
      *
      * @return PHPExcel_Worksheet_HeaderFooter
      */

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Writer_Excel5_Font
+ * PHPExcel_Writer_Excel5_Font.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,51 +19,49 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Writer_Excel5
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Writer_Excel5_Font
 {
     /**
-     * Color index
+     * Color index.
      *
      * @var int
      */
     private $colorIndex;
 
     /**
-     * Font
+     * Font.
      *
      * @var PHPExcel_Style_Font
      */
     private $font;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param PHPExcel_Style_Font $font
      */
-    public function __construct(PHPExcel_Style_Font $font = null)
+    public function __construct(?PHPExcel_Style_Font $font = null)
     {
         $this->colorIndex = 0x7FFF;
         $this->font = $font;
     }
 
     /**
-     * Set the color index
+     * Set the color index.
      *
      * @param int $colorIndex
      */
-    public function setColorIndex($colorIndex)
+    public function setColorIndex($colorIndex): void
     {
         $this->colorIndex = $colorIndex;
     }
 
     /**
-     * Get font record data
+     * Get font record data.
      *
      * @return string
      */
@@ -100,7 +98,7 @@ class PHPExcel_Writer_Excel5_Font
         }
 
         $data = pack(
-            "vvvvvCCCC",
+            'vvvvvCCCC',
             // Fontsize (in twips)
             $this->font->getSize() * 20,
             $grbit,
@@ -118,15 +116,16 @@ class PHPExcel_Writer_Excel5_Font
         $data .= PHPExcel_Shared_String::UTF8toBIFF8UnicodeShort($this->font->getName());
 
         $length = strlen($data);
-        $header = pack("vv", $record, $length);
+        $header = pack('vv', $record, $length);
 
-        return($header . $data);
+        return $header . $data;
     }
 
     /**
-     * Map to BIFF5-BIFF8 codes for bold
+     * Map to BIFF5-BIFF8 codes for bold.
      *
-     * @param boolean $bold
+     * @param bool $bold
+     *
      * @return int
      */
     private static function mapBold($bold)
@@ -134,26 +133,29 @@ class PHPExcel_Writer_Excel5_Font
         if ($bold) {
             return 0x2BC;  //  700 = Bold font weight
         }
+
         return 0x190;      //  400 = Normal font weight
     }
 
     /**
-     * Map of BIFF2-BIFF8 codes for underline styles
-     * @static    array of int
+     * Map of BIFF2-BIFF8 codes for underline styles.
      *
+     * @static    array of int
      */
-    private static $mapUnderline = array(
-        PHPExcel_Style_Font::UNDERLINE_NONE              => 0x00,
-        PHPExcel_Style_Font::UNDERLINE_SINGLE            => 0x01,
-        PHPExcel_Style_Font::UNDERLINE_DOUBLE            => 0x02,
-        PHPExcel_Style_Font::UNDERLINE_SINGLEACCOUNTING  => 0x21,
-        PHPExcel_Style_Font::UNDERLINE_DOUBLEACCOUNTING  => 0x22,
-    );
+    private static $mapUnderline = [
+        PHPExcel_Style_Font::UNDERLINE_NONE => 0x00,
+        PHPExcel_Style_Font::UNDERLINE_SINGLE => 0x01,
+        PHPExcel_Style_Font::UNDERLINE_DOUBLE => 0x02,
+        PHPExcel_Style_Font::UNDERLINE_SINGLEACCOUNTING => 0x21,
+        PHPExcel_Style_Font::UNDERLINE_DOUBLEACCOUNTING => 0x22,
+    ];
 
     /**
-     * Map underline
+     * Map underline.
      *
      * @param string
+     * @param mixed $underline
+     *
      * @return int
      */
     private static function mapUnderline($underline)
@@ -161,6 +163,7 @@ class PHPExcel_Writer_Excel5_Font
         if (isset(self::$mapUnderline[$underline])) {
             return self::$mapUnderline[$underline];
         }
+
         return 0x00;
     }
 }

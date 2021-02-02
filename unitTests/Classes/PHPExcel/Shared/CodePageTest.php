@@ -1,28 +1,26 @@
 <?php
 
-
 require_once 'testDataFileIterator.php';
 
-class CodePageTest extends PHPUnit_Framework_TestCase
+class CodePageTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
     }
 
     /**
      * @dataProvider providerCodePage
      */
-    public function testCodePageNumberToName()
+    public function testCodePageNumberToName(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Shared_CodePage','NumberToName'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Shared_CodePage', 'NumberToName'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerCodePage()
@@ -30,27 +28,31 @@ class CodePageTest extends PHPUnit_Framework_TestCase
         return new testDataFileIterator('rawTestData/Shared/CodePage.data');
     }
 
-    public function testNumberToNameWithInvalidCodePage()
+    public function testNumberToNameWithInvalidCodePage(): void
     {
         $invalidCodePage = 12345;
+
         try {
-            $result = call_user_func(array('PHPExcel_Shared_CodePage','NumberToName'), $invalidCodePage);
+            $result = call_user_func(['PHPExcel_Shared_CodePage', 'NumberToName'], $invalidCodePage);
         } catch (Exception $e) {
-            $this->assertEquals($e->getMessage(), 'Unknown codepage: 12345');
+            self::assertEquals($e->getMessage(), 'Unknown codepage: 12345');
+
             return;
         }
-        $this->fail('An expected exception has not been raised.');
+        self::fail('An expected exception has not been raised.');
     }
 
-    public function testNumberToNameWithUnsupportedCodePage()
+    public function testNumberToNameWithUnsupportedCodePage(): void
     {
         $unsupportedCodePage = 720;
+
         try {
-            $result = call_user_func(array('PHPExcel_Shared_CodePage','NumberToName'), $unsupportedCodePage);
+            $result = call_user_func(['PHPExcel_Shared_CodePage', 'NumberToName'], $unsupportedCodePage);
         } catch (Exception $e) {
-            $this->assertEquals($e->getMessage(), 'Code page 720 not supported.');
+            self::assertEquals($e->getMessage(), 'Code page 720 not supported.');
+
             return;
         }
-        $this->fail('An expected exception has not been raised.');
+        self::fail('An expected exception has not been raised.');
     }
 }

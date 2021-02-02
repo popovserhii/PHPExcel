@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_CachedObjectStorage_DiscISAM
+ * PHPExcel_CachedObjectStorage_DiscISAM.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,65 +19,60 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_CachedObjectStorage
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage_CacheBase implements PHPExcel_CachedObjectStorage_ICache
 {
     /**
-     * Name of the file for this cache
+     * Name of the file for this cache.
      *
      * @var string
      */
-    private $fileName = null;
+    private $fileName;
 
     /**
-     * File handle for this cache file
+     * File handle for this cache file.
      *
      * @var resource
      */
-    private $fileHandle = null;
+    private $fileHandle;
 
     /**
-     * Directory/Folder where the cache file is located
+     * Directory/Folder where the cache file is located.
      *
      * @var string
      */
-    private $cacheDirectory = null;
+    private $cacheDirectory;
 
     /**
      * Store cell data in cache for the current cell object if it's "dirty",
-     *     and the 'nullify' the current cell object
-     *
-     * @return    void
-     * @throws    PHPExcel_Exception
+     *     and the 'nullify' the current cell object.
      */
-    protected function storeData()
+    protected function storeData(): void
     {
         if ($this->currentCellIsDirty && !empty($this->currentObjectID)) {
             $this->currentObject->detach();
 
             fseek($this->fileHandle, 0, SEEK_END);
 
-            $this->cellCache[$this->currentObjectID] = array(
+            $this->cellCache[$this->currentObjectID] = [
                 'ptr' => ftell($this->fileHandle),
-                'sz'  => fwrite($this->fileHandle, serialize($this->currentObject))
-            );
+                'sz' => fwrite($this->fileHandle, serialize($this->currentObject))
+            ];
             $this->currentCellIsDirty = false;
         }
         $this->currentObjectID = $this->currentObject = null;
     }
 
     /**
-     * Add or Update a cell in cache identified by coordinate address
+     * Add or Update a cell in cache identified by coordinate address.
      *
      * @param    string            $pCoord        Coordinate address of the cell to update
      * @param    PHPExcel_Cell    $cell        Cell to update
+     *
      * @return    PHPExcel_Cell
-     * @throws    PHPExcel_Exception
      */
     public function addCacheData($pCoord, PHPExcel_Cell $cell)
     {
@@ -93,10 +88,10 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
     }
 
     /**
-     * Get cell at a specific coordinate
+     * Get cell at a specific coordinate.
      *
      * @param     string             $pCoord        Coordinate of the cell
-     * @throws     PHPExcel_Exception
+     *
      * @return     PHPExcel_Cell     Cell that was found, or null if not found
      */
     public function getCacheData($pCoord)
@@ -124,7 +119,7 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
     }
 
     /**
-     * Get a list of all cell addresses currently held in cache
+     * Get a list of all cell addresses currently held in cache.
      *
      * @return  string[]
      */
@@ -138,34 +133,33 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
     }
 
     /**
-     * Clone the cell collection
+     * Clone the cell collection.
      *
      * @param    PHPExcel_Worksheet    $parent        The new worksheet
      */
-    public function copyCellCollection(PHPExcel_Worksheet $parent)
+    public function copyCellCollection(PHPExcel_Worksheet $parent): void
     {
         parent::copyCellCollection($parent);
         //    Get a new id for the new file name
         $baseUnique = $this->getUniqueID();
-        $newFileName = $this->cacheDirectory.'/PHPExcel.'.$baseUnique.'.cache';
+        $newFileName = $this->cacheDirectory . '/PHPExcel.' . $baseUnique . '.cache';
         //    Copy the existing cell cache file
         copy($this->fileName, $newFileName);
         $this->fileName = $newFileName;
         //    Open the copied cell cache file
-        $this->fileHandle = fopen($this->fileName, 'a+');
+        $this->fileHandle = fopen($this->fileName, 'a+b');
     }
 
     /**
-     * Clear the cell collection and disconnect from our parent
-     *
+     * Clear the cell collection and disconnect from our parent.
      */
-    public function unsetWorksheetCells()
+    public function unsetWorksheetCells(): void
     {
-        if (!is_null($this->currentObject)) {
+        if (null !== $this->currentObject) {
             $this->currentObject->detach();
             $this->currentObject = $this->currentObjectID = null;
         }
-        $this->cellCache = array();
+        $this->cellCache = [];
 
         //    detach ourself from the worksheet, so that it can then delete this object successfully
         $this->parent = null;
@@ -175,31 +169,31 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
     }
 
     /**
-     * Initialise this new cell collection
+     * Initialise this new cell collection.
      *
      * @param    PHPExcel_Worksheet    $parent        The worksheet for this cell collection
      * @param    array of mixed        $arguments    Additional initialisation arguments
      */
     public function __construct(PHPExcel_Worksheet $parent, $arguments)
     {
-        $this->cacheDirectory    = ((isset($arguments['dir'])) && ($arguments['dir'] !== null))
+        $this->cacheDirectory = ((isset($arguments['dir'])) && ($arguments['dir'] !== null))
                                     ? $arguments['dir']
                                     : PHPExcel_Shared_File::sys_get_temp_dir();
 
         parent::__construct($parent);
-        if (is_null($this->fileHandle)) {
+        if (null === $this->fileHandle) {
             $baseUnique = $this->getUniqueID();
-            $this->fileName = $this->cacheDirectory.'/PHPExcel.'.$baseUnique.'.cache';
-            $this->fileHandle = fopen($this->fileName, 'a+');
+            $this->fileName = $this->cacheDirectory . '/PHPExcel.' . $baseUnique . '.cache';
+            $this->fileHandle = fopen($this->fileName, 'a+b');
         }
     }
 
     /**
-     * Destroy this cell collection
+     * Destroy this cell collection.
      */
     public function __destruct()
     {
-        if (!is_null($this->fileHandle)) {
+        if (null !== $this->fileHandle) {
             fclose($this->fileHandle);
             unlink($this->fileName);
         }

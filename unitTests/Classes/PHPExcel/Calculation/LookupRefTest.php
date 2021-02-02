@@ -1,17 +1,15 @@
 <?php
 
-
 require_once 'testDataFileIterator.php';
 
-class LookupRefTest extends PHPUnit_Framework_TestCase
+class LookupRefTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
 
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
@@ -19,12 +17,12 @@ class LookupRefTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerHLOOKUP
      */
-    public function testHLOOKUP()
+    public function testHLOOKUP(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_LookupRef','HLOOKUP'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_LookupRef', 'HLOOKUP'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerHLOOKUP()
@@ -35,12 +33,12 @@ class LookupRefTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerVLOOKUP
      */
-    public function testVLOOKUP()
+    public function testVLOOKUP(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_LookupRef','VLOOKUP'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_LookupRef', 'VLOOKUP'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerVLOOKUP()

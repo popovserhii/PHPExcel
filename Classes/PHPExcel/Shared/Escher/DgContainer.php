@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Shared_Escher_DgContainer
+ * PHPExcel_Shared_Escher_DgContainer.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,10 +19,8 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Shared_Escher
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Shared_Escher_DgContainer
@@ -35,20 +33,20 @@ class PHPExcel_Shared_Escher_DgContainer
     private $dgId;
 
     /**
-     * Last shape index in this drawing
+     * Last shape index in this drawing.
      *
      * @var int
      */
     private $lastSpId;
 
-    private $spgrContainer = null;
+    private $spgrContainer;
 
     public function getDgId()
     {
         return $this->dgId;
     }
 
-    public function setDgId($value)
+    public function setDgId($value): void
     {
         $this->dgId = $value;
     }
@@ -58,7 +56,7 @@ class PHPExcel_Shared_Escher_DgContainer
         return $this->lastSpId;
     }
 
-    public function setLastSpId($value)
+    public function setLastSpId($value): void
     {
         $this->lastSpId = $value;
     }

@@ -1,42 +1,40 @@
 <?php
 
-
 require_once 'testDataFileIterator.php';
 
-class LogicalTest extends PHPUnit_Framework_TestCase
+class LogicalTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
 
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
-    public function testTRUE()
+    public function testTRUE(): void
     {
         $result = PHPExcel_Calculation_Logical::TRUE();
-        $this->assertEquals(true, $result);
+        self::assertTrue($result);
     }
 
-    public function testFALSE()
+    public function testFALSE(): void
     {
         $result = PHPExcel_Calculation_Logical::FALSE();
-        $this->assertEquals(false, $result);
+        self::assertFalse($result);
     }
 
     /**
      * @dataProvider providerAND
      */
-    public function testAND()
+    public function testAND(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Logical','LOGICAL_AND'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_Logical', 'LOGICAL_AND'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerAND()
@@ -47,12 +45,12 @@ class LogicalTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerOR
      */
-    public function testOR()
+    public function testOR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Logical','LOGICAL_OR'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_Logical', 'LOGICAL_OR'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerOR()
@@ -63,12 +61,12 @@ class LogicalTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerNOT
      */
-    public function testNOT()
+    public function testNOT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Logical','NOT'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_Logical', 'NOT'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerNOT()
@@ -79,12 +77,12 @@ class LogicalTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIF
      */
-    public function testIF()
+    public function testIF(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Logical','STATEMENT_IF'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_Logical', 'STATEMENT_IF'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerIF()
@@ -95,12 +93,12 @@ class LogicalTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIFERROR
      */
-    public function testIFERROR()
+    public function testIFERROR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Logical','IFERROR'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_Logical', 'IFERROR'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerIFERROR()

@@ -1,6 +1,6 @@
 <?php
 /**
- * PHPExcel
+ * PHPExcel.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -18,27 +18,21 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
- * PHPExcel_Shared_Drawing
- *
- * @category   PHPExcel
- * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * PHPExcel_Shared_Drawing.
  */
 class PHPExcel_Shared_Drawing
 {
     /**
-     * Convert pixels to EMU
+     * Convert pixels to EMU.
      *
      * @param     int $pValue    Value in pixels
+     *
      * @return     int            Value in EMU
      */
     public static function pixelsToEMU($pValue = 0)
@@ -47,18 +41,19 @@ class PHPExcel_Shared_Drawing
     }
 
     /**
-     * Convert EMU to pixels
+     * Convert EMU to pixels.
      *
      * @param     int $pValue    Value in EMU
+     *
      * @return     int            Value in pixels
      */
     public static function EMUToPixels($pValue = 0)
     {
         if ($pValue != 0) {
             return round($pValue / 9525);
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     /**
@@ -68,9 +63,10 @@ class PHPExcel_Shared_Drawing
      *
      * @param     int $pValue    Value in pixels
      * @param     PHPExcel_Style_Font $pDefaultFont    Default font of the workbook
+     *
      * @return     int            Value in cell dimension
      */
-    public static function pixelsToCellDimension($pValue = 0, PHPExcel_Style_Font $pDefaultFont)
+    public static function pixelsToCellDimension($pValue, PHPExcel_Style_Font $pDefaultFont)
     {
         // Font name and size
         $name = $pDefaultFont->getName();
@@ -89,13 +85,14 @@ class PHPExcel_Shared_Drawing
     }
 
     /**
-     * Convert column width from (intrinsic) Excel units to pixels
+     * Convert column width from (intrinsic) Excel units to pixels.
      *
      * @param     float    $pValue        Value in cell dimension
      * @param     PHPExcel_Style_Font $pDefaultFont    Default font of the workbook
+     *
      * @return     int        Value in pixels
      */
-    public static function cellDimensionToPixels($pValue = 0, PHPExcel_Style_Font $pDefaultFont)
+    public static function cellDimensionToPixels($pValue, PHPExcel_Style_Font $pDefaultFont)
     {
         // Font name and size
         $name = $pDefaultFont->getName();
@@ -117,9 +114,10 @@ class PHPExcel_Shared_Drawing
     }
 
     /**
-     * Convert pixels to points
+     * Convert pixels to points.
      *
      * @param     int $pValue    Value in pixels
+     *
      * @return     int            Value in points
      */
     public static function pixelsToPoints($pValue = 0)
@@ -128,77 +126,82 @@ class PHPExcel_Shared_Drawing
     }
 
     /**
-     * Convert points to pixels
+     * Convert points to pixels.
      *
      * @param     int $pValue    Value in points
+     *
      * @return     int            Value in pixels
      */
     public static function pointsToPixels($pValue = 0)
     {
         if ($pValue != 0) {
             return (int) ceil($pValue * 1.333333333);
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     /**
-     * Convert degrees to angle
+     * Convert degrees to angle.
      *
      * @param     int $pValue    Degrees
+     *
      * @return     int            Angle
      */
     public static function degreesToAngle($pValue = 0)
     {
-        return (int)round($pValue * 60000);
+        return (int) round($pValue * 60000);
     }
 
     /**
-     * Convert angle to degrees
+     * Convert angle to degrees.
      *
      * @param     int $pValue    Angle
+     *
      * @return     int            Degrees
      */
     public static function angleToDegrees($pValue = 0)
     {
         if ($pValue != 0) {
             return round($pValue / 60000);
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     /**
-     * Create a new image from file. By alexander at alexauto dot nl
+     * Create a new image from file. By alexander at alexauto dot nl.
      *
-     * @link http://www.php.net/manual/en/function.imagecreatefromwbmp.php#86214
-     * @param string $filename Path to Windows DIB (BMP) image
+     * @see http://www.php.net/manual/en/function.imagecreatefromwbmp.php#86214
+     *
+     * @param mixed $p_sFile
+     *
      * @return resource
      */
     public static function imagecreatefrombmp($p_sFile)
     {
         //    Load the image into a string
-        $file = fopen($p_sFile, "rb");
+        $file = fopen($p_sFile, 'rb');
         $read = fread($file, 10);
-        while (!feof($file) && ($read<>"")) {
+        while (!feof($file) && ($read != '')) {
             $read .= fread($file, 1024);
         }
 
-        $temp = unpack("H*", $read);
+        $temp = unpack('H*', $read);
         $hex = $temp[1];
         $header = substr($hex, 0, 108);
 
         //    Process the header
         //    Structure: http://www.fastgraph.com/help/bmp_header_format.html
-        if (substr($header, 0, 4)=="424d") {
+        if (substr($header, 0, 4) == '424d') {
             //    Cut it in parts of 2 bytes
             $header_parts = str_split($header, 2);
 
             //    Get the width        4 bytes
-            $width = hexdec($header_parts[19].$header_parts[18]);
+            $width = hexdec($header_parts[19] . $header_parts[18]);
 
             //    Get the height        4 bytes
-            $height = hexdec($header_parts[23].$header_parts[22]);
+            $height = hexdec($header_parts[23] . $header_parts[22]);
 
             //    Unset the header params
             unset($header_parts);
@@ -217,11 +220,11 @@ class PHPExcel_Shared_Drawing
         //    Calculate if padding at the end-line is needed
         //    Divided by two to keep overview.
         //    1 byte = 2 HEX-chars
-        $body_size = (strlen($body)/2);
-        $header_size = ($width*$height);
+        $body_size = (strlen($body) / 2);
+        $header_size = ($width * $height);
 
         //    Use end-line padding? Only when needed
-        $usePadding = ($body_size>($header_size*3)+4);
+        $usePadding = ($body_size > ($header_size * 3) + 4);
 
         //    Using a for-loop with index-calculation instaid of str_split to avoid large memory consumption
         //    Calculate the next DWORD-position in the body
@@ -231,14 +234,14 @@ class PHPExcel_Shared_Drawing
                 // If padding needed, ignore image-padding
                 // Shift i to the ending of the current 32-bit-block
                 if ($usePadding) {
-                    $i += $width%4;
+                    $i += $width % 4;
                 }
 
                 //    Reset horizontal position
                 $x = 0;
 
                 //    Raise the height-position (bottom-up)
-                $y++;
+                ++$y;
 
                 //    Reached the image-height? Break the for-loop
                 if ($y > $height) {
@@ -248,17 +251,17 @@ class PHPExcel_Shared_Drawing
 
             // Calculation of the RGB-pixel (defined as BGR in image-data)
             // Define $i_pos as absolute position in the body
-            $i_pos    = $i * 2;
-            $r        = hexdec($body[$i_pos+4].$body[$i_pos+5]);
-            $g        = hexdec($body[$i_pos+2].$body[$i_pos+3]);
-            $b        = hexdec($body[$i_pos].$body[$i_pos+1]);
+            $i_pos = $i * 2;
+            $r = hexdec($body[$i_pos + 4] . $body[$i_pos + 5]);
+            $g = hexdec($body[$i_pos + 2] . $body[$i_pos + 3]);
+            $b = hexdec($body[$i_pos] . $body[$i_pos + 1]);
 
             // Calculate and draw the pixel
-            $color    = imagecolorallocate($image, $r, $g, $b);
-            imagesetpixel($image, $x, $height-$y, $color);
+            $color = imagecolorallocate($image, $r, $g, $b);
+            imagesetpixel($image, $x, $height - $y, $color);
 
             // Raise the horizontal position
-            $x++;
+            ++$x;
         }
 
         // Unset the body / free the memory

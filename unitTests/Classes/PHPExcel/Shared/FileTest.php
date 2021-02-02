@@ -1,39 +1,37 @@
 <?php
 
-
 require_once 'testDataFileIterator.php';
 
-class FileTest extends PHPUnit_Framework_TestCase
+class FileTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
     }
 
-    public function testGetUseUploadTempDirectory()
+    public function testGetUseUploadTempDirectory(): void
     {
         $expectedResult = false;
 
-        $result = call_user_func(array('PHPExcel_Shared_File','getUseUploadTempDirectory'));
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func(['PHPExcel_Shared_File', 'getUseUploadTempDirectory']);
+        self::assertEquals($expectedResult, $result);
     }
 
-    public function testSetUseUploadTempDirectory()
+    public function testSetUseUploadTempDirectory(): void
     {
-        $useUploadTempDirectoryValues = array(
+        $useUploadTempDirectoryValues = [
             true,
             false,
-        );
+        ];
 
         foreach ($useUploadTempDirectoryValues as $useUploadTempDirectoryValue) {
-            call_user_func(array('PHPExcel_Shared_File','setUseUploadTempDirectory'), $useUploadTempDirectoryValue);
+            call_user_func(['PHPExcel_Shared_File', 'setUseUploadTempDirectory'], $useUploadTempDirectoryValue);
 
-            $result = call_user_func(array('PHPExcel_Shared_File','getUseUploadTempDirectory'));
-            $this->assertEquals($useUploadTempDirectoryValue, $result);
+            $result = call_user_func(['PHPExcel_Shared_File', 'getUseUploadTempDirectory']);
+            self::assertEquals($useUploadTempDirectoryValue, $result);
         }
     }
 }

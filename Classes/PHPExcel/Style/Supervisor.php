@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Style_Supervisor
+ * PHPExcel_Style_Supervisor.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,10 +19,8 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Style
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 abstract class PHPExcel_Style_Supervisor
@@ -30,21 +28,21 @@ abstract class PHPExcel_Style_Supervisor
     /**
      * Supervisor?
      *
-     * @var boolean
+     * @var bool
      */
     protected $isSupervisor;
 
     /**
-     * Parent. Only used for supervisor
+     * Parent. Only used for supervisor.
      *
      * @var PHPExcel_Style
      */
     protected $parent;
 
     /**
-     * Create a new PHPExcel_Style_Alignment
+     * Create a new PHPExcel_Style_Alignment.
      *
-     * @param    boolean    $isSupervisor    Flag indicating if this is a supervisor or not
+     * @param    bool    $isSupervisor    Flag indicating if this is a supervisor or not
      *                                    Leave this value at default unless you understand exactly what
      *                                        its ramifications are
      */
@@ -55,21 +53,24 @@ abstract class PHPExcel_Style_Supervisor
     }
 
     /**
-     * Bind parent. Only used for supervisor
+     * Bind parent. Only used for supervisor.
      *
      * @param PHPExcel $parent
+     * @param null|mixed $parentPropertyName
+     *
      * @return PHPExcel_Style_Supervisor
      */
     public function bindParent($parent, $parentPropertyName = null)
     {
         $this->parent = $parent;
+
         return $this;
     }
 
     /**
      * Is this a supervisor or a cell style component?
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsSupervisor()
     {
@@ -77,7 +78,7 @@ abstract class PHPExcel_Style_Supervisor
     }
 
     /**
-     * Get the currently active sheet. Only used for supervisor
+     * Get the currently active sheet. Only used for supervisor.
      *
      * @return PHPExcel_Worksheet
      */
@@ -88,7 +89,7 @@ abstract class PHPExcel_Style_Supervisor
 
     /**
      * Get the currently active cell coordinate in currently active sheet.
-     * Only used for supervisor
+     * Only used for supervisor.
      *
      * @return string E.g. 'A1'
      */
@@ -99,7 +100,7 @@ abstract class PHPExcel_Style_Supervisor
 
     /**
      * Get the currently active cell coordinate in currently active sheet.
-     * Only used for supervisor
+     * Only used for supervisor.
      *
      * @return string E.g. 'A1'
      */

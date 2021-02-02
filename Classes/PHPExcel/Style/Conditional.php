@@ -1,6 +1,6 @@
 <?php
 /**
- * PHPExcel
+ * PHPExcel.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -18,93 +18,86 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Style
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
- * PHPExcel_Style_Conditional
- *
- * @category   PHPExcel
- * @package    PHPExcel_Style
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * PHPExcel_Style_Conditional.
  */
 class PHPExcel_Style_Conditional implements PHPExcel_IComparable
 {
-    /* Condition types */
-    const CONDITION_NONE         = 'none';
-    const CONDITION_CELLIS       = 'cellIs';
+    // Condition types
+    const CONDITION_NONE = 'none';
+    const CONDITION_CELLIS = 'cellIs';
     const CONDITION_CONTAINSTEXT = 'containsText';
-    const CONDITION_EXPRESSION   = 'expression';
+    const CONDITION_EXPRESSION = 'expression';
 
-    /* Operator types */
-    const OPERATOR_NONE               = '';
-    const OPERATOR_BEGINSWITH         = 'beginsWith';
-    const OPERATOR_ENDSWITH           = 'endsWith';
-    const OPERATOR_EQUAL              = 'equal';
-    const OPERATOR_GREATERTHAN        = 'greaterThan';
+    // Operator types
+    const OPERATOR_NONE = '';
+    const OPERATOR_BEGINSWITH = 'beginsWith';
+    const OPERATOR_ENDSWITH = 'endsWith';
+    const OPERATOR_EQUAL = 'equal';
+    const OPERATOR_GREATERTHAN = 'greaterThan';
     const OPERATOR_GREATERTHANOREQUAL = 'greaterThanOrEqual';
-    const OPERATOR_LESSTHAN           = 'lessThan';
-    const OPERATOR_LESSTHANOREQUAL    = 'lessThanOrEqual';
-    const OPERATOR_NOTEQUAL           = 'notEqual';
-    const OPERATOR_CONTAINSTEXT       = 'containsText';
-    const OPERATOR_NOTCONTAINS        = 'notContains';
-    const OPERATOR_BETWEEN            = 'between';
+    const OPERATOR_LESSTHAN = 'lessThan';
+    const OPERATOR_LESSTHANOREQUAL = 'lessThanOrEqual';
+    const OPERATOR_NOTEQUAL = 'notEqual';
+    const OPERATOR_CONTAINSTEXT = 'containsText';
+    const OPERATOR_NOTCONTAINS = 'notContains';
+    const OPERATOR_BETWEEN = 'between';
 
     /**
-     * Condition type
+     * Condition type.
      *
      * @var int
      */
     private $conditionType;
 
     /**
-     * Operator type
+     * Operator type.
      *
      * @var int
      */
     private $operatorType;
 
     /**
-     * Text
+     * Text.
      *
      * @var string
      */
     private $text;
 
     /**
-     * Condition
+     * Condition.
      *
      * @var string[]
      */
-    private $condition = array();
+    private $condition = [];
 
     /**
-     * Style
+     * Style.
      *
      * @var PHPExcel_Style
      */
     private $style;
 
     /**
-     * Create a new PHPExcel_Style_Conditional
+     * Create a new PHPExcel_Style_Conditional.
      */
     public function __construct()
     {
         // Initialise values
-        $this->conditionType = PHPExcel_Style_Conditional::CONDITION_NONE;
-        $this->operatorType  = PHPExcel_Style_Conditional::OPERATOR_NONE;
-        $this->text          = null;
-        $this->condition     = array();
-        $this->style         = new PHPExcel_Style(false, true);
+        $this->conditionType = self::CONDITION_NONE;
+        $this->operatorType = self::OPERATOR_NONE;
+        $this->text = null;
+        $this->condition = [];
+        $this->style = new PHPExcel_Style(false, true);
     }
 
     /**
-     * Get Condition type
+     * Get Condition type.
      *
      * @return string
      */
@@ -114,19 +107,21 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
     }
 
     /**
-     * Set Condition type
+     * Set Condition type.
      *
      * @param string $pValue    PHPExcel_Style_Conditional condition type
+     *
      * @return PHPExcel_Style_Conditional
      */
-    public function setConditionType($pValue = PHPExcel_Style_Conditional::CONDITION_NONE)
+    public function setConditionType($pValue = self::CONDITION_NONE)
     {
         $this->conditionType = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Operator type
+     * Get Operator type.
      *
      * @return string
      */
@@ -136,19 +131,21 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
     }
 
     /**
-     * Set Operator type
+     * Set Operator type.
      *
      * @param string $pValue    PHPExcel_Style_Conditional operator type
+     *
      * @return PHPExcel_Style_Conditional
      */
-    public function setOperatorType($pValue = PHPExcel_Style_Conditional::OPERATOR_NONE)
+    public function setOperatorType($pValue = self::OPERATOR_NONE)
     {
         $this->operatorType = $pValue;
+
         return $this;
     }
 
     /**
-     * Get text
+     * Get text.
      *
      * @return string
      */
@@ -158,21 +155,24 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
     }
 
     /**
-     * Set text
+     * Set text.
      *
      * @param string $value
+     *
      * @return PHPExcel_Style_Conditional
      */
     public function setText($value = null)
     {
         $this->text = $value;
+
         return $this;
     }
 
     /**
-     * Get Condition
+     * Get Condition.
      *
      * @deprecated Deprecated, use getConditions instead
+     *
      * @return string
      */
     public function getCondition()
@@ -185,23 +185,25 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
     }
 
     /**
-     * Set Condition
+     * Set Condition.
      *
      * @deprecated Deprecated, use setConditions instead
+     *
      * @param string $pValue    Condition
+     *
      * @return PHPExcel_Style_Conditional
      */
     public function setCondition($pValue = '')
     {
         if (!is_array($pValue)) {
-            $pValue = array($pValue);
+            $pValue = [$pValue];
         }
 
         return $this->setConditions($pValue);
     }
 
     /**
-     * Get Conditions
+     * Get Conditions.
      *
      * @return string[]
      */
@@ -211,34 +213,38 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
     }
 
     /**
-     * Set Conditions
+     * Set Conditions.
      *
      * @param string[] $pValue    Condition
+     *
      * @return PHPExcel_Style_Conditional
      */
     public function setConditions($pValue)
     {
         if (!is_array($pValue)) {
-            $pValue = array($pValue);
+            $pValue = [$pValue];
         }
         $this->condition = $pValue;
+
         return $this;
     }
 
     /**
-     * Add Condition
+     * Add Condition.
      *
      * @param string $pValue    Condition
+     *
      * @return PHPExcel_Style_Conditional
      */
     public function addCondition($pValue = '')
     {
         $this->condition[] = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Style
+     * Get Style.
      *
      * @return PHPExcel_Style
      */
@@ -248,20 +254,21 @@ class PHPExcel_Style_Conditional implements PHPExcel_IComparable
     }
 
     /**
-     * Set Style
+     * Set Style.
      *
      * @param     PHPExcel_Style $pValue
-     * @throws     PHPExcel_Exception
+     *
      * @return PHPExcel_Style_Conditional
      */
-    public function setStyle(PHPExcel_Style $pValue = null)
+    public function setStyle(?PHPExcel_Style $pValue = null)
     {
-           $this->style = $pValue;
-           return $this;
+        $this->style = $pValue;
+
+        return $this;
     }
 
     /**
-     * Get hash code
+     * Get hash code.
      *
      * @return string    Hash code
      */

@@ -1,17 +1,15 @@
 <?php
 
-
 require_once 'testDataFileIterator.php';
 
-class NumberFormatDateTest extends PHPUnit_Framework_TestCase
+class NumberFormatDateTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
 
         PHPExcel_Shared_String::setDecimalSeparator('.');
         PHPExcel_Shared_String::setThousandsSeparator(',');
@@ -20,12 +18,12 @@ class NumberFormatDateTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerNumberFormat
      */
-    public function testFormatValueWithMask()
+    public function testFormatValueWithMask(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Style_NumberFormat','toFormattedString'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Style_NumberFormat', 'toFormattedString'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerNumberFormat()

@@ -1,28 +1,26 @@
 <?php
 
-
 require_once 'testDataFileIterator.php';
 
-class ColorTest extends PHPUnit_Framework_TestCase
+class ColorTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
     }
 
     /**
      * @dataProvider providerColorGetRed
      */
-    public function testGetRed()
+    public function testGetRed(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Style_Color','getRed'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Style_Color', 'getRed'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerColorGetRed()
@@ -33,12 +31,12 @@ class ColorTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerColorGetGreen
      */
-    public function testGetGreen()
+    public function testGetGreen(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Style_Color','getGreen'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Style_Color', 'getGreen'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerColorGetGreen()
@@ -49,12 +47,12 @@ class ColorTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerColorGetBlue
      */
-    public function testGetBlue()
+    public function testGetBlue(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Style_Color','getBlue'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Style_Color', 'getBlue'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerColorGetBlue()
@@ -65,12 +63,12 @@ class ColorTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerColorChangeBrightness
      */
-    public function testChangeBrightness()
+    public function testChangeBrightness(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Style_Color','changeBrightness'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Style_Color', 'changeBrightness'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerColorChangeBrightness()

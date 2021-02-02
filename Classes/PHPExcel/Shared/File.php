@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Shared_File
+ * PHPExcel_Shared_File.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,51 +19,48 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Shared_File
 {
-    /*
-     * Use Temp or File Upload Temp for temporary files
+    /**
+     * Use Temp or File Upload Temp for temporary files.
      *
      * @protected
-     * @var    boolean
+     *
+     * @var    bool
      */
     protected static $useUploadTempDirectory = false;
 
-
     /**
-     * Set the flag indicating whether the File Upload Temp directory should be used for temporary files
+     * Set the flag indicating whether the File Upload Temp directory should be used for temporary files.
      *
-     * @param     boolean    $useUploadTempDir        Use File Upload Temporary directory (true or false)
+     * @param     bool    $useUploadTempDir        Use File Upload Temporary directory (true or false)
      */
-    public static function setUseUploadTempDirectory($useUploadTempDir = false)
+    public static function setUseUploadTempDirectory($useUploadTempDir = false): void
     {
-        self::$useUploadTempDirectory = (boolean) $useUploadTempDir;
+        self::$useUploadTempDirectory = (bool) $useUploadTempDir;
     }
 
-
     /**
-     * Get the flag indicating whether the File Upload Temp directory should be used for temporary files
+     * Get the flag indicating whether the File Upload Temp directory should be used for temporary files.
      *
-     * @return     boolean    Use File Upload Temporary directory (true or false)
+     * @return     bool    Use File Upload Temporary directory (true or false)
      */
     public static function getUseUploadTempDirectory()
     {
         return self::$useUploadTempDirectory;
     }
 
-
     /**
-      * Verify if a file exists
-      *
-      * @param     string    $pFilename    Filename
-      * @return bool
-      */
+     * Verify if a file exists.
+     *
+     * @param     string    $pFilename    Filename
+     *
+     * @return bool
+     */
     public static function file_exists($pFilename)
     {
         // Sick construction, but it seems that
@@ -71,27 +68,28 @@ class PHPExcel_Shared_File
         // doing the original file_exists on ZIP archives...
         if (strtolower(substr($pFilename, 0, 3)) == 'zip') {
             // Open ZIP file and verify if the file exists
-            $zipFile     = substr($pFilename, 6, strpos($pFilename, '#') - 6);
+            $zipFile = substr($pFilename, 6, strpos($pFilename, '#') - 6);
             $archiveFile = substr($pFilename, strpos($pFilename, '#') + 1);
 
             $zip = new ZipArchive();
             if ($zip->open($zipFile) === true) {
                 $returnValue = ($zip->getFromName($archiveFile) !== false);
                 $zip->close();
+
                 return $returnValue;
-            } else {
-                return false;
             }
-        } else {
-            // Regular file_exists
-            return file_exists($pFilename);
+
+            return false;
         }
+        // Regular file_exists
+        return file_exists($pFilename);
     }
 
     /**
-     * Returns canonicalized absolute pathname, also for ZIP archives
+     * Returns canonicalized absolute pathname, also for ZIP archives.
      *
      * @param string $pFilename
+     *
      * @return string
      */
     public static function realpath($pFilename)
@@ -110,8 +108,8 @@ class PHPExcel_Shared_File
             while (in_array('..', $pathArray) && $pathArray[0] != '..') {
                 for ($i = 0; $i < count($pathArray); ++$i) {
                     if ($pathArray[$i] == '..' && $i > 0) {
-                        unset($pathArray[$i]);
-                        unset($pathArray[$i - 1]);
+                        unset($pathArray[$i], $pathArray[$i - 1]);
+
                         break;
                     }
                 }
@@ -166,6 +164,7 @@ class PHPExcel_Shared_File
             $temp = tempnam(__FILE__, '');
             if (file_exists($temp)) {
                 unlink($temp);
+
                 return realpath(dirname($temp));
             }
 

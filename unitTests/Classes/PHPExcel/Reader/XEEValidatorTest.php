@@ -1,54 +1,60 @@
 <?php
 
-
-class XEEValidatorTest extends PHPUnit_Framework_TestCase
+class XEEValidatorTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
     }
 
     /**
      * @dataProvider providerInvalidXML
-     * @expectedException PHPExcel_Reader_Exception
+     *
+     * @param mixed $filename
      */
-    public function testInvalidXML($filename)
+    public function testInvalidXML($filename): void
     {
+        $this->expectException(\PHPExcel_Reader_Exception::class);
+
         $reader = $this->getMockForAbstractClass('PHPExcel_Reader_Abstract');
         $expectedResult = 'FAILURE: Should throw an Exception rather than return a value';
         $result = $reader->securityScanFile($filename);
-        $this->assertEquals($expectedResult, $result);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerInvalidXML()
     {
-        $tests = array();
+        $tests = [];
         foreach (glob('rawTestData/Reader/XEETestInvalid*.xml') as $file) {
             $tests[] = [realpath($file), true];
         }
+
         return $tests;
     }
 
     /**
      * @dataProvider providerValidXML
+     *
+     * @param mixed $filename
+     * @param mixed $expectedResult
      */
-    public function testValidXML($filename, $expectedResult)
+    public function testValidXML($filename, $expectedResult): void
     {
         $reader = $this->getMockForAbstractClass('PHPExcel_Reader_Abstract');
         $result = $reader->securityScanFile($filename);
-        $this->assertEquals($expectedResult, $result);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerValidXML()
     {
-        $tests = array();
+        $tests = [];
         foreach (glob('rawTestData/Reader/XEETestValid*.xml') as $file) {
             $tests[] = [realpath($file), file_get_contents($file)];
         }
+
         return $tests;
     }
 }

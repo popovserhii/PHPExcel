@@ -1,132 +1,130 @@
 <?php
 
-
-class LegendTest extends PHPUnit_Framework_TestCase
+class LegendTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
     }
 
-    public function testSetPosition()
+    public function testSetPosition(): void
     {
-        $positionValues = array(
+        $positionValues = [
             PHPExcel_Chart_Legend::POSITION_RIGHT,
             PHPExcel_Chart_Legend::POSITION_LEFT,
             PHPExcel_Chart_Legend::POSITION_TOP,
             PHPExcel_Chart_Legend::POSITION_BOTTOM,
             PHPExcel_Chart_Legend::POSITION_TOPRIGHT,
-        );
+        ];
 
-        $testInstance = new PHPExcel_Chart_Legend;
+        $testInstance = new PHPExcel_Chart_Legend();
 
         foreach ($positionValues as $positionValue) {
             $result = $testInstance->setPosition($positionValue);
-            $this->assertTrue($result);
+            self::assertTrue($result);
         }
     }
 
-    public function testSetInvalidPositionReturnsFalse()
+    public function testSetInvalidPositionReturnsFalse(): void
     {
-        $testInstance = new PHPExcel_Chart_Legend;
+        $testInstance = new PHPExcel_Chart_Legend();
 
         $result = $testInstance->setPosition('BottomLeft');
-        $this->assertFalse($result);
+        self::assertFalse($result);
         //    Ensure that value is unchanged
         $result = $testInstance->getPosition();
-        $this->assertEquals(PHPExcel_Chart_Legend::POSITION_RIGHT, $result);
+        self::assertEquals(PHPExcel_Chart_Legend::POSITION_RIGHT, $result);
     }
 
-    public function testGetPosition()
+    public function testGetPosition(): void
     {
         $PositionValue = PHPExcel_Chart_Legend::POSITION_BOTTOM;
 
-        $testInstance = new PHPExcel_Chart_Legend;
+        $testInstance = new PHPExcel_Chart_Legend();
         $setValue = $testInstance->setPosition($PositionValue);
 
         $result = $testInstance->getPosition();
-        $this->assertEquals($PositionValue, $result);
+        self::assertEquals($PositionValue, $result);
     }
 
-    public function testSetPositionXL()
+    public function testSetPositionXL(): void
     {
-        $positionValues = array(
+        $positionValues = [
             PHPExcel_Chart_Legend::xlLegendPositionBottom,
             PHPExcel_Chart_Legend::xlLegendPositionCorner,
             PHPExcel_Chart_Legend::xlLegendPositionCustom,
             PHPExcel_Chart_Legend::xlLegendPositionLeft,
             PHPExcel_Chart_Legend::xlLegendPositionRight,
             PHPExcel_Chart_Legend::xlLegendPositionTop,
-        );
+        ];
 
-        $testInstance = new PHPExcel_Chart_Legend;
+        $testInstance = new PHPExcel_Chart_Legend();
 
         foreach ($positionValues as $positionValue) {
             $result = $testInstance->setPositionXL($positionValue);
-            $this->assertTrue($result);
+            self::assertTrue($result);
         }
     }
 
-    public function testSetInvalidXLPositionReturnsFalse()
+    public function testSetInvalidXLPositionReturnsFalse(): void
     {
-        $testInstance = new PHPExcel_Chart_Legend;
+        $testInstance = new PHPExcel_Chart_Legend();
 
         $result = $testInstance->setPositionXL(999);
-        $this->assertFalse($result);
+        self::assertFalse($result);
         //    Ensure that value is unchanged
         $result = $testInstance->getPositionXL();
-        $this->assertEquals(PHPExcel_Chart_Legend::xlLegendPositionRight, $result);
+        self::assertEquals(PHPExcel_Chart_Legend::xlLegendPositionRight, $result);
     }
 
-    public function testGetPositionXL()
+    public function testGetPositionXL(): void
     {
         $PositionValue = PHPExcel_Chart_Legend::xlLegendPositionCorner;
 
-        $testInstance = new PHPExcel_Chart_Legend;
+        $testInstance = new PHPExcel_Chart_Legend();
         $setValue = $testInstance->setPositionXL($PositionValue);
 
         $result = $testInstance->getPositionXL();
-        $this->assertEquals($PositionValue, $result);
+        self::assertEquals($PositionValue, $result);
     }
 
-    public function testSetOverlay()
+    public function testSetOverlay(): void
     {
-        $overlayValues = array(
+        $overlayValues = [
             true,
             false,
-        );
+        ];
 
-        $testInstance = new PHPExcel_Chart_Legend;
+        $testInstance = new PHPExcel_Chart_Legend();
 
         foreach ($overlayValues as $overlayValue) {
             $result = $testInstance->setOverlay($overlayValue);
-            $this->assertTrue($result);
+            self::assertTrue($result);
         }
     }
 
-    public function testSetInvalidOverlayReturnsFalse()
+    public function testSetInvalidOverlayReturnsFalse(): void
     {
-        $testInstance = new PHPExcel_Chart_Legend;
+        $testInstance = new PHPExcel_Chart_Legend();
 
         $result = $testInstance->setOverlay('INVALID');
-        $this->assertFalse($result);
+        self::assertFalse($result);
 
         $result = $testInstance->getOverlay();
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
-    public function testGetOverlay()
+    public function testGetOverlay(): void
     {
         $OverlayValue = true;
 
-        $testInstance = new PHPExcel_Chart_Legend;
+        $testInstance = new PHPExcel_Chart_Legend();
         $setValue = $testInstance->setOverlay($OverlayValue);
 
         $result = $testInstance->getOverlay();
-        $this->assertEquals($OverlayValue, $result);
+        self::assertEquals($OverlayValue, $result);
     }
 }

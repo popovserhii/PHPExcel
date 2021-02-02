@@ -2,30 +2,34 @@
 
 require_once 'testDataFileIterator.php';
 
-class CalculationTest extends PHPUnit_Framework_TestCase
+class CalculationTest extends PHPUnit\Framework\TestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
 
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
 
     /**
      * @dataProvider providerBinaryComparisonOperation
+     *
+     * @param mixed $formula
+     * @param mixed $expectedResultExcel
+     * @param mixed $expectedResultOpenOffice
      */
-    public function testBinaryComparisonOperation($formula, $expectedResultExcel, $expectedResultOpenOffice)
+    public function testBinaryComparisonOperation($formula, $expectedResultExcel, $expectedResultOpenOffice): void
     {
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
         $resultExcel = \PHPExcel_Calculation::getInstance()->_calculateFormulaValue($formula);
-        $this->assertEquals($expectedResultExcel, $resultExcel, 'should be Excel compatible');
+        self::assertEquals($expectedResultExcel, $resultExcel, 'should be Excel compatible');
 
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_OPENOFFICE);
         $resultOpenOffice = \PHPExcel_Calculation::getInstance()->_calculateFormulaValue($formula);
-        $this->assertEquals($expectedResultOpenOffice, $resultOpenOffice, 'should be OpenOffice compatible');
+        self::assertEquals($expectedResultOpenOffice, $resultOpenOffice, 'should be OpenOffice compatible');
     }
 
     public function providerBinaryComparisonOperation()

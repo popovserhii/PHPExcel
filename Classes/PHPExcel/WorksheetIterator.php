@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_WorksheetIterator
+ * PHPExcel_WorksheetIterator.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,57 +19,55 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_WorksheetIterator implements Iterator
 {
     /**
-     * Spreadsheet to iterate
+     * Spreadsheet to iterate.
      *
      * @var PHPExcel
      */
     private $subject;
 
     /**
-     * Current iterator position
+     * Current iterator position.
      *
      * @var int
      */
     private $position = 0;
 
     /**
-     * Create a new worksheet iterator
+     * Create a new worksheet iterator.
      *
      * @param PHPExcel         $subject
      */
-    public function __construct(PHPExcel $subject = null)
+    public function __construct(?PHPExcel $subject = null)
     {
         // Set subject
         $this->subject = $subject;
     }
 
     /**
-     * Destructor
+     * Destructor.
      */
     public function __destruct()
     {
-        unset($this->subject);
+        $this->subject = null;
     }
 
     /**
-     * Rewind iterator
+     * Rewind iterator.
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
 
     /**
-     * Current PHPExcel_Worksheet
+     * Current PHPExcel_Worksheet.
      *
      * @return PHPExcel_Worksheet
      */
@@ -79,7 +77,7 @@ class PHPExcel_WorksheetIterator implements Iterator
     }
 
     /**
-     * Current key
+     * Current key.
      *
      * @return int
      */
@@ -89,9 +87,9 @@ class PHPExcel_WorksheetIterator implements Iterator
     }
 
     /**
-     * Next value
+     * Next value.
      */
-    public function next()
+    public function next(): void
     {
         ++$this->position;
     }
@@ -99,7 +97,7 @@ class PHPExcel_WorksheetIterator implements Iterator
     /**
      * More PHPExcel_Worksheet instances available?
      *
-     * @return boolean
+     * @return bool
      */
     public function valid()
     {

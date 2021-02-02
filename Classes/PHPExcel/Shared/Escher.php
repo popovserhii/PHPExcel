@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Shared_Escher
+ * PHPExcel_Shared_Escher.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,30 +19,28 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Shared_Escher
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Shared_Escher
 {
     /**
-     * Drawing Group Container
+     * Drawing Group Container.
      *
      * @var PHPExcel_Shared_Escher_DggContainer
      */
     private $dggContainer;
 
     /**
-     * Drawing Container
+     * Drawing Container.
      *
      * @var PHPExcel_Shared_Escher_DgContainer
      */
     private $dgContainer;
 
     /**
-     * Get Drawing Group Container
+     * Get Drawing Group Container.
      *
      * @return PHPExcel_Shared_Escher_DgContainer
      */
@@ -52,7 +50,7 @@ class PHPExcel_Shared_Escher
     }
 
     /**
-     * Set Drawing Group Container
+     * Set Drawing Group Container.
      *
      * @param PHPExcel_Shared_Escher_DggContainer $dggContainer
      */
@@ -62,7 +60,7 @@ class PHPExcel_Shared_Escher
     }
 
     /**
-     * Get Drawing Container
+     * Get Drawing Container.
      *
      * @return PHPExcel_Shared_Escher_DgContainer
      */
@@ -72,7 +70,7 @@ class PHPExcel_Shared_Escher
     }
 
     /**
-     * Set Drawing Container
+     * Set Drawing Container.
      *
      * @param PHPExcel_Shared_Escher_DgContainer $dgContainer
      */

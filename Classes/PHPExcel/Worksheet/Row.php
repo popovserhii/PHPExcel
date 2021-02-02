@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Worksheet_Row
+ * PHPExcel_Worksheet_Row.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,51 +19,49 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Worksheet_Row
 {
     /**
-     * PHPExcel_Worksheet
+     * PHPExcel_Worksheet.
      *
      * @var PHPExcel_Worksheet
      */
     private $parent;
 
     /**
-     * Row index
+     * Row index.
      *
      * @var int
      */
     private $rowIndex = 0;
 
     /**
-     * Create a new row
+     * Create a new row.
      *
      * @param PHPExcel_Worksheet         $parent
      * @param int                        $rowIndex
      */
-    public function __construct(PHPExcel_Worksheet $parent = null, $rowIndex = 1)
+    public function __construct(?PHPExcel_Worksheet $parent = null, $rowIndex = 1)
     {
         // Set parent and row index
-        $this->parent   = $parent;
+        $this->parent = $parent;
         $this->rowIndex = $rowIndex;
     }
 
     /**
-     * Destructor
+     * Destructor.
      */
     public function __destruct()
     {
-        unset($this->parent);
+        $this->parent = null;
     }
 
     /**
-     * Get row index
+     * Get row index.
      *
      * @return int
      */
@@ -73,10 +71,11 @@ class PHPExcel_Worksheet_Row
     }
 
     /**
-     * Get cell iterator
+     * Get cell iterator.
      *
      * @param    string                $startColumn    The column address at which to start iterating
      * @param    string                $endColumn        Optionally, the column address at which to stop iterating
+     *
      * @return PHPExcel_Worksheet_CellIterator
      */
     public function getCellIterator($startColumn = 'A', $endColumn = null)

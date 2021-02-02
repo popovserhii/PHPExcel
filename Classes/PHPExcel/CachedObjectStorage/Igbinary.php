@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_CachedObjectStorage_Igbinary
+ * PHPExcel_CachedObjectStorage_Igbinary.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,22 +19,17 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_CachedObjectStorage
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_CachedObjectStorage_Igbinary extends PHPExcel_CachedObjectStorage_CacheBase implements PHPExcel_CachedObjectStorage_ICache
 {
     /**
      * Store cell data in cache for the current cell object if it's "dirty",
-     *     and the 'nullify' the current cell object
-     *
-     * @return    void
-     * @throws    PHPExcel_Exception
+     *     and the 'nullify' the current cell object.
      */
-    protected function storeData()
+    protected function storeData(): void
     {
         if ($this->currentCellIsDirty && !empty($this->currentObjectID)) {
             $this->currentObject->detach();
@@ -43,16 +38,17 @@ class PHPExcel_CachedObjectStorage_Igbinary extends PHPExcel_CachedObjectStorage
             $this->currentCellIsDirty = false;
         }
         $this->currentObjectID = $this->currentObject = null;
-    }    //    function _storeData()
+    }
 
+    //    function _storeData()
 
     /**
-     * Add or Update a cell in cache identified by coordinate address
+     * Add or Update a cell in cache identified by coordinate address.
      *
      * @param    string            $pCoord        Coordinate address of the cell to update
      * @param    PHPExcel_Cell    $cell        Cell to update
+     *
      * @return    PHPExcel_Cell
-     * @throws    PHPExcel_Exception
      */
     public function addCacheData($pCoord, PHPExcel_Cell $cell)
     {
@@ -65,14 +61,15 @@ class PHPExcel_CachedObjectStorage_Igbinary extends PHPExcel_CachedObjectStorage
         $this->currentCellIsDirty = true;
 
         return $cell;
-    }    //    function addCacheData()
+    }
 
+    //    function addCacheData()
 
     /**
-     * Get cell at a specific coordinate
+     * Get cell at a specific coordinate.
      *
      * @param     string             $pCoord        Coordinate of the cell
-     * @throws     PHPExcel_Exception
+     *
      * @return     PHPExcel_Cell     Cell that was found, or null if not found
      */
     public function getCacheData($pCoord)
@@ -96,11 +93,12 @@ class PHPExcel_CachedObjectStorage_Igbinary extends PHPExcel_CachedObjectStorage
 
         //    Return requested entry
         return $this->currentObject;
-    }    //    function getCacheData()
+    }
 
+    //    function getCacheData()
 
     /**
-     * Get a list of all cell addresses currently held in cache
+     * Get a list of all cell addresses currently held in cache.
      *
      * @return  string[]
      */
@@ -113,30 +111,28 @@ class PHPExcel_CachedObjectStorage_Igbinary extends PHPExcel_CachedObjectStorage
         return parent::getCellList();
     }
 
-
     /**
-     * Clear the cell collection and disconnect from our parent
-     *
-     * @return    void
+     * Clear the cell collection and disconnect from our parent.
      */
-    public function unsetWorksheetCells()
+    public function unsetWorksheetCells(): void
     {
-        if (!is_null($this->currentObject)) {
+        if (null !== $this->currentObject) {
             $this->currentObject->detach();
             $this->currentObject = $this->currentObjectID = null;
         }
-        $this->cellCache = array();
+        $this->cellCache = [];
 
         //    detach ourself from the worksheet, so that it can then delete this object successfully
         $this->parent = null;
-    }    //    function unsetWorksheetCells()
+    }
 
+    //    function unsetWorksheetCells()
 
     /**
      * Identify whether the caching method is currently available
-     * Some methods are dependent on the availability of certain extensions being enabled in the PHP build
+     * Some methods are dependent on the availability of certain extensions being enabled in the PHP build.
      *
-     * @return    boolean
+     * @return    bool
      */
     public static function cacheMethodIsAvailable()
     {

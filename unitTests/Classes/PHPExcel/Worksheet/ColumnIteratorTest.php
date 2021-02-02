@@ -1,17 +1,18 @@
 <?php
 
-class ColumnIteratorTest extends PHPUnit_Framework_TestCase
+class ColumnIteratorTest extends PHPUnit\Framework\TestCase
 {
     public $mockWorksheet;
+
     public $mockColumn;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-        
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
+
         $this->mockColumn = $this->getMockBuilder('PHPExcel_Worksheet_Column')
             ->disableOriginalConstructor()
             ->getMock();
@@ -20,76 +21,72 @@ class ColumnIteratorTest extends PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->mockWorksheet->expects($this->any())
-                 ->method('getHighestColumn')
-                 ->will($this->returnValue('E'));
-        $this->mockWorksheet->expects($this->any())
-                 ->method('current')
-                 ->will($this->returnValue($this->mockColumn));
+        $this->mockWorksheet->expects(self::any())
+            ->method('getHighestColumn')
+            ->willReturn('E');
+        $this->mockWorksheet->expects(self::any())
+            ->method('current')
+            ->willReturn($this->mockColumn);
     }
 
-
-    public function testIteratorFullRange()
+    public function testIteratorFullRange(): void
     {
         $iterator = new PHPExcel_Worksheet_ColumnIterator($this->mockWorksheet);
         $columnIndexResult = 'A';
-        $this->assertEquals($columnIndexResult, $iterator->key());
-        
+        self::assertEquals($columnIndexResult, $iterator->key());
+
         foreach ($iterator as $key => $column) {
-            $this->assertEquals($columnIndexResult++, $key);
-            $this->assertInstanceOf('PHPExcel_Worksheet_Column', $column);
+            self::assertEquals($columnIndexResult++, $key);
+            self::assertInstanceOf('PHPExcel_Worksheet_Column', $column);
         }
     }
 
-    public function testIteratorStartEndRange()
+    public function testIteratorStartEndRange(): void
     {
         $iterator = new PHPExcel_Worksheet_ColumnIterator($this->mockWorksheet, 'B', 'D');
         $columnIndexResult = 'B';
-        $this->assertEquals($columnIndexResult, $iterator->key());
-        
+        self::assertEquals($columnIndexResult, $iterator->key());
+
         foreach ($iterator as $key => $column) {
-            $this->assertEquals($columnIndexResult++, $key);
-            $this->assertInstanceOf('PHPExcel_Worksheet_Column', $column);
+            self::assertEquals($columnIndexResult++, $key);
+            self::assertInstanceOf('PHPExcel_Worksheet_Column', $column);
         }
     }
 
-    public function testIteratorSeekAndPrev()
+    public function testIteratorSeekAndPrev(): void
     {
         $ranges = range('A', 'E');
         $iterator = new PHPExcel_Worksheet_ColumnIterator($this->mockWorksheet, 'B', 'D');
         $columnIndexResult = 'D';
         $iterator->seek('D');
-        $this->assertEquals($columnIndexResult, $iterator->key());
+        self::assertEquals($columnIndexResult, $iterator->key());
 
-        for ($i = 1; $i < array_search($columnIndexResult, $ranges); $i++) {
+        for ($i = 1; $i < array_search($columnIndexResult, $ranges); ++$i) {
             $iterator->prev();
             $expectedResult = $ranges[array_search($columnIndexResult, $ranges) - $i];
-            $this->assertEquals($expectedResult, $iterator->key());
+            self::assertEquals($expectedResult, $iterator->key());
         }
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
-    public function testStartOutOfRange()
+    public function testStartOutOfRange(): void
     {
+        $this->expectException(\PHPExcel_Exception::class);
+
         $iterator = new PHPExcel_Worksheet_ColumnIterator($this->mockWorksheet, 'IA', 'IV');
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
-    public function testSeekOutOfRange()
+    public function testSeekOutOfRange(): void
     {
+        $this->expectException(\PHPExcel_Exception::class);
+
         $iterator = new PHPExcel_Worksheet_ColumnIterator($this->mockWorksheet, 'B', 'D');
         $iterator->seek('A');
     }
 
-    /**
-     * @expectedException PHPExcel_Exception
-     */
-    public function testPrevOutOfRange()
+    public function testPrevOutOfRange(): void
     {
+        $this->expectException(\PHPExcel_Exception::class);
+
         $iterator = new PHPExcel_Worksheet_ColumnIterator($this->mockWorksheet, 'B', 'D');
         $iterator->prev();
     }

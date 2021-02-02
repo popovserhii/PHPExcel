@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Worksheet_Column
+ * PHPExcel_Worksheet_Column.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,51 +19,49 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Worksheet_Column
 {
     /**
-     * PHPExcel_Worksheet
+     * PHPExcel_Worksheet.
      *
      * @var PHPExcel_Worksheet
      */
     private $parent;
 
     /**
-     * Column index
+     * Column index.
      *
      * @var string
      */
     private $columnIndex;
 
     /**
-     * Create a new column
+     * Create a new column.
      *
      * @param PHPExcel_Worksheet     $parent
      * @param string                $columnIndex
      */
-    public function __construct(PHPExcel_Worksheet $parent = null, $columnIndex = 'A')
+    public function __construct(?PHPExcel_Worksheet $parent = null, $columnIndex = 'A')
     {
         // Set parent and column index
-        $this->parent         = $parent;
+        $this->parent = $parent;
         $this->columnIndex = $columnIndex;
     }
 
     /**
-     * Destructor
+     * Destructor.
      */
     public function __destruct()
     {
-        unset($this->parent);
+        $this->parent = null;
     }
 
     /**
-     * Get column index
+     * Get column index.
      *
      * @return string
      */
@@ -73,10 +71,11 @@ class PHPExcel_Worksheet_Column
     }
 
     /**
-     * Get cell iterator
+     * Get cell iterator.
      *
-     * @param    integer                $startRow        The row number at which to start iterating
-     * @param    integer                $endRow            Optionally, the row number at which to stop iterating
+     * @param    int                $startRow        The row number at which to start iterating
+     * @param    int                $endRow            Optionally, the row number at which to stop iterating
+     *
      * @return PHPExcel_Worksheet_CellIterator
      */
     public function getCellIterator($startRow = 1, $endRow = null)

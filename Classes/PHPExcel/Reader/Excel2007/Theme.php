@@ -1,6 +1,6 @@
 <?php
 /**
- * PHPExcel
+ * PHPExcel.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -18,67 +18,61 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Reader_Excel2007
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 
-
 /**
- * PHPExcel_Reader_Excel2007_Theme
- *
- * @category   PHPExcel
- * @package    PHPExcel_Reader_Excel2007
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * PHPExcel_Reader_Excel2007_Theme.
  */
 class PHPExcel_Reader_Excel2007_Theme
 {
     /**
-     * Theme Name
+     * Theme Name.
      *
      * @var string
      */
     private $themeName;
 
     /**
-     * Colour Scheme Name
+     * Colour Scheme Name.
      *
      * @var string
      */
     private $colourSchemeName;
 
     /**
-     * Colour Map indexed by position
+     * Colour Map indexed by position.
      *
      * @var array of string
      */
     private $colourMapValues;
 
-
     /**
-     * Colour Map
+     * Colour Map.
      *
      * @var array of string
      */
     private $colourMap;
 
-
     /**
-     * Create a new PHPExcel_Theme
+     * Create a new PHPExcel_Theme.
      *
+     * @param mixed $themeName
+     * @param mixed $colourSchemeName
+     * @param mixed $colourMap
      */
     public function __construct($themeName, $colourSchemeName, $colourMap)
     {
         // Initialise values
-        $this->themeName        = $themeName;
+        $this->themeName = $themeName;
         $this->colourSchemeName = $colourSchemeName;
-        $this->colourMap        = $colourMap;
+        $this->colourMap = $colourMap;
     }
 
     /**
-     * Get Theme Name
+     * Get Theme Name.
      *
      * @return string
      */
@@ -88,7 +82,7 @@ class PHPExcel_Reader_Excel2007_Theme
     }
 
     /**
-     * Get colour Scheme Name
+     * Get colour Scheme Name.
      *
      * @return string
      */
@@ -98,7 +92,9 @@ class PHPExcel_Reader_Excel2007_Theme
     }
 
     /**
-     * Get colour Map Value by Position
+     * Get colour Map Value by Position.
+     *
+     * @param mixed $index
      *
      * @return string
      */
@@ -107,6 +103,7 @@ class PHPExcel_Reader_Excel2007_Theme
         if (isset($this->colourMap[$index])) {
             return $this->colourMap[$index];
         }
+
         return null;
     }
 

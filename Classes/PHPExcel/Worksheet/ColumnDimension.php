@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Worksheet_ColumnDimension
+ * PHPExcel_Worksheet_ColumnDimension.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,27 +19,25 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Worksheet_ColumnDimension extends PHPExcel_Worksheet_Dimension
 {
     /**
-     * Column index
+     * Column index.
      *
      * @var int
      */
     private $columnIndex;
 
     /**
-     * Column width
+     * Column width.
      *
      * When this is set to a negative value, the column width should be ignored by IWriter
      *
-     * @var double
+     * @var float
      */
     private $width = -1;
 
@@ -51,7 +49,7 @@ class PHPExcel_Worksheet_ColumnDimension extends PHPExcel_Worksheet_Dimension
     private $autoSize = false;
 
     /**
-     * Create a new PHPExcel_Worksheet_ColumnDimension
+     * Create a new PHPExcel_Worksheet_ColumnDimension.
      *
      * @param string $pIndex Character column index
      */
@@ -65,7 +63,7 @@ class PHPExcel_Worksheet_ColumnDimension extends PHPExcel_Worksheet_Dimension
     }
 
     /**
-     * Get ColumnIndex
+     * Get ColumnIndex.
      *
      * @return string
      */
@@ -75,21 +73,23 @@ class PHPExcel_Worksheet_ColumnDimension extends PHPExcel_Worksheet_Dimension
     }
 
     /**
-     * Set ColumnIndex
+     * Set ColumnIndex.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function setColumnIndex($pValue)
     {
         $this->columnIndex = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Width
+     * Get Width.
      *
-     * @return double
+     * @return float
      */
     public function getWidth()
     {
@@ -97,19 +97,21 @@ class PHPExcel_Worksheet_ColumnDimension extends PHPExcel_Worksheet_Dimension
     }
 
     /**
-     * Set Width
+     * Set Width.
      *
-     * @param double $pValue
+     * @param float $pValue
+     *
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function setWidth($pValue = -1)
     {
         $this->width = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Auto Size
+     * Get Auto Size.
      *
      * @return bool
      */
@@ -119,14 +121,16 @@ class PHPExcel_Worksheet_ColumnDimension extends PHPExcel_Worksheet_Dimension
     }
 
     /**
-     * Set Auto Size
+     * Set Auto Size.
      *
      * @param bool $pValue
+     *
      * @return PHPExcel_Worksheet_ColumnDimension
      */
     public function setAutoSize($pValue = false)
     {
         $this->autoSize = $pValue;
+
         return $this;
     }
 }

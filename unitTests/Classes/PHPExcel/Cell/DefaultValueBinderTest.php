@@ -2,69 +2,70 @@
 
 require_once 'testDataFileIterator.php';
 
-class DefaultValueBinderTest extends PHPUnit_Framework_TestCase
+class DefaultValueBinderTest extends PHPUnit\Framework\TestCase
 {
     protected $cellStub;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
     }
 
-    protected function createCellStub()
+    protected function createCellStub(): void
     {
         // Create a stub for the Cell class.
         $this->cellStub = $this->getMockBuilder('PHPExcel_Cell')
             ->disableOriginalConstructor()
             ->getMock();
         // Configure the stub.
-        $this->cellStub->expects($this->any())
-             ->method('setValueExplicit')
-             ->will($this->returnValue(true));
-
+        $this->cellStub->expects(self::any())
+            ->method('setValueExplicit')
+            ->willReturn(true);
     }
 
     /**
      * @dataProvider binderProvider
+     *
+     * @param mixed $value
      */
-    public function testBindValue($value)
+    public function testBindValue($value): void
     {
         $this->createCellStub();
         $binder = new PHPExcel_Cell_DefaultValueBinder();
         $result = $binder->bindValue($this->cellStub, $value);
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     public function binderProvider()
     {
-        return array(
-            array(null),
-            array(''),
-            array('ABC'),
-            array('=SUM(A1:B2)'),
-            array(true),
-            array(false),
-            array(123),
-            array(-123.456),
-            array('123'),
-            array('-123.456'),
-            array('#REF!'),
-            array(new DateTime()),
-        );
+        return [
+            [null],
+            [''],
+            ['ABC'],
+            ['=SUM(A1:B2)'],
+            [true],
+            [false],
+            [123],
+            [-123.456],
+            ['123'],
+            ['-123.456'],
+            ['#REF!'],
+            [new DateTime()],
+        ];
     }
 
     /**
      * @dataProvider providerDataTypeForValue
      */
-    public function testDataTypeForValue()
+    public function testDataTypeForValue(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Cell_DefaultValueBinder','dataTypeForValue'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Cell_DefaultValueBinder', 'dataTypeForValue'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerDataTypeForValue()
@@ -72,13 +73,13 @@ class DefaultValueBinderTest extends PHPUnit_Framework_TestCase
         return new testDataFileIterator('rawTestData/Cell/DefaultValueBinder.data');
     }
 
-    public function testDataTypeForRichTextObject()
+    public function testDataTypeForRichTextObject(): void
     {
         $objRichText = new PHPExcel_RichText();
         $objRichText->createText('Hello World');
 
         $expectedResult = PHPExcel_Cell_DataType::TYPE_INLINE;
-        $result = call_user_func(array('PHPExcel_Cell_DefaultValueBinder','dataTypeForValue'), $objRichText);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func(['PHPExcel_Cell_DefaultValueBinder', 'dataTypeForValue'], $objRichText);
+        self::assertEquals($expectedResult, $result);
     }
 }

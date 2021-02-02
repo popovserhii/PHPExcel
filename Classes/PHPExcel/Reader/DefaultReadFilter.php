@@ -2,15 +2,13 @@
 
 /** PHPExcel root directory */
 if (!defined('PHPEXCEL_ROOT')) {
-    /**
-     * @ignore
-     */
-    define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../../');
-    require(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+    // @ignore
+    define('PHPEXCEL_ROOT', __DIR__ . '/../../');
+    require PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
 }
 
 /**
- * PHPExcel_Reader_DefaultReadFilter
+ * PHPExcel_Reader_DefaultReadFilter.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -28,10 +26,8 @@ if (!defined('PHPEXCEL_ROOT')) {
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Reader
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Reader_DefaultReadFilter implements PHPExcel_Reader_IReadFilter
@@ -39,10 +35,11 @@ class PHPExcel_Reader_DefaultReadFilter implements PHPExcel_Reader_IReadFilter
     /**
      * Should this cell be read?
      *
-     * @param    $column           Column address (as a string value like "A", or "IV")
-     * @param    $row              Row number
-     * @param    $worksheetName    Optional worksheet name
-     * @return   boolean
+     * @param    Column           $column address (as a string value like "A", or "IV")
+     * @param    Row              $row number
+     * @param    Optional    $worksheetName worksheet name
+     *
+     * @return   bool
      */
     public function readCell($column, $row, $worksheetName = '')
     {

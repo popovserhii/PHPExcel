@@ -6,16 +6,14 @@ require_once 'custom/complexAssert.php';
 //  Data Provider handler
 require_once 'testDataFileIterator.php';
 
-
-class EngineeringTest extends PHPUnit_Framework_TestCase
+class EngineeringTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
 
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
@@ -23,12 +21,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerBESSELI
      */
-    public function testBESSELI()
+    public function testBESSELI(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BESSELI'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'BESSELI'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerBESSELI()
@@ -39,12 +37,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerBESSELJ
      */
-    public function testBESSELJ()
+    public function testBESSELJ(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BESSELJ'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'BESSELJ'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerBESSELJ()
@@ -55,12 +53,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerBESSELK
      */
-    public function testBESSELK()
+    public function testBESSELK(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BESSELK'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'BESSELK'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerBESSELK()
@@ -71,12 +69,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerBESSELY
      */
-    public function testBESSELY()
+    public function testBESSELY(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BESSELY'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'BESSELY'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerBESSELY()
@@ -87,12 +85,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCOMPLEX
      */
-    public function testCOMPLEX()
+    public function testCOMPLEX(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','COMPLEX'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'COMPLEX'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerCOMPLEX()
@@ -103,12 +101,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMAGINARY
      */
-    public function testIMAGINARY()
+    public function testIMAGINARY(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMAGINARY'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMAGINARY'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerIMAGINARY()
@@ -119,12 +117,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMREAL
      */
-    public function testIMREAL()
+    public function testIMREAL(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMREAL'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMREAL'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerIMREAL()
@@ -135,12 +133,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMABS
      */
-    public function testIMABS()
+    public function testIMABS(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMABS'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMABS'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerIMABS()
@@ -151,12 +149,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMARGUMENT
      */
-    public function testIMARGUMENT()
+    public function testIMARGUMENT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMARGUMENT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMARGUMENT'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerIMARGUMENT()
@@ -167,13 +165,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMCONJUGATE
      */
-    public function testIMCONJUGATE()
+    public function testIMCONJUGATE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMCONJUGATE'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMCONJUGATE'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMCONJUGATE()
@@ -184,13 +182,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMCOS
      */
-    public function testIMCOS()
+    public function testIMCOS(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMCOS'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMCOS'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMCOS()
@@ -201,13 +199,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMDIV
      */
-    public function testIMDIV()
+    public function testIMDIV(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMDIV'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMDIV'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMDIV()
@@ -218,13 +216,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMEXP
      */
-    public function testIMEXP()
+    public function testIMEXP(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMEXP'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMEXP'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMEXP()
@@ -235,13 +233,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMLN
      */
-    public function testIMLN()
+    public function testIMLN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMLN'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMLN'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMLN()
@@ -252,13 +250,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMLOG2
      */
-    public function testIMLOG2()
+    public function testIMLOG2(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMLOG2'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMLOG2'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMLOG2()
@@ -269,13 +267,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMLOG10
      */
-    public function testIMLOG10()
+    public function testIMLOG10(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMLOG10'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMLOG10'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMLOG10()
@@ -286,13 +284,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMPOWER
      */
-    public function testIMPOWER()
+    public function testIMPOWER(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMPOWER'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMPOWER'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMPOWER()
@@ -303,13 +301,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMPRODUCT
      */
-    public function testIMPRODUCT()
+    public function testIMPRODUCT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMPRODUCT'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMPRODUCT'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMPRODUCT()
@@ -320,13 +318,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMSIN
      */
-    public function testIMSIN()
+    public function testIMSIN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMSIN'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMSIN'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMSIN()
@@ -337,13 +335,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMSQRT
      */
-    public function testIMSQRT()
+    public function testIMSQRT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMSQRT'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMSQRT'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMSQRT()
@@ -354,13 +352,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMSUB
      */
-    public function testIMSUB()
+    public function testIMSUB(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMSUB'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMSUB'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMSUB()
@@ -371,13 +369,13 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIMSUM
      */
-    public function testIMSUM()
+    public function testIMSUM(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','IMSUM'), $args);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'IMSUM'], $args);
         $complexAssert = new complexAssert();
-        $this->assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
+        self::assertTrue($complexAssert->assertComplexEquals($expectedResult, $result, 1E-8), $complexAssert->getErrorMessage());
     }
 
     public function providerIMSUM()
@@ -388,12 +386,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerERF
      */
-    public function testERF()
+    public function testERF(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','ERF'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-12);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'ERF'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-12);
     }
 
     public function providerERF()
@@ -404,12 +402,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerERFC
      */
-    public function testERFC()
+    public function testERFC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','ERFC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-12);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'ERFC'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-12);
     }
 
     public function providerERFC()
@@ -420,12 +418,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerBIN2DEC
      */
-    public function testBIN2DEC()
+    public function testBIN2DEC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BINTODEC'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'BINTODEC'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerBIN2DEC()
@@ -436,12 +434,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerBIN2HEX
      */
-    public function testBIN2HEX()
+    public function testBIN2HEX(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BINTOHEX'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'BINTOHEX'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerBIN2HEX()
@@ -452,12 +450,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerBIN2OCT
      */
-    public function testBIN2OCT()
+    public function testBIN2OCT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','BINTOOCT'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'BINTOOCT'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerBIN2OCT()
@@ -468,12 +466,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDEC2BIN
      */
-    public function testDEC2BIN()
+    public function testDEC2BIN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','DECTOBIN'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'DECTOBIN'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerDEC2BIN()
@@ -484,12 +482,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDEC2HEX
      */
-    public function testDEC2HEX()
+    public function testDEC2HEX(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','DECTOHEX'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'DECTOHEX'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerDEC2HEX()
@@ -500,12 +498,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDEC2OCT
      */
-    public function testDEC2OCT()
+    public function testDEC2OCT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','DECTOOCT'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'DECTOOCT'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerDEC2OCT()
@@ -516,12 +514,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerHEX2BIN
      */
-    public function testHEX2BIN()
+    public function testHEX2BIN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','HEXTOBIN'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'HEXTOBIN'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerHEX2BIN()
@@ -532,12 +530,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerHEX2DEC
      */
-    public function testHEX2DEC()
+    public function testHEX2DEC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','HEXTODEC'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'HEXTODEC'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerHEX2DEC()
@@ -548,12 +546,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerHEX2OCT
      */
-    public function testHEX2OCT()
+    public function testHEX2OCT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','HEXTOOCT'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'HEXTOOCT'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerHEX2OCT()
@@ -564,12 +562,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerOCT2BIN
      */
-    public function testOCT2BIN()
+    public function testOCT2BIN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','OCTTOBIN'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'OCTTOBIN'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerOCT2BIN()
@@ -580,12 +578,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerOCT2DEC
      */
-    public function testOCT2DEC()
+    public function testOCT2DEC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','OCTTODEC'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'OCTTODEC'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerOCT2DEC()
@@ -596,12 +594,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerOCT2HEX
      */
-    public function testOCT2HEX()
+    public function testOCT2HEX(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','OCTTOHEX'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'OCTTOHEX'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerOCT2HEX()
@@ -612,12 +610,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDELTA
      */
-    public function testDELTA()
+    public function testDELTA(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','DELTA'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'DELTA'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerDELTA()
@@ -628,12 +626,12 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerGESTEP
      */
-    public function testGESTEP()
+    public function testGESTEP(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','GESTEP'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'GESTEP'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerGESTEP()
@@ -641,39 +639,39 @@ class EngineeringTest extends PHPUnit_Framework_TestCase
         return new testDataFileIterator('rawTestData/Calculation/Engineering/GESTEP.data');
     }
 
-    public function testGetConversionGroups()
+    public function testGetConversionGroups(): void
     {
         $result = PHPExcel_Calculation_Engineering::getConversionGroups();
-        $this->assertInternalType('array', $result);
+        self::assertIsArray($result);
     }
 
-    public function testGetConversionGroupUnits()
+    public function testGetConversionGroupUnits(): void
     {
         $result = PHPExcel_Calculation_Engineering::getConversionGroupUnits();
-        $this->assertInternalType('array', $result);
+        self::assertIsArray($result);
     }
 
-    public function testGetConversionGroupUnitDetails()
+    public function testGetConversionGroupUnitDetails(): void
     {
         $result = PHPExcel_Calculation_Engineering::getConversionGroupUnitDetails();
-        $this->assertInternalType('array', $result);
+        self::assertIsArray($result);
     }
 
-    public function testGetConversionMultipliers()
+    public function testGetConversionMultipliers(): void
     {
         $result = PHPExcel_Calculation_Engineering::getConversionMultipliers();
-        $this->assertInternalType('array', $result);
+        self::assertIsArray($result);
     }
 
     /**
      * @dataProvider providerCONVERTUOM
      */
-    public function testCONVERTUOM()
+    public function testCONVERTUOM(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Engineering','CONVERTUOM'), $args);
-        $this->assertEquals($expectedResult, $result, null);
+        $result = call_user_func_array(['PHPExcel_Calculation_Engineering', 'CONVERTUOM'], $args);
+        self::assertEquals($expectedResult, $result, null);
     }
 
     public function providerCONVERTUOM()

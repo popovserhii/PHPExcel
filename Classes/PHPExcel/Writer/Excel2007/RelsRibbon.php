@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Writer_Excel2007_RelsRibbon
+ * PHPExcel_Writer_Excel2007_RelsRibbon.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,22 +19,20 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Writer_Excel2007
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version     ##VERSION##, ##DATE##
  */
 class PHPExcel_Writer_Excel2007_RelsRibbon extends PHPExcel_Writer_Excel2007_WriterPart
 {
     /**
-     * Write relationships for additional objects of custom UI (ribbon)
+     * Write relationships for additional objects of custom UI (ribbon).
      *
      * @param     PHPExcel    $pPHPExcel
+     *
      * @return     string         XML Output
-     * @throws     PHPExcel_Writer_Exception
      */
-    public function writeRibbonRelationships(PHPExcel $pPHPExcel = null)
+    public function writeRibbonRelationships(?PHPExcel $pPHPExcel = null)
     {
         // Create XML writer
         $objWriter = null;

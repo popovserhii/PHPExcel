@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Shared_ZipStreamWrapper
+ * PHPExcel_Shared_ZipStreamWrapper.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,46 +19,44 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Shared_ZipStreamWrapper
 {
     /**
-     * Internal ZipAcrhive
+     * Internal ZipAcrhive.
      *
      * @var ZipArchive
      */
     private $archive;
 
     /**
-     * Filename in ZipAcrhive
+     * Filename in ZipAcrhive.
      *
      * @var string
      */
     private $fileNameInArchive = '';
 
     /**
-     * Position in file
+     * Position in file.
      *
      * @var int
      */
     private $position = 0;
 
     /**
-     * Data
+     * Data.
      *
      * @var mixed
      */
     private $data = '';
 
     /**
-     * Register wrapper
+     * Register wrapper.
      */
-    public static function register()
+    public static function register(): void
     {
         @stream_wrapper_unregister('zip');
         @stream_wrapper_register('zip', __CLASS__);
@@ -70,13 +68,15 @@ class PHPExcel_Shared_ZipStreamWrapper
      * @param    string    $path            resource name including scheme, e.g.
      * @param    string    $mode            only "r" is supported
      * @param    int        $options        mask of STREAM_REPORT_ERRORS and STREAM_USE_PATH
-     * @param    string  &$openedPath    absolute path of the opened stream (out parameter)
+     * @param    string  $openedPath    absolute path of the opened stream (out parameter)
+     * @param mixed $opened_path
+     *
      * @return    bool    true on success
      */
     public function stream_open($path, $mode, $options, &$opened_path)
     {
         // Check for mode
-        if ($mode{0} != 'r') {
+        if ($mode[0] != 'r') {
             throw new PHPExcel_Reader_Exception('Mode ' . $mode . ' is not supported. Only read mode is supported.');
         }
 
@@ -98,7 +98,7 @@ class PHPExcel_Shared_ZipStreamWrapper
     /**
      * Implements support for fstat().
      *
-     * @return  boolean
+     * @return  bool
      */
     public function statName()
     {
@@ -108,7 +108,7 @@ class PHPExcel_Shared_ZipStreamWrapper
     /**
      * Implements support for fstat().
      *
-     * @return  boolean
+     * @return  bool
      */
     public function url_stat()
     {
@@ -118,7 +118,7 @@ class PHPExcel_Shared_ZipStreamWrapper
     /**
      * Implements support for fstat().
      *
-     * @return  boolean
+     * @return  bool
      */
     public function stream_stat()
     {
@@ -129,12 +129,14 @@ class PHPExcel_Shared_ZipStreamWrapper
      * Implements support for fread(), fgets() etc.
      *
      * @param   int        $count    maximum number of bytes to read
+     *
      * @return  string
      */
     public function stream_read($count)
     {
         $ret = substr($this->data, $this->position, $count);
         $this->position += strlen($ret);
+
         return $ret;
     }
 
@@ -150,7 +152,7 @@ class PHPExcel_Shared_ZipStreamWrapper
     }
 
     /**
-     * EOF stream
+     * EOF stream.
      *
      * @return    bool
      */
@@ -160,10 +162,11 @@ class PHPExcel_Shared_ZipStreamWrapper
     }
 
     /**
-     * Seek stream
+     * Seek stream.
      *
      * @param    int        $offset    byte offset
      * @param    int        $whence    SEEK_SET, SEEK_CUR or SEEK_END
+     *
      * @return    bool
      */
     public function stream_seek($offset, $whence)
@@ -171,27 +174,33 @@ class PHPExcel_Shared_ZipStreamWrapper
         switch ($whence) {
             case SEEK_SET:
                 if ($offset < strlen($this->data) && $offset >= 0) {
-                     $this->position = $offset;
-                     return true;
-                } else {
-                     return false;
+                    $this->position = $offset;
+
+                    return true;
                 }
+
+                     return false;
+
                 break;
             case SEEK_CUR:
                 if ($offset >= 0) {
-                     $this->position += $offset;
-                     return true;
-                } else {
-                     return false;
+                    $this->position += $offset;
+
+                    return true;
                 }
+
+                     return false;
+
                 break;
             case SEEK_END:
                 if (strlen($this->data) + $offset >= 0) {
-                     $this->position = strlen($this->data) + $offset;
-                     return true;
-                } else {
-                     return false;
+                    $this->position = strlen($this->data) + $offset;
+
+                    return true;
                 }
+
+                     return false;
+
                 break;
             default:
                 return false;

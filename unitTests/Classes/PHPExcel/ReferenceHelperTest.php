@@ -1,57 +1,55 @@
 <?php
 
-
-class ReferenceHelperTest extends PHPUnit_Framework_TestCase
+class ReferenceHelperTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
     }
 
-    public function testColumnSort()
+    public function testColumnSort(): void
     {
-        $columnBase = $columnExpectedResult = array(
-            'A','B','Z',
-            'AA','AB','AZ',
-            'BA','BB','BZ',
-            'ZA','ZB','ZZ',
-            'AAA','AAB','AAZ',
-            'ABA','ABB','ABZ',
-            'AZA','AZB','AZZ',
-            'BAA','BAB','BAZ',
-            'BBA','BBB','BBZ',
-            'BZA','BZB','BZZ'
-        );
+        $columnBase = $columnExpectedResult = [
+            'A', 'B', 'Z',
+            'AA', 'AB', 'AZ',
+            'BA', 'BB', 'BZ',
+            'ZA', 'ZB', 'ZZ',
+            'AAA', 'AAB', 'AAZ',
+            'ABA', 'ABB', 'ABZ',
+            'AZA', 'AZB', 'AZZ',
+            'BAA', 'BAB', 'BAZ',
+            'BBA', 'BBB', 'BBZ',
+            'BZA', 'BZB', 'BZZ'
+        ];
         shuffle($columnBase);
-        usort($columnBase, array('PHPExcel_ReferenceHelper','columnSort'));
+        usort($columnBase, ['PHPExcel_ReferenceHelper', 'columnSort']);
         foreach ($columnBase as $key => $value) {
-            $this->assertEquals($columnExpectedResult[$key], $value);
+            self::assertEquals($columnExpectedResult[$key], $value);
         }
     }
 
-    public function testColumnReverseSort()
+    public function testColumnReverseSort(): void
     {
-        $columnBase = $columnExpectedResult = array(
-            'A','B','Z',
-            'AA','AB','AZ',
-            'BA','BB','BZ',
-            'ZA','ZB','ZZ',
-            'AAA','AAB','AAZ',
-            'ABA','ABB','ABZ',
-            'AZA','AZB','AZZ',
-            'BAA','BAB','BAZ',
-            'BBA','BBB','BBZ',
-            'BZA','BZB','BZZ'
-        );
+        $columnBase = $columnExpectedResult = [
+            'A', 'B', 'Z',
+            'AA', 'AB', 'AZ',
+            'BA', 'BB', 'BZ',
+            'ZA', 'ZB', 'ZZ',
+            'AAA', 'AAB', 'AAZ',
+            'ABA', 'ABB', 'ABZ',
+            'AZA', 'AZB', 'AZZ',
+            'BAA', 'BAB', 'BAZ',
+            'BBA', 'BBB', 'BBZ',
+            'BZA', 'BZB', 'BZZ'
+        ];
         shuffle($columnBase);
         $columnExpectedResult = array_reverse($columnExpectedResult);
-        usort($columnBase, array('PHPExcel_ReferenceHelper','columnReverseSort'));
+        usort($columnBase, ['PHPExcel_ReferenceHelper', 'columnReverseSort']);
         foreach ($columnBase as $key => $value) {
-            $this->assertEquals($columnExpectedResult[$key], $value);
+            self::assertEquals($columnExpectedResult[$key], $value);
         }
     }
 }

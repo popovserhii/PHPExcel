@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_HashTable
+ * PHPExcel_HashTable.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,33 +19,30 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_HashTable
 {
     /**
-     * HashTable elements
+     * HashTable elements.
      *
      * @var array
      */
-    protected $items = array();
+    protected $items = [];
 
     /**
-     * HashTable key map
+     * HashTable key map.
      *
      * @var array
      */
-    protected $keyMap = array();
+    protected $keyMap = [];
 
     /**
-     * Create a new PHPExcel_HashTable
+     * Create a new PHPExcel_HashTable.
      *
      * @param    PHPExcel_IComparable[] $pSource    Optional source array to create HashTable from
-     * @throws    PHPExcel_Exception
      */
     public function __construct($pSource = null)
     {
@@ -56,12 +53,11 @@ class PHPExcel_HashTable
     }
 
     /**
-     * Add HashTable items from source
+     * Add HashTable items from source.
      *
      * @param    PHPExcel_IComparable[] $pSource    Source array to create HashTable from
-     * @throws    PHPExcel_Exception
      */
-    public function addFromSource($pSource = null)
+    public function addFromSource($pSource = null): void
     {
         // Check if an array was passed
         if ($pSource == null) {
@@ -76,12 +72,11 @@ class PHPExcel_HashTable
     }
 
     /**
-     * Add HashTable item
+     * Add HashTable item.
      *
      * @param    PHPExcel_IComparable $pSource    Item to add
-     * @throws    PHPExcel_Exception
      */
-    public function add(PHPExcel_IComparable $pSource = null)
+    public function add(?PHPExcel_IComparable $pSource = null): void
     {
         $hash = $pSource->getHashCode();
         if (!isset($this->items[$hash])) {
@@ -91,12 +86,11 @@ class PHPExcel_HashTable
     }
 
     /**
-     * Remove HashTable item
+     * Remove HashTable item.
      *
      * @param    PHPExcel_IComparable $pSource    Item to remove
-     * @throws    PHPExcel_Exception
      */
-    public function remove(PHPExcel_IComparable $pSource = null)
+    public function remove(?PHPExcel_IComparable $pSource = null): void
     {
         $hash = $pSource->getHashCode();
         if (isset($this->items[$hash])) {
@@ -117,17 +111,16 @@ class PHPExcel_HashTable
     }
 
     /**
-     * Clear HashTable
-     *
+     * Clear HashTable.
      */
-    public function clear()
+    public function clear(): void
     {
-        $this->items = array();
-        $this->keyMap = array();
+        $this->items = [];
+        $this->keyMap = [];
     }
 
     /**
-     * Count
+     * Count.
      *
      * @return int
      */
@@ -137,9 +130,10 @@ class PHPExcel_HashTable
     }
 
     /**
-     * Get index for hash code
+     * Get index for hash code.
      *
      * @param    string    $pHashCode
+     *
      * @return    int    Index
      */
     public function getIndexForHashCode($pHashCode = '')
@@ -148,11 +142,11 @@ class PHPExcel_HashTable
     }
 
     /**
-     * Get by index
+     * Get by index.
      *
      * @param    int    $pIndex
-     * @return    PHPExcel_IComparable
      *
+     * @return    PHPExcel_IComparable
      */
     public function getByIndex($pIndex = 0)
     {
@@ -164,11 +158,11 @@ class PHPExcel_HashTable
     }
 
     /**
-     * Get by hashcode
+     * Get by hashcode.
      *
      * @param    string    $pHashCode
-     * @return    PHPExcel_IComparable
      *
+     * @return    PHPExcel_IComparable
      */
     public function getByHashCode($pHashCode = '')
     {
@@ -180,7 +174,7 @@ class PHPExcel_HashTable
     }
 
     /**
-     * HashTable to array
+     * HashTable to array.
      *
      * @return PHPExcel_IComparable[]
      */

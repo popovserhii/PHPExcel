@@ -1,17 +1,15 @@
 <?php
 
-
 require_once 'testDataFileIterator.php';
 
-class FinancialTest extends PHPUnit_Framework_TestCase
+class FinancialTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
 
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
@@ -19,12 +17,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerACCRINT
      */
-    public function testACCRINT()
+    public function testACCRINT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ACCRINT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'ACCRINT'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerACCRINT()
@@ -35,12 +33,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerACCRINTM
      */
-    public function testACCRINTM()
+    public function testACCRINTM(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ACCRINTM'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'ACCRINTM'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerACCRINTM()
@@ -51,12 +49,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerAMORDEGRC
      */
-    public function testAMORDEGRC()
+    public function testAMORDEGRC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','AMORDEGRC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'AMORDEGRC'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerAMORDEGRC()
@@ -67,12 +65,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerAMORLINC
      */
-    public function testAMORLINC()
+    public function testAMORLINC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','AMORLINC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'AMORLINC'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerAMORLINC()
@@ -83,12 +81,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCOUPDAYBS
      */
-    public function testCOUPDAYBS()
+    public function testCOUPDAYBS(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPDAYBS'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'COUPDAYBS'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerCOUPDAYBS()
@@ -99,12 +97,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCOUPDAYS
      */
-    public function testCOUPDAYS()
+    public function testCOUPDAYS(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPDAYS'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'COUPDAYS'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerCOUPDAYS()
@@ -115,12 +113,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCOUPDAYSNC
      */
-    public function testCOUPDAYSNC()
+    public function testCOUPDAYSNC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPDAYSNC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'COUPDAYSNC'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerCOUPDAYSNC()
@@ -131,12 +129,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCOUPNCD
      */
-    public function testCOUPNCD()
+    public function testCOUPNCD(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPNCD'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'COUPNCD'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerCOUPNCD()
@@ -147,12 +145,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCOUPNUM
      */
-    public function testCOUPNUM()
+    public function testCOUPNUM(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPNUM'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'COUPNUM'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerCOUPNUM()
@@ -163,12 +161,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCOUPPCD
      */
-    public function testCOUPPCD()
+    public function testCOUPPCD(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','COUPPCD'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'COUPPCD'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerCOUPPCD()
@@ -179,12 +177,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCUMIPMT
      */
-    public function testCUMIPMT()
+    public function testCUMIPMT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','CUMIPMT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'CUMIPMT'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerCUMIPMT()
@@ -195,12 +193,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCUMPRINC
      */
-    public function testCUMPRINC()
+    public function testCUMPRINC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','CUMPRINC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'CUMPRINC'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerCUMPRINC()
@@ -211,12 +209,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDB
      */
-    public function testDB()
+    public function testDB(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DB'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'DB'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerDB()
@@ -227,12 +225,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDDB
      */
-    public function testDDB()
+    public function testDDB(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DDB'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'DDB'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerDDB()
@@ -243,12 +241,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDISC
      */
-    public function testDISC()
+    public function testDISC(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DISC'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'DISC'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerDISC()
@@ -259,12 +257,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDOLLARDE
      */
-    public function testDOLLARDE()
+    public function testDOLLARDE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DOLLARDE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'DOLLARDE'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerDOLLARDE()
@@ -275,12 +273,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDOLLARFR
      */
-    public function testDOLLARFR()
+    public function testDOLLARFR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','DOLLARFR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'DOLLARFR'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerDOLLARFR()
@@ -291,12 +289,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerEFFECT
      */
-    public function testEFFECT()
+    public function testEFFECT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','EFFECT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'EFFECT'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerEFFECT()
@@ -307,12 +305,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerFV
      */
-    public function testFV()
+    public function testFV(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','FV'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'FV'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerFV()
@@ -323,12 +321,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerFVSCHEDULE
      */
-    public function testFVSCHEDULE()
+    public function testFVSCHEDULE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','FVSCHEDULE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'FVSCHEDULE'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerFVSCHEDULE()
@@ -339,12 +337,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerINTRATE
      */
-    public function testINTRATE()
+    public function testINTRATE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','INTRATE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'INTRATE'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerINTRATE()
@@ -355,12 +353,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIPMT
      */
-    public function testIPMT()
+    public function testIPMT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','IPMT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'IPMT'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerIPMT()
@@ -371,12 +369,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIRR
      */
-    public function testIRR()
+    public function testIRR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','IRR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'IRR'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerIRR()
@@ -387,12 +385,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerISPMT
      */
-    public function testISPMT()
+    public function testISPMT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','ISPMT'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'ISPMT'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerISPMT()
@@ -403,12 +401,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerMIRR
      */
-    public function testMIRR()
+    public function testMIRR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','MIRR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'MIRR'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerMIRR()
@@ -419,12 +417,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerNOMINAL
      */
-    public function testNOMINAL()
+    public function testNOMINAL(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','NOMINAL'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'NOMINAL'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerNOMINAL()
@@ -435,12 +433,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerNPER
      */
-    public function testNPER()
+    public function testNPER(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','NPER'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'NPER'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerNPER()
@@ -451,12 +449,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerNPV
      */
-    public function testNPV()
+    public function testNPV(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','NPV'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'NPV'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerNPV()
@@ -467,12 +465,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerPRICE
      */
-    public function testPRICE()
+    public function testPRICE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','PRICE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'PRICE'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerPRICE()
@@ -483,12 +481,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerRATE
      */
-    public function testRATE()
+    public function testRATE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','RATE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'RATE'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerRATE()
@@ -499,12 +497,12 @@ class FinancialTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerXIRR
      */
-    public function testXIRR()
+    public function testXIRR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_Financial','XIRR'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_Financial', 'XIRR'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerXIRR()

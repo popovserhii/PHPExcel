@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Worksheet_CellIterator
+ * PHPExcel_Worksheet_CellIterator.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,47 +19,45 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 abstract class PHPExcel_Worksheet_CellIterator
 {
     /**
-     * PHPExcel_Worksheet to iterate
+     * PHPExcel_Worksheet to iterate.
      *
      * @var PHPExcel_Worksheet
      */
     protected $subject;
 
     /**
-     * Current iterator position
+     * Current iterator position.
      *
      * @var mixed
      */
-    protected $position = null;
+    protected $position;
 
     /**
-     * Iterate only existing cells
+     * Iterate only existing cells.
      *
-     * @var boolean
+     * @var bool
      */
     protected $onlyExistingCells = false;
 
     /**
-     * Destructor
+     * Destructor.
      */
     public function __destruct()
     {
-        unset($this->subject);
+        $this->subject = null;
     }
 
     /**
-     * Get loop only existing cells
+     * Get loop only existing cells.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIterateOnlyExistingCells()
     {
@@ -67,21 +65,18 @@ abstract class PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * Validate start/end values for "IterateOnlyExistingCells" mode, and adjust if necessary
-     *
-     * @throws PHPExcel_Exception
+     * Validate start/end values for "IterateOnlyExistingCells" mode, and adjust if necessary.
      */
     abstract protected function adjustForExistingOnlyRange();
 
     /**
-     * Set the iterator to loop only existing cells
+     * Set the iterator to loop only existing cells.
      *
-     * @param    boolean        $value
-     * @throws PHPExcel_Exception
+     * @param    bool        $value
      */
-    public function setIterateOnlyExistingCells($value = true)
+    public function setIterateOnlyExistingCells($value = true): void
     {
-        $this->onlyExistingCells = (boolean) $value;
+        $this->onlyExistingCells = (bool) $value;
 
         $this->adjustForExistingOnlyRange();
     }

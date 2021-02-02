@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Writer_Excel2007_WriterPart
+ * PHPExcel_Writer_Excel2007_WriterPart.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,56 +19,51 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Writer_Excel2007
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 abstract class PHPExcel_Writer_Excel2007_WriterPart
 {
     /**
-     * Parent IWriter object
+     * Parent IWriter object.
      *
      * @var PHPExcel_Writer_IWriter
      */
     private $parentWriter;
 
     /**
-     * Set parent IWriter object
+     * Set parent IWriter object.
      *
      * @param PHPExcel_Writer_IWriter    $pWriter
-     * @throws PHPExcel_Writer_Exception
      */
-    public function setParentWriter(PHPExcel_Writer_IWriter $pWriter = null)
+    public function setParentWriter(?PHPExcel_Writer_IWriter $pWriter = null): void
     {
         $this->parentWriter = $pWriter;
     }
 
     /**
-     * Get parent IWriter object
+     * Get parent IWriter object.
      *
      * @return PHPExcel_Writer_IWriter
-     * @throws PHPExcel_Writer_Exception
      */
     public function getParentWriter()
     {
-        if (!is_null($this->parentWriter)) {
+        if (null !== $this->parentWriter) {
             return $this->parentWriter;
-        } else {
-            throw new PHPExcel_Writer_Exception("No parent PHPExcel_Writer_IWriter assigned.");
         }
+
+        throw new PHPExcel_Writer_Exception('No parent PHPExcel_Writer_IWriter assigned.');
     }
 
     /**
-     * Set parent IWriter object
+     * Set parent IWriter object.
      *
      * @param PHPExcel_Writer_IWriter    $pWriter
-     * @throws PHPExcel_Writer_Exception
      */
-    public function __construct(PHPExcel_Writer_IWriter $pWriter = null)
+    public function __construct(?PHPExcel_Writer_IWriter $pWriter = null)
     {
-        if (!is_null($pWriter)) {
+        if (null !== $pWriter) {
             $this->parentWriter = $pWriter;
         }
     }

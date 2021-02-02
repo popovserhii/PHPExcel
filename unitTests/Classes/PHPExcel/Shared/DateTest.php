@@ -1,46 +1,44 @@
 <?php
 
-
 require_once 'testDataFileIterator.php';
 
-class DateTest extends PHPUnit_Framework_TestCase
+class DateTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
     }
 
-    public function testSetExcelCalendar()
+    public function testSetExcelCalendar(): void
     {
-        $calendarValues = array(
+        $calendarValues = [
             PHPExcel_Shared_Date::CALENDAR_MAC_1904,
             PHPExcel_Shared_Date::CALENDAR_WINDOWS_1900,
-        );
+        ];
 
         foreach ($calendarValues as $calendarValue) {
-            $result = call_user_func(array('PHPExcel_Shared_Date','setExcelCalendar'), $calendarValue);
-            $this->assertTrue($result);
+            $result = call_user_func(['PHPExcel_Shared_Date', 'setExcelCalendar'], $calendarValue);
+            self::assertTrue($result);
         }
     }
 
-    public function testSetExcelCalendarWithInvalidValue()
+    public function testSetExcelCalendarWithInvalidValue(): void
     {
         $unsupportedCalendar = '2012';
-        $result = call_user_func(array('PHPExcel_Shared_Date','setExcelCalendar'), $unsupportedCalendar);
-        $this->assertFalse($result);
+        $result = call_user_func(['PHPExcel_Shared_Date', 'setExcelCalendar'], $unsupportedCalendar);
+        self::assertFalse($result);
     }
 
     /**
      * @dataProvider providerDateTimeExcelToPHP1900
      */
-    public function testDateTimeExcelToPHP1900()
+    public function testDateTimeExcelToPHP1900(): void
     {
         $result = call_user_func(
-            array('PHPExcel_Shared_Date','setExcelCalendar'),
+            ['PHPExcel_Shared_Date', 'setExcelCalendar'],
             PHPExcel_Shared_Date::CALENDAR_WINDOWS_1900
         );
 
@@ -49,8 +47,8 @@ class DateTest extends PHPUnit_Framework_TestCase
         if ($args[0] < 1) {
             $expectedResult += gmmktime(0, 0, 0);
         }
-        $result = call_user_func_array(array('PHPExcel_Shared_Date', 'ExcelToPHP'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Shared_Date', 'ExcelToPHP'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerDateTimeExcelToPHP1900()
@@ -61,17 +59,17 @@ class DateTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDateTimePHPToExcel1900
      */
-    public function testDateTimePHPToExcel1900()
+    public function testDateTimePHPToExcel1900(): void
     {
         $result = call_user_func(
-            array('PHPExcel_Shared_Date','setExcelCalendar'),
+            ['PHPExcel_Shared_Date', 'setExcelCalendar'],
             PHPExcel_Shared_Date::CALENDAR_WINDOWS_1900
         );
 
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Shared_Date','PHPToExcel'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-5);
+        $result = call_user_func_array(['PHPExcel_Shared_Date', 'PHPToExcel'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-5);
     }
 
     public function providerDateTimePHPToExcel1900()
@@ -82,17 +80,17 @@ class DateTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDateTimeFormattedPHPToExcel1900
      */
-    public function testDateTimeFormattedPHPToExcel1900()
+    public function testDateTimeFormattedPHPToExcel1900(): void
     {
         $result = call_user_func(
-            array('PHPExcel_Shared_Date','setExcelCalendar'),
+            ['PHPExcel_Shared_Date', 'setExcelCalendar'],
             PHPExcel_Shared_Date::CALENDAR_WINDOWS_1900
         );
 
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Shared_Date','FormattedPHPToExcel'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-5);
+        $result = call_user_func_array(['PHPExcel_Shared_Date', 'FormattedPHPToExcel'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-5);
     }
 
     public function providerDateTimeFormattedPHPToExcel1900()
@@ -103,10 +101,10 @@ class DateTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDateTimeExcelToPHP1904
      */
-    public function testDateTimeExcelToPHP1904()
+    public function testDateTimeExcelToPHP1904(): void
     {
         $result = call_user_func(
-            array('PHPExcel_Shared_Date','setExcelCalendar'),
+            ['PHPExcel_Shared_Date', 'setExcelCalendar'],
             PHPExcel_Shared_Date::CALENDAR_MAC_1904
         );
 
@@ -115,8 +113,8 @@ class DateTest extends PHPUnit_Framework_TestCase
         if ($args[0] < 1) {
             $expectedResult += gmmktime(0, 0, 0);
         }
-        $result = call_user_func_array(array('PHPExcel_Shared_Date','ExcelToPHP'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Shared_Date', 'ExcelToPHP'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerDateTimeExcelToPHP1904()
@@ -127,17 +125,17 @@ class DateTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDateTimePHPToExcel1904
      */
-    public function testDateTimePHPToExcel1904()
+    public function testDateTimePHPToExcel1904(): void
     {
         $result = call_user_func(
-            array('PHPExcel_Shared_Date','setExcelCalendar'),
+            ['PHPExcel_Shared_Date', 'setExcelCalendar'],
             PHPExcel_Shared_Date::CALENDAR_MAC_1904
         );
 
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Shared_Date','PHPToExcel'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-5);
+        $result = call_user_func_array(['PHPExcel_Shared_Date', 'PHPToExcel'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-5);
     }
 
     public function providerDateTimePHPToExcel1904()
@@ -148,12 +146,12 @@ class DateTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerIsDateTimeFormatCode
      */
-    public function testIsDateTimeFormatCode()
+    public function testIsDateTimeFormatCode(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Shared_Date','isDateTimeFormatCode'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Shared_Date', 'isDateTimeFormatCode'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerIsDateTimeFormatCode()
@@ -164,10 +162,10 @@ class DateTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDateTimeExcelToPHP1900Timezone
      */
-    public function testDateTimeExcelToPHP1900Timezone()
+    public function testDateTimeExcelToPHP1900Timezone(): void
     {
         $result = call_user_func(
-            array('PHPExcel_Shared_Date','setExcelCalendar'),
+            ['PHPExcel_Shared_Date', 'setExcelCalendar'],
             PHPExcel_Shared_Date::CALENDAR_WINDOWS_1900
         );
 
@@ -176,8 +174,8 @@ class DateTest extends PHPUnit_Framework_TestCase
         if ($args[0] < 1) {
             $expectedResult += gmmktime(0, 0, 0);
         }
-        $result = call_user_func_array(array('PHPExcel_Shared_Date','ExcelToPHP'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Shared_Date', 'ExcelToPHP'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerDateTimeExcelToPHP1900Timezone()

@@ -1,5 +1,6 @@
 <?php
-spl_autoload_register(function ($class) {
+
+spl_autoload_register(function ($class): void {
     include 'phar://PHPExcel/' . str_replace('_', '/', $class) . '.php';
 });
 

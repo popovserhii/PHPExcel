@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Worksheet_RowCellIterator
+ * PHPExcel_Worksheet_RowCellIterator.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,44 +19,42 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator implements Iterator
 {
     /**
-     * Row index
+     * Row index.
      *
      * @var int
      */
     protected $rowIndex;
 
     /**
-     * Start position
+     * Start position.
      *
      * @var int
      */
     protected $startColumn = 0;
 
     /**
-     * End position
+     * End position.
      *
      * @var int
      */
     protected $endColumn = 0;
 
     /**
-     * Create a new column iterator
+     * Create a new column iterator.
      *
      * @param    PHPExcel_Worksheet    $subject        The worksheet to iterate over
-     * @param   integer             $rowIndex       The row that we want to iterate
+     * @param   int             $rowIndex       The row that we want to iterate
      * @param    string                $startColumn    The column address at which to start iterating
      * @param    string                $endColumn        Optionally, the column address at which to stop iterating
      */
-    public function __construct(PHPExcel_Worksheet $subject = null, $rowIndex = 1, $startColumn = 'A', $endColumn = null)
+    public function __construct(?PHPExcel_Worksheet $subject = null, $rowIndex = 1, $startColumn = 'A', $endColumn = null)
     {
         // Set subject and row index
         $this->subject = $subject;
@@ -66,19 +64,19 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * Destructor
+     * Destructor.
      */
     public function __destruct()
     {
-        unset($this->subject);
+        $this->subject = null;
     }
 
     /**
-     * (Re)Set the start column and the current column pointer
+     * (Re)Set the start column and the current column pointer.
      *
-     * @param integer    $startColumn    The column address at which to start iterating
+     * @param int    $startColumn    The column address at which to start iterating
+     *
      * @return PHPExcel_Worksheet_RowCellIterator
-     * @throws PHPExcel_Exception
      */
     public function resetStart($startColumn = 'A')
     {
@@ -91,11 +89,11 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * (Re)Set the end column
+     * (Re)Set the end column.
      *
      * @param string    $endColumn    The column address at which to stop iterating
+     *
      * @return PHPExcel_Worksheet_RowCellIterator
-     * @throws PHPExcel_Exception
      */
     public function resetEnd($endColumn = null)
     {
@@ -107,11 +105,11 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * Set the column pointer to the selected column
+     * Set the column pointer to the selected column.
      *
      * @param string    $column    The column address to set the current pointer at
+     *
      * @return PHPExcel_Worksheet_RowCellIterator
-     * @throws PHPExcel_Exception
      */
     public function seek($column = 'A')
     {
@@ -127,15 +125,15 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * Rewind the iterator to the starting column
+     * Rewind the iterator to the starting column.
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = $this->startColumn;
     }
 
     /**
-     * Return the current cell in this worksheet row
+     * Return the current cell in this worksheet row.
      *
      * @return PHPExcel_Cell
      */
@@ -145,7 +143,7 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * Return the current iterator key
+     * Return the current iterator key.
      *
      * @return string
      */
@@ -155,9 +153,9 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * Set the iterator to its next value
+     * Set the iterator to its next value.
      */
-    public function next()
+    public function next(): void
     {
         do {
             ++$this->position;
@@ -167,17 +165,15 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * Set the iterator to its previous value
-     *
-     * @throws PHPExcel_Exception
+     * Set the iterator to its previous value.
      */
-    public function prev()
+    public function prev(): void
     {
         if ($this->position <= $this->startColumn) {
             throw new PHPExcel_Exception(
-                "Column is already at the beginning of range (" .
-                PHPExcel_Cell::stringFromColumnIndex($this->endColumn) . " - " .
-                PHPExcel_Cell::stringFromColumnIndex($this->endColumn) . ")"
+                'Column is already at the beginning of range (' .
+                PHPExcel_Cell::stringFromColumnIndex($this->endColumn) . ' - ' .
+                PHPExcel_Cell::stringFromColumnIndex($this->endColumn) . ')'
             );
         }
 
@@ -189,9 +185,9 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * Indicate if more columns exist in the worksheet range of columns that we're iterating
+     * Indicate if more columns exist in the worksheet range of columns that we're iterating.
      *
-     * @return boolean
+     * @return bool
      */
     public function valid()
     {
@@ -199,11 +195,9 @@ class PHPExcel_Worksheet_RowCellIterator extends PHPExcel_Worksheet_CellIterator
     }
 
     /**
-     * Validate start/end values for "IterateOnlyExistingCells" mode, and adjust if necessary
-     *
-     * @throws PHPExcel_Exception
+     * Validate start/end values for "IterateOnlyExistingCells" mode, and adjust if necessary.
      */
-    protected function adjustForExistingOnlyRange()
+    protected function adjustForExistingOnlyRange(): void
     {
         if ($this->onlyExistingCells) {
             while ((!$this->subject->cellExistsByColumnAndRow($this->startColumn, $this->rowIndex)) &&

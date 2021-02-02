@@ -3,12 +3,14 @@
 class testDataFileIterator implements Iterator
 {
     protected $file;
+
     protected $key = 0;
+
     protected $current;
 
     public function __construct($file)
     {
-        $this->file = fopen($file, 'r');
+        $this->file = fopen($file, 'rb');
     }
 
     public function __destruct()
@@ -16,7 +18,7 @@ class testDataFileIterator implements Iterator
         fclose($this->file);
     }
 
-    public function rewind()
+    public function rewind(): void
     {
         rewind($this->file);
         $this->current = $this->_parseNextDataset();
@@ -38,10 +40,10 @@ class testDataFileIterator implements Iterator
         return $this->current;
     }
 
-    public function next()
+    public function next(): void
     {
         $this->current = $this->_parseNextDataset();
-        $this->key++;
+        ++$this->key;
     }
 
     private function _parseNextDataset()
@@ -50,10 +52,10 @@ class testDataFileIterator implements Iterator
         do {
             //    Only take lines that contain test data and that aren't commented out
             $testDataRow = trim(fgets($this->file));
-        } while (($testDataRow > '') && ($testDataRow{0} === '#'));
+        } while (($testDataRow > '') && ($testDataRow[0] === '#'));
 
         //    Discard any comments at the end of the line
-        list($testData) = explode('//', $testDataRow);
+        [$testData] = explode('//', $testDataRow);
 
         //    Split data into an array of individual values and a result
         $dataSet = $this->_getcsv($testData, ',', "'");
@@ -71,14 +73,14 @@ class testDataFileIterator implements Iterator
             return str_getcsv($input, $delimiter, $enclosure);
         }
 
-        $temp = fopen('php://memory', 'rw');
+        $temp = fopen('php://memory', 'rwb');
         fwrite($temp, $input);
         rewind($temp);
         $data = fgetcsv($temp, strlen($input), $delimiter, $enclosure);
         fclose($temp);
 
         if ($data === false) {
-            $data = array(null);
+            $data = [null];
         }
 
         return $data;
@@ -94,9 +96,9 @@ class testDataFileIterator implements Iterator
                 $dataValue = null;
             } elseif ($dataValue == '""') {
                 $dataValue = '';
-            } elseif (($dataValue[0] == '"') && ($dataValue[strlen($dataValue)-1] == '"')) {
+            } elseif (($dataValue[0] == '"') && ($dataValue[strlen($dataValue) - 1] == '"')) {
                 $dataValue = substr($dataValue, 1, -1);
-            } elseif (($dataValue[0] == '{') && ($dataValue[strlen($dataValue)-1] == '}')) {
+            } elseif (($dataValue[0] == '{') && ($dataValue[strlen($dataValue) - 1] == '}')) {
                 $dataValue = explode(';', substr($dataValue, 1, -1));
                 foreach ($dataValue as &$dataRow) {
                     if (strpos($dataRow, '|') !== false) {
@@ -114,12 +116,15 @@ class testDataFileIterator implements Iterator
                 switch (strtoupper($dataValue)) {
                     case 'NULL':
                         $dataValue = null;
+
                         break;
                     case 'TRUE':
                         $dataValue = true;
+
                         break;
                     case 'FALSE':
                         $dataValue = false;
+
                         break;
                 }
             }

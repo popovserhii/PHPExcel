@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_DocumentProperties
+ * PHPExcel_DocumentProperties.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,10 +19,8 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
- * @package    PHPExcel
- * @copyright    Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_DocumentProperties
@@ -30,109 +28,108 @@ class PHPExcel_DocumentProperties
     /** constants */
     const PROPERTY_TYPE_BOOLEAN = 'b';
     const PROPERTY_TYPE_INTEGER = 'i';
-    const PROPERTY_TYPE_FLOAT   = 'f';
-    const PROPERTY_TYPE_DATE    = 'd';
-    const PROPERTY_TYPE_STRING  = 's';
+    const PROPERTY_TYPE_FLOAT = 'f';
+    const PROPERTY_TYPE_DATE = 'd';
+    const PROPERTY_TYPE_STRING = 's';
     const PROPERTY_TYPE_UNKNOWN = 'u';
 
     /**
-     * Creator
+     * Creator.
      *
      * @var string
      */
     private $creator = 'Unknown Creator';
 
     /**
-     * LastModifiedBy
+     * LastModifiedBy.
      *
      * @var string
      */
     private $lastModifiedBy;
 
     /**
-     * Created
+     * Created.
      *
      * @var datetime
      */
     private $created;
 
     /**
-     * Modified
+     * Modified.
      *
      * @var datetime
      */
     private $modified;
 
     /**
-     * Title
+     * Title.
      *
      * @var string
      */
     private $title = 'Untitled Spreadsheet';
 
     /**
-     * Description
+     * Description.
      *
      * @var string
      */
     private $description = '';
 
     /**
-     * Subject
+     * Subject.
      *
      * @var string
      */
     private $subject = '';
 
     /**
-     * Keywords
+     * Keywords.
      *
      * @var string
      */
     private $keywords = '';
 
     /**
-     * Category
+     * Category.
      *
      * @var string
      */
     private $category = '';
 
     /**
-     * Manager
+     * Manager.
      *
      * @var string
      */
     private $manager = '';
 
     /**
-     * Company
+     * Company.
      *
      * @var string
      */
     private $company = 'Microsoft Corporation';
 
     /**
-     * Custom Properties
+     * Custom Properties.
      *
      * @var string
      */
-    private $customProperties = array();
-
+    private $customProperties = [];
 
     /**
-     * Create a new PHPExcel_DocumentProperties
+     * Create a new PHPExcel_DocumentProperties.
      */
     public function __construct()
     {
         // Initialise values
         $this->lastModifiedBy = $this->creator;
-        $this->created  = time();
+        $this->created = time();
         $this->modified = time();
     }
 
     /**
-     * Get Creator
+     * Get Creator.
      *
      * @return string
      */
@@ -142,19 +139,21 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Creator
+     * Set Creator.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCreator($pValue = '')
     {
         $this->creator = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Last Modified By
+     * Get Last Modified By.
      *
      * @return string
      */
@@ -164,19 +163,21 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Last Modified By
+     * Set Last Modified By.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setLastModifiedBy($pValue = '')
     {
         $this->lastModifiedBy = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Created
+     * Get Created.
      *
      * @return datetime
      */
@@ -186,9 +187,10 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Created
+     * Set Created.
      *
      * @param datetime $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCreated($pValue = null)
@@ -197,18 +199,19 @@ class PHPExcel_DocumentProperties
             $pValue = time();
         } elseif (is_string($pValue)) {
             if (is_numeric($pValue)) {
-                $pValue = intval($pValue);
+                $pValue = (int) $pValue;
             } else {
                 $pValue = strtotime($pValue);
             }
         }
 
         $this->created = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Modified
+     * Get Modified.
      *
      * @return datetime
      */
@@ -218,9 +221,10 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Modified
+     * Set Modified.
      *
      * @param datetime $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setModified($pValue = null)
@@ -229,18 +233,19 @@ class PHPExcel_DocumentProperties
             $pValue = time();
         } elseif (is_string($pValue)) {
             if (is_numeric($pValue)) {
-                $pValue = intval($pValue);
+                $pValue = (int) $pValue;
             } else {
                 $pValue = strtotime($pValue);
             }
         }
 
         $this->modified = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Title
+     * Get Title.
      *
      * @return string
      */
@@ -250,19 +255,21 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Title
+     * Set Title.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setTitle($pValue = '')
     {
         $this->title = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Description
+     * Get Description.
      *
      * @return string
      */
@@ -272,19 +279,21 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Description
+     * Set Description.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setDescription($pValue = '')
     {
         $this->description = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Subject
+     * Get Subject.
      *
      * @return string
      */
@@ -294,19 +303,21 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Subject
+     * Set Subject.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setSubject($pValue = '')
     {
         $this->subject = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Keywords
+     * Get Keywords.
      *
      * @return string
      */
@@ -316,19 +327,21 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Keywords
+     * Set Keywords.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setKeywords($pValue = '')
     {
         $this->keywords = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Category
+     * Get Category.
      *
      * @return string
      */
@@ -338,19 +351,21 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Category
+     * Set Category.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCategory($pValue = '')
     {
         $this->category = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Company
+     * Get Company.
      *
      * @return string
      */
@@ -360,19 +375,21 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Company
+     * Set Company.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCompany($pValue = '')
     {
         $this->company = $pValue;
+
         return $this;
     }
 
     /**
-     * Get Manager
+     * Get Manager.
      *
      * @return string
      */
@@ -382,19 +399,21 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Set Manager
+     * Set Manager.
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setManager($pValue = '')
     {
         $this->manager = $pValue;
+
         return $this;
     }
 
     /**
-     * Get a List of Custom Property Names
+     * Get a List of Custom Property Names.
      *
      * @return array of string
      */
@@ -404,10 +423,11 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Check if a Custom Property is defined
+     * Check if a Custom Property is defined.
      *
      * @param string $propertyName
-     * @return boolean
+     *
+     * @return bool
      */
     public function isCustomPropertySet($propertyName)
     {
@@ -415,9 +435,10 @@ class PHPExcel_DocumentProperties
     }
 
     /**
-     * Get a Custom Property Value
+     * Get a Custom Property Value.
      *
      * @param string $propertyName
+     *
      * @return string
      */
     public function getCustomPropertyValue($propertyName)
@@ -425,13 +446,13 @@ class PHPExcel_DocumentProperties
         if (isset($this->customProperties[$propertyName])) {
             return $this->customProperties[$propertyName]['value'];
         }
-
     }
 
     /**
-     * Get a Custom Property Type
+     * Get a Custom Property Type.
      *
      * @param string $propertyName
+     *
      * @return string
      */
     public function getCustomPropertyType($propertyName)
@@ -439,11 +460,10 @@ class PHPExcel_DocumentProperties
         if (isset($this->customProperties[$propertyName])) {
             return $this->customProperties[$propertyName]['type'];
         }
-
     }
 
     /**
-     * Set a Custom Property
+     * Set a Custom Property.
      *
      * @param string $propertyName
      * @param mixed $propertyValue
@@ -453,15 +473,16 @@ class PHPExcel_DocumentProperties
      *   's' : String
      *   'd' : Date/Time
      *   'b' : Boolean
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCustomProperty($propertyName, $propertyValue = '', $propertyType = null)
     {
-        if (($propertyType === null) || (!in_array($propertyType, array(self::PROPERTY_TYPE_INTEGER,
-                                                                        self::PROPERTY_TYPE_FLOAT,
-                                                                        self::PROPERTY_TYPE_STRING,
-                                                                        self::PROPERTY_TYPE_DATE,
-                                                                        self::PROPERTY_TYPE_BOOLEAN)))) {
+        if (($propertyType === null) || (!in_array($propertyType, [self::PROPERTY_TYPE_INTEGER,
+            self::PROPERTY_TYPE_FLOAT,
+            self::PROPERTY_TYPE_STRING,
+            self::PROPERTY_TYPE_DATE,
+            self::PROPERTY_TYPE_BOOLEAN]))) {
             if ($propertyValue === null) {
                 $propertyType = self::PROPERTY_TYPE_STRING;
             } elseif (is_float($propertyValue)) {
@@ -475,10 +496,11 @@ class PHPExcel_DocumentProperties
             }
         }
 
-        $this->customProperties[$propertyName] = array(
+        $this->customProperties[$propertyName] = [
             'value' => $propertyValue,
             'type' => $propertyType
-        );
+        ];
+
         return $this;
     }
 
@@ -502,9 +524,11 @@ class PHPExcel_DocumentProperties
         switch ($propertyType) {
             case 'empty':     //    Empty
                 return '';
+
                 break;
             case 'null':      //    Null
                 return null;
+
                 break;
             case 'i1':        //    1-Byte Signed Integer
             case 'i2':        //    2-Byte Signed Integer
@@ -512,6 +536,7 @@ class PHPExcel_DocumentProperties
             case 'i8':        //    8-Byte Signed Integer
             case 'int':       //    Integer
                 return (int) $propertyValue;
+
                 break;
             case 'ui1':       //    1-Byte Unsigned Integer
             case 'ui2':       //    2-Byte Unsigned Integer
@@ -519,23 +544,28 @@ class PHPExcel_DocumentProperties
             case 'ui8':       //    8-Byte Unsigned Integer
             case 'uint':      //    Unsigned Integer
                 return abs((int) $propertyValue);
+
                 break;
             case 'r4':        //    4-Byte Real Number
             case 'r8':        //    8-Byte Real Number
             case 'decimal':   //    Decimal
                 return (float) $propertyValue;
+
                 break;
             case 'lpstr':     //    LPSTR
             case 'lpwstr':    //    LPWSTR
             case 'bstr':      //    Basic String
                 return $propertyValue;
+
                 break;
             case 'date':      //    Date and Time
             case 'filetime':  //    File Time
                 return strtotime($propertyValue);
+
                 break;
             case 'bool':     //    Boolean
                 return ($propertyValue == 'true') ? true : false;
+
                 break;
             case 'cy':       //    Currency
             case 'error':    //    Error Status Code
@@ -551,8 +581,10 @@ class PHPExcel_DocumentProperties
             case 'clsid':    //    Class ID
             case 'cf':       //    Clipboard Data
                 return $propertyValue;
+
                 break;
         }
+
         return $propertyValue;
     }
 
@@ -570,11 +602,13 @@ class PHPExcel_DocumentProperties
             case 'ui8':      //    8-Byte Unsigned Integer
             case 'uint':     //    Unsigned Integer
                 return self::PROPERTY_TYPE_INTEGER;
+
                 break;
             case 'r4':       //    4-Byte Real Number
             case 'r8':       //    8-Byte Real Number
             case 'decimal':  //    Decimal
                 return self::PROPERTY_TYPE_FLOAT;
+
                 break;
             case 'empty':    //    Empty
             case 'null':     //    Null
@@ -582,13 +616,16 @@ class PHPExcel_DocumentProperties
             case 'lpwstr':   //    LPWSTR
             case 'bstr':     //    Basic String
                 return self::PROPERTY_TYPE_STRING;
+
                 break;
             case 'date':     //    Date and Time
             case 'filetime': //    File Time
                 return self::PROPERTY_TYPE_DATE;
+
                 break;
             case 'bool':     //    Boolean
                 return self::PROPERTY_TYPE_BOOLEAN;
+
                 break;
             case 'cy':       //    Currency
             case 'error':    //    Error Status Code
@@ -604,8 +641,10 @@ class PHPExcel_DocumentProperties
             case 'clsid':    //    Class ID
             case 'cf':       //    Clipboard Data
                 return self::PROPERTY_TYPE_UNKNOWN;
+
                 break;
         }
+
         return self::PROPERTY_TYPE_UNKNOWN;
     }
 }

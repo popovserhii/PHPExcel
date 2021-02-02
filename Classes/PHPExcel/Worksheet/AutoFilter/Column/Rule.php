@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Worksheet_AutoFilter_Column_Rule
+ * PHPExcel_Worksheet_AutoFilter_Column_Rule.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,21 +19,19 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
- * @package        PHPExcel_Worksheet
- * @copyright    Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version        ##VERSION##, ##DATE##
  */
 class PHPExcel_Worksheet_AutoFilter_Column_Rule
 {
-    const AUTOFILTER_RULETYPE_FILTER        = 'filter';
-    const AUTOFILTER_RULETYPE_DATEGROUP     = 'dateGroupItem';
-    const AUTOFILTER_RULETYPE_CUSTOMFILTER  = 'customFilter';
+    const AUTOFILTER_RULETYPE_FILTER = 'filter';
+    const AUTOFILTER_RULETYPE_DATEGROUP = 'dateGroupItem';
+    const AUTOFILTER_RULETYPE_CUSTOMFILTER = 'customFilter';
     const AUTOFILTER_RULETYPE_DYNAMICFILTER = 'dynamicFilter';
-    const AUTOFILTER_RULETYPE_TOPTENFILTER  = 'top10Filter';
+    const AUTOFILTER_RULETYPE_TOPTENFILTER = 'top10Filter';
 
-    private static $ruleTypes = array(
+    private static $ruleTypes = [
         //    Currently we're not handling
         //        colorFilter
         //        extLst
@@ -43,72 +41,72 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
         self::AUTOFILTER_RULETYPE_CUSTOMFILTER,
         self::AUTOFILTER_RULETYPE_DYNAMICFILTER,
         self::AUTOFILTER_RULETYPE_TOPTENFILTER,
-    );
+    ];
 
-    const AUTOFILTER_RULETYPE_DATEGROUP_YEAR   = 'year';
-    const AUTOFILTER_RULETYPE_DATEGROUP_MONTH  = 'month';
-    const AUTOFILTER_RULETYPE_DATEGROUP_DAY    = 'day';
-    const AUTOFILTER_RULETYPE_DATEGROUP_HOUR   = 'hour';
+    const AUTOFILTER_RULETYPE_DATEGROUP_YEAR = 'year';
+    const AUTOFILTER_RULETYPE_DATEGROUP_MONTH = 'month';
+    const AUTOFILTER_RULETYPE_DATEGROUP_DAY = 'day';
+    const AUTOFILTER_RULETYPE_DATEGROUP_HOUR = 'hour';
     const AUTOFILTER_RULETYPE_DATEGROUP_MINUTE = 'minute';
     const AUTOFILTER_RULETYPE_DATEGROUP_SECOND = 'second';
 
-    private static $dateTimeGroups = array(
+    private static $dateTimeGroups = [
         self::AUTOFILTER_RULETYPE_DATEGROUP_YEAR,
         self::AUTOFILTER_RULETYPE_DATEGROUP_MONTH,
         self::AUTOFILTER_RULETYPE_DATEGROUP_DAY,
         self::AUTOFILTER_RULETYPE_DATEGROUP_HOUR,
         self::AUTOFILTER_RULETYPE_DATEGROUP_MINUTE,
         self::AUTOFILTER_RULETYPE_DATEGROUP_SECOND,
-    );
+    ];
 
-    const AUTOFILTER_RULETYPE_DYNAMIC_YESTERDAY    = 'yesterday';
-    const AUTOFILTER_RULETYPE_DYNAMIC_TODAY        = 'today';
-    const AUTOFILTER_RULETYPE_DYNAMIC_TOMORROW     = 'tomorrow';
-    const AUTOFILTER_RULETYPE_DYNAMIC_YEARTODATE   = 'yearToDate';
-    const AUTOFILTER_RULETYPE_DYNAMIC_THISYEAR     = 'thisYear';
-    const AUTOFILTER_RULETYPE_DYNAMIC_THISQUARTER  = 'thisQuarter';
-    const AUTOFILTER_RULETYPE_DYNAMIC_THISMONTH    = 'thisMonth';
-    const AUTOFILTER_RULETYPE_DYNAMIC_THISWEEK     = 'thisWeek';
-    const AUTOFILTER_RULETYPE_DYNAMIC_LASTYEAR     = 'lastYear';
-    const AUTOFILTER_RULETYPE_DYNAMIC_LASTQUARTER  = 'lastQuarter';
-    const AUTOFILTER_RULETYPE_DYNAMIC_LASTMONTH    = 'lastMonth';
-    const AUTOFILTER_RULETYPE_DYNAMIC_LASTWEEK     = 'lastWeek';
-    const AUTOFILTER_RULETYPE_DYNAMIC_NEXTYEAR     = 'nextYear';
-    const AUTOFILTER_RULETYPE_DYNAMIC_NEXTQUARTER  = 'nextQuarter';
-    const AUTOFILTER_RULETYPE_DYNAMIC_NEXTMONTH    = 'nextMonth';
-    const AUTOFILTER_RULETYPE_DYNAMIC_NEXTWEEK     = 'nextWeek';
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_1      = 'M1';
-    const AUTOFILTER_RULETYPE_DYNAMIC_JANUARY      = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_1;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_2      = 'M2';
-    const AUTOFILTER_RULETYPE_DYNAMIC_FEBRUARY     = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_2;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_3      = 'M3';
-    const AUTOFILTER_RULETYPE_DYNAMIC_MARCH        = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_3;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_4      = 'M4';
-    const AUTOFILTER_RULETYPE_DYNAMIC_APRIL        = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_4;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_5      = 'M5';
-    const AUTOFILTER_RULETYPE_DYNAMIC_MAY          = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_5;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_6      = 'M6';
-    const AUTOFILTER_RULETYPE_DYNAMIC_JUNE         = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_6;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_7      = 'M7';
-    const AUTOFILTER_RULETYPE_DYNAMIC_JULY         = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_7;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_8      = 'M8';
-    const AUTOFILTER_RULETYPE_DYNAMIC_AUGUST       = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_8;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_9      = 'M9';
-    const AUTOFILTER_RULETYPE_DYNAMIC_SEPTEMBER    = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_9;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_10     = 'M10';
-    const AUTOFILTER_RULETYPE_DYNAMIC_OCTOBER      = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_10;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_11     = 'M11';
-    const AUTOFILTER_RULETYPE_DYNAMIC_NOVEMBER     = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_11;
-    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_12     = 'M12';
-    const AUTOFILTER_RULETYPE_DYNAMIC_DECEMBER     = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_12;
-    const AUTOFILTER_RULETYPE_DYNAMIC_QUARTER_1    = 'Q1';
-    const AUTOFILTER_RULETYPE_DYNAMIC_QUARTER_2    = 'Q2';
-    const AUTOFILTER_RULETYPE_DYNAMIC_QUARTER_3    = 'Q3';
-    const AUTOFILTER_RULETYPE_DYNAMIC_QUARTER_4    = 'Q4';
+    const AUTOFILTER_RULETYPE_DYNAMIC_YESTERDAY = 'yesterday';
+    const AUTOFILTER_RULETYPE_DYNAMIC_TODAY = 'today';
+    const AUTOFILTER_RULETYPE_DYNAMIC_TOMORROW = 'tomorrow';
+    const AUTOFILTER_RULETYPE_DYNAMIC_YEARTODATE = 'yearToDate';
+    const AUTOFILTER_RULETYPE_DYNAMIC_THISYEAR = 'thisYear';
+    const AUTOFILTER_RULETYPE_DYNAMIC_THISQUARTER = 'thisQuarter';
+    const AUTOFILTER_RULETYPE_DYNAMIC_THISMONTH = 'thisMonth';
+    const AUTOFILTER_RULETYPE_DYNAMIC_THISWEEK = 'thisWeek';
+    const AUTOFILTER_RULETYPE_DYNAMIC_LASTYEAR = 'lastYear';
+    const AUTOFILTER_RULETYPE_DYNAMIC_LASTQUARTER = 'lastQuarter';
+    const AUTOFILTER_RULETYPE_DYNAMIC_LASTMONTH = 'lastMonth';
+    const AUTOFILTER_RULETYPE_DYNAMIC_LASTWEEK = 'lastWeek';
+    const AUTOFILTER_RULETYPE_DYNAMIC_NEXTYEAR = 'nextYear';
+    const AUTOFILTER_RULETYPE_DYNAMIC_NEXTQUARTER = 'nextQuarter';
+    const AUTOFILTER_RULETYPE_DYNAMIC_NEXTMONTH = 'nextMonth';
+    const AUTOFILTER_RULETYPE_DYNAMIC_NEXTWEEK = 'nextWeek';
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_1 = 'M1';
+    const AUTOFILTER_RULETYPE_DYNAMIC_JANUARY = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_1;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_2 = 'M2';
+    const AUTOFILTER_RULETYPE_DYNAMIC_FEBRUARY = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_2;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_3 = 'M3';
+    const AUTOFILTER_RULETYPE_DYNAMIC_MARCH = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_3;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_4 = 'M4';
+    const AUTOFILTER_RULETYPE_DYNAMIC_APRIL = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_4;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_5 = 'M5';
+    const AUTOFILTER_RULETYPE_DYNAMIC_MAY = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_5;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_6 = 'M6';
+    const AUTOFILTER_RULETYPE_DYNAMIC_JUNE = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_6;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_7 = 'M7';
+    const AUTOFILTER_RULETYPE_DYNAMIC_JULY = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_7;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_8 = 'M8';
+    const AUTOFILTER_RULETYPE_DYNAMIC_AUGUST = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_8;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_9 = 'M9';
+    const AUTOFILTER_RULETYPE_DYNAMIC_SEPTEMBER = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_9;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_10 = 'M10';
+    const AUTOFILTER_RULETYPE_DYNAMIC_OCTOBER = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_10;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_11 = 'M11';
+    const AUTOFILTER_RULETYPE_DYNAMIC_NOVEMBER = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_11;
+    const AUTOFILTER_RULETYPE_DYNAMIC_MONTH_12 = 'M12';
+    const AUTOFILTER_RULETYPE_DYNAMIC_DECEMBER = self::AUTOFILTER_RULETYPE_DYNAMIC_MONTH_12;
+    const AUTOFILTER_RULETYPE_DYNAMIC_QUARTER_1 = 'Q1';
+    const AUTOFILTER_RULETYPE_DYNAMIC_QUARTER_2 = 'Q2';
+    const AUTOFILTER_RULETYPE_DYNAMIC_QUARTER_3 = 'Q3';
+    const AUTOFILTER_RULETYPE_DYNAMIC_QUARTER_4 = 'Q4';
     const AUTOFILTER_RULETYPE_DYNAMIC_ABOVEAVERAGE = 'aboveAverage';
     const AUTOFILTER_RULETYPE_DYNAMIC_BELOWAVERAGE = 'belowAverage';
 
-    private static $dynamicTypes = array(
+    private static $dynamicTypes = [
         self::AUTOFILTER_RULETYPE_DYNAMIC_YESTERDAY,
         self::AUTOFILTER_RULETYPE_DYNAMIC_TODAY,
         self::AUTOFILTER_RULETYPE_DYNAMIC_TOMORROW,
@@ -143,7 +141,7 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
         self::AUTOFILTER_RULETYPE_DYNAMIC_QUARTER_4,
         self::AUTOFILTER_RULETYPE_DYNAMIC_ABOVEAVERAGE,
         self::AUTOFILTER_RULETYPE_DYNAMIC_BELOWAVERAGE,
-    );
+    ];
 
     /*
      *    The only valid filter rule operators for filter and customFilter types are:
@@ -154,52 +152,51 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
      *        <xsd:enumeration value="greaterThanOrEqual"/>
      *        <xsd:enumeration value="greaterThan"/>
      */
-    const AUTOFILTER_COLUMN_RULE_EQUAL              = 'equal';
-    const AUTOFILTER_COLUMN_RULE_NOTEQUAL           = 'notEqual';
-    const AUTOFILTER_COLUMN_RULE_GREATERTHAN        = 'greaterThan';
+    const AUTOFILTER_COLUMN_RULE_EQUAL = 'equal';
+    const AUTOFILTER_COLUMN_RULE_NOTEQUAL = 'notEqual';
+    const AUTOFILTER_COLUMN_RULE_GREATERTHAN = 'greaterThan';
     const AUTOFILTER_COLUMN_RULE_GREATERTHANOREQUAL = 'greaterThanOrEqual';
-    const AUTOFILTER_COLUMN_RULE_LESSTHAN           = 'lessThan';
-    const AUTOFILTER_COLUMN_RULE_LESSTHANOREQUAL    = 'lessThanOrEqual';
+    const AUTOFILTER_COLUMN_RULE_LESSTHAN = 'lessThan';
+    const AUTOFILTER_COLUMN_RULE_LESSTHANOREQUAL = 'lessThanOrEqual';
 
-    private static $operators = array(
+    private static $operators = [
         self::AUTOFILTER_COLUMN_RULE_EQUAL,
         self::AUTOFILTER_COLUMN_RULE_NOTEQUAL,
         self::AUTOFILTER_COLUMN_RULE_GREATERTHAN,
         self::AUTOFILTER_COLUMN_RULE_GREATERTHANOREQUAL,
         self::AUTOFILTER_COLUMN_RULE_LESSTHAN,
         self::AUTOFILTER_COLUMN_RULE_LESSTHANOREQUAL,
-    );
+    ];
 
     const AUTOFILTER_COLUMN_RULE_TOPTEN_BY_VALUE = 'byValue';
-    const AUTOFILTER_COLUMN_RULE_TOPTEN_PERCENT  = 'byPercent';
+    const AUTOFILTER_COLUMN_RULE_TOPTEN_PERCENT = 'byPercent';
 
-    private static $topTenValue = array(
+    private static $topTenValue = [
         self::AUTOFILTER_COLUMN_RULE_TOPTEN_BY_VALUE,
         self::AUTOFILTER_COLUMN_RULE_TOPTEN_PERCENT,
-    );
+    ];
 
-    const AUTOFILTER_COLUMN_RULE_TOPTEN_TOP    = 'top';
+    const AUTOFILTER_COLUMN_RULE_TOPTEN_TOP = 'top';
     const AUTOFILTER_COLUMN_RULE_TOPTEN_BOTTOM = 'bottom';
 
-    private static $topTenType = array(
+    private static $topTenType = [
         self::AUTOFILTER_COLUMN_RULE_TOPTEN_TOP,
         self::AUTOFILTER_COLUMN_RULE_TOPTEN_BOTTOM,
-    );
+    ];
 
-
-    /* Rule Operators (Numeric, Boolean etc) */
+    // Rule Operators (Numeric, Boolean etc)
 //    const AUTOFILTER_COLUMN_RULE_BETWEEN            = 'between';        //    greaterThanOrEqual 1 && lessThanOrEqual 2
-    /* Rule Operators (Numeric Special) which are translated to standard numeric operators with calculated values */
+    // Rule Operators (Numeric Special) which are translated to standard numeric operators with calculated values
 //    const AUTOFILTER_COLUMN_RULE_TOPTEN                = 'topTen';            //    greaterThan calculated value
 //    const AUTOFILTER_COLUMN_RULE_TOPTENPERCENT        = 'topTenPercent';    //    greaterThan calculated value
 //    const AUTOFILTER_COLUMN_RULE_ABOVEAVERAGE        = 'aboveAverage';    //    Value is calculated as the average
 //    const AUTOFILTER_COLUMN_RULE_BELOWAVERAGE        = 'belowAverage';    //    Value is calculated as the average
-    /* Rule Operators (String) which are set as wild-carded values */
+    // Rule Operators (String) which are set as wild-carded values
 //    const AUTOFILTER_COLUMN_RULE_BEGINSWITH            = 'beginsWith';            // A*
 //    const AUTOFILTER_COLUMN_RULE_ENDSWITH            = 'endsWith';            // *Z
 //    const AUTOFILTER_COLUMN_RULE_CONTAINS            = 'contains';            // *B*
 //    const AUTOFILTER_COLUMN_RULE_DOESNTCONTAIN        = 'notEqual';            //    notEqual *B*
-    /* Rule Operators (Date Special) which are translated to standard numeric operators with calculated values */
+    // Rule Operators (Date Special) which are translated to standard numeric operators with calculated values
 //    const AUTOFILTER_COLUMN_RULE_BEFORE                = 'lessThan';
 //    const AUTOFILTER_COLUMN_RULE_AFTER                = 'greaterThan';
 //    const AUTOFILTER_COLUMN_RULE_YESTERDAY            = 'yesterday';
@@ -222,55 +219,52 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
 //    const AUTOFILTER_COLUMN_RULE_ALLDATESINQUARTER    = 'allDatesInQuarter';    //    <dynamicFilter type="Q2"/> for Quarter 2
 
     /**
-     * Autofilter Column
+     * Autofilter Column.
      *
      * @var PHPExcel_Worksheet_AutoFilter_Column
      */
-    private $parent = null;
-
+    private $parent;
 
     /**
-     * Autofilter Rule Type
+     * Autofilter Rule Type.
      *
      * @var string
      */
     private $ruleType = self::AUTOFILTER_RULETYPE_FILTER;
 
-
     /**
-     * Autofilter Rule Value
+     * Autofilter Rule Value.
      *
      * @var string
      */
     private $value = '';
 
     /**
-     * Autofilter Rule Operator
+     * Autofilter Rule Operator.
      *
      * @var string
      */
     private $operator = self::AUTOFILTER_COLUMN_RULE_EQUAL;
 
     /**
-     * DateTimeGrouping Group Value
+     * DateTimeGrouping Group Value.
      *
      * @var string
      */
     private $grouping = '';
 
-
     /**
-     * Create a new PHPExcel_Worksheet_AutoFilter_Column_Rule
+     * Create a new PHPExcel_Worksheet_AutoFilter_Column_Rule.
      *
      * @param PHPExcel_Worksheet_AutoFilter_Column $pParent
      */
-    public function __construct(PHPExcel_Worksheet_AutoFilter_Column $pParent = null)
+    public function __construct(?PHPExcel_Worksheet_AutoFilter_Column $pParent = null)
     {
         $this->parent = $pParent;
     }
 
     /**
-     * Get AutoFilter Rule Type
+     * Get AutoFilter Rule Type.
      *
      * @return string
      */
@@ -280,11 +274,11 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     *    Set AutoFilter Rule Type
+     *    Set AutoFilter Rule Type.
      *
-     *    @param    string        $pRuleType
-     *    @throws    PHPExcel_Exception
-     *    @return PHPExcel_Worksheet_AutoFilter_Column
+     * @param    string        $pRuleType
+     *
+     * @return PHPExcel_Worksheet_AutoFilter_Column
      */
     public function setRuleType($pRuleType = self::AUTOFILTER_RULETYPE_FILTER)
     {
@@ -298,7 +292,7 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     * Get AutoFilter Rule Value
+     * Get AutoFilter Rule Value.
      *
      * @return string
      */
@@ -308,11 +302,11 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     *    Set AutoFilter Rule Value
+     *    Set AutoFilter Rule Value.
      *
-     *    @param    string|string[]        $pValue
-     *    @throws    PHPExcel_Exception
-     *    @return PHPExcel_Worksheet_AutoFilter_Column_Rule
+     * @param    string|string[]        $pValue
+     *
+     * @return PHPExcel_Worksheet_AutoFilter_Column_Rule
      */
     public function setValue($pValue = '')
     {
@@ -340,7 +334,7 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     * Get AutoFilter Rule Operator
+     * Get AutoFilter Rule Operator.
      *
      * @return string
      */
@@ -350,11 +344,11 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     *    Set AutoFilter Rule Operator
+     *    Set AutoFilter Rule Operator.
      *
-     *    @param    string        $pOperator
-     *    @throws    PHPExcel_Exception
-     *    @return PHPExcel_Worksheet_AutoFilter_Column_Rule
+     * @param    string        $pOperator
+     *
+     * @return PHPExcel_Worksheet_AutoFilter_Column_Rule
      */
     public function setOperator($pOperator = self::AUTOFILTER_COLUMN_RULE_EQUAL)
     {
@@ -371,7 +365,7 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     * Get AutoFilter Rule Grouping
+     * Get AutoFilter Rule Grouping.
      *
      * @return string
      */
@@ -381,11 +375,11 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     *    Set AutoFilter Rule Grouping
+     *    Set AutoFilter Rule Grouping.
      *
-     *    @param    string        $pGrouping
-     *    @throws    PHPExcel_Exception
-     *    @return PHPExcel_Worksheet_AutoFilter_Column_Rule
+     * @param    string        $pGrouping
+     *
+     * @return PHPExcel_Worksheet_AutoFilter_Column_Rule
      */
     public function setGrouping($pGrouping = null)
     {
@@ -401,13 +395,13 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     *    Set AutoFilter Rule
+     *    Set AutoFilter Rule.
      *
-     *    @param    string                $pOperator
-     *    @param    string|string[]        $pValue
-     *    @param    string                $pGrouping
-     *    @throws    PHPExcel_Exception
-     *    @return PHPExcel_Worksheet_AutoFilter_Column_Rule
+     * @param    string                $pOperator
+     * @param    string|string[]        $pValue
+     * @param    string                $pGrouping
+     *
+     * @return PHPExcel_Worksheet_AutoFilter_Column_Rule
      */
     public function setRule($pOperator = self::AUTOFILTER_COLUMN_RULE_EQUAL, $pValue = '', $pGrouping = null)
     {
@@ -424,7 +418,7 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     * Get this Rule's AutoFilter Column Parent
+     * Get this Rule's AutoFilter Column Parent.
      *
      * @return PHPExcel_Worksheet_AutoFilter_Column
      */
@@ -434,12 +428,13 @@ class PHPExcel_Worksheet_AutoFilter_Column_Rule
     }
 
     /**
-     * Set this Rule's AutoFilter Column Parent
+     * Set this Rule's AutoFilter Column Parent.
      *
-     * @param PHPExcel_Worksheet_AutoFilter_Column
+     * @param PHPExcel_Worksheet_AutoFilter_Column $pParent
+     *
      * @return PHPExcel_Worksheet_AutoFilter_Column_Rule
      */
-    public function setParent(PHPExcel_Worksheet_AutoFilter_Column $pParent = null)
+    public function setParent(?PHPExcel_Worksheet_AutoFilter_Column $pParent = null)
     {
         $this->parent = $pParent;
 

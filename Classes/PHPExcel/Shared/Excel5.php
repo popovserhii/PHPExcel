@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Shared_Excel5
+ * PHPExcel_Shared_Excel5.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,10 +19,8 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Shared
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Shared_Excel5
@@ -30,12 +28,13 @@ class PHPExcel_Shared_Excel5
     /**
      * Get the width of a column in pixels. We use the relationship y = ceil(7x) where
      * x is the width in intrinsic Excel units (measuring width in number of normal characters)
-     * This holds for Arial 10
+     * This holds for Arial 10.
      *
      * @param PHPExcel_Worksheet $sheet The sheet
      * @param string $col The column
-     * @return integer The width in pixels
-    */
+     *
+     * @return int The width in pixels
+     */
     public static function sizeCol($sheet, $col = 'A')
     {
         // default font of the workbook
@@ -44,7 +43,7 @@ class PHPExcel_Shared_Excel5
         $columnDimensions = $sheet->getColumnDimensions();
 
         // first find the true column width in pixels (uncollapsed and unhidden)
-        if (isset($columnDimensions[$col]) and $columnDimensions[$col]->getWidth() != -1) {
+        if (isset($columnDimensions[$col]) && $columnDimensions[$col]->getWidth() != -1) {
             // then we have column dimension with explicit width
             $columnDimension = $columnDimensions[$col];
             $width = $columnDimension->getWidth();
@@ -60,7 +59,7 @@ class PHPExcel_Shared_Excel5
         }
 
         // now find the effective column width in pixels
-        if (isset($columnDimensions[$col]) and !$columnDimensions[$col]->getVisible()) {
+        if (isset($columnDimensions[$col]) && !$columnDimensions[$col]->getVisible()) {
             $effectivePixelWidth = 0;
         } else {
             $effectivePixelWidth = $pixelWidth;
@@ -75,8 +74,9 @@ class PHPExcel_Shared_Excel5
      * use the default value. If the row is hidden we use a value of zero.
      *
      * @param PHPExcel_Worksheet $sheet The sheet
-     * @param integer $row The row index (1-based)
-     * @return integer The width in pixels
+     * @param int $row The row index (1-based)
+     *
+     * @return int The width in pixels
      */
     public static function sizeRow($sheet, $row = 1)
     {
@@ -86,7 +86,7 @@ class PHPExcel_Shared_Excel5
         $rowDimensions = $sheet->getRowDimensions();
 
         // first find the true row height in pixels (uncollapsed and unhidden)
-        if (isset($rowDimensions[$row]) and $rowDimensions[$row]->getRowHeight() != -1) {
+        if (isset($rowDimensions[$row]) && $rowDimensions[$row]->getRowHeight() != -1) {
             // then we have a row dimension
             $rowDimension = $rowDimensions[$row];
             $rowHeight = $rowDimension->getRowHeight();
@@ -103,7 +103,7 @@ class PHPExcel_Shared_Excel5
         }
 
         // now find the effective row height in pixels
-        if (isset($rowDimensions[$row]) and !$rowDimensions[$row]->getVisible()) {
+        if (isset($rowDimensions[$row]) && !$rowDimensions[$row]->getVisible()) {
             $effectivePixelRowHeight = 0;
         } else {
             $effectivePixelRowHeight = $pixelRowHeight;
@@ -114,14 +114,14 @@ class PHPExcel_Shared_Excel5
 
     /**
      * Get the horizontal distance in pixels between two anchors
-     * The distanceX is found as sum of all the spanning columns widths minus correction for the two offsets
+     * The distanceX is found as sum of all the spanning columns widths minus correction for the two offsets.
      *
-     * @param PHPExcel_Worksheet $sheet
      * @param string $startColumn
-     * @param integer $startOffsetX Offset within start cell measured in 1/1024 of the cell width
+     * @param int $startOffsetX Offset within start cell measured in 1/1024 of the cell width
      * @param string $endColumn
-     * @param integer $endOffsetX Offset within end cell measured in 1/1024 of the cell width
-     * @return integer Horizontal measured in pixels
+     * @param int $endOffsetX Offset within end cell measured in 1/1024 of the cell width
+     *
+     * @return int Horizontal measured in pixels
      */
     public static function getDistanceX(PHPExcel_Worksheet $sheet, $startColumn = 'A', $startOffsetX = 0, $endColumn = 'A', $endOffsetX = 0)
     {
@@ -145,14 +145,14 @@ class PHPExcel_Shared_Excel5
 
     /**
      * Get the vertical distance in pixels between two anchors
-     * The distanceY is found as sum of all the spanning rows minus two offsets
+     * The distanceY is found as sum of all the spanning rows minus two offsets.
      *
-     * @param PHPExcel_Worksheet $sheet
-     * @param integer $startRow (1-based)
-     * @param integer $startOffsetY Offset within start cell measured in 1/256 of the cell height
-     * @param integer $endRow (1-based)
-     * @param integer $endOffsetY Offset within end cell measured in 1/256 of the cell height
-     * @return integer Vertical distance measured in pixels
+     * @param int $startRow (1-based)
+     * @param int $startOffsetY Offset within start cell measured in 1/256 of the cell height
+     * @param int $endRow (1-based)
+     * @param int $endOffsetY Offset within end cell measured in 1/256 of the cell height
+     *
+     * @return int Vertical distance measured in pixels
      */
     public static function getDistanceY(PHPExcel_Worksheet $sheet, $startRow = 1, $startOffsetY = 0, $endRow = 1, $endOffsetY = 0)
     {
@@ -174,7 +174,7 @@ class PHPExcel_Shared_Excel5
 
     /**
      * Convert 1-cell anchor coordinates to 2-cell anchor coordinates
-     * This function is ported from PEAR Spreadsheet_Writer_Excel with small modifications
+     * This function is ported from PEAR Spreadsheet_Writer_Excel with small modifications.
      *
      * Calculate the vertices that define the position of the image as required by
      * the OBJ record.
@@ -218,15 +218,16 @@ class PHPExcel_Shared_Excel5
      *
      * @param PHPExcel_Worksheet $sheet
      * @param string $coordinates E.g. 'A1'
-     * @param integer $offsetX Horizontal offset in pixels
-     * @param integer $offsetY Vertical offset in pixels
-     * @param integer $width Width in pixels
-     * @param integer $height Height in pixels
+     * @param int $offsetX Horizontal offset in pixels
+     * @param int $offsetY Vertical offset in pixels
+     * @param int $width Width in pixels
+     * @param int $height Height in pixels
+     *
      * @return array
      */
     public static function oneAnchor2twoAnchor($sheet, $coordinates, $offsetX, $offsetY, $width, $height)
     {
-        list($column, $row) = PHPExcel_Cell::coordinateFromString($coordinates);
+        [$column, $row] = PHPExcel_Cell::coordinateFromString($coordinates);
         $col_start = PHPExcel_Cell::columnIndexFromString($column) - 1;
         $row_start = $row - 1;
 
@@ -234,8 +235,8 @@ class PHPExcel_Shared_Excel5
         $y1 = $offsetY;
 
         // Initialise end cell to the same as the start cell
-        $col_end    = $col_start;  // Col containing lower right corner of object
-        $row_end    = $row_start;  // Row containing bottom right corner of object
+        $col_end = $col_start;  // Col containing lower right corner of object
+        $row_end = $row_start;  // Row containing bottom right corner of object
 
         // Zero the specified offset if greater than the cell dimensions
         if ($x1 >= self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_start))) {
@@ -245,8 +246,8 @@ class PHPExcel_Shared_Excel5
             $y1 = 0;
         }
 
-        $width      = $width  + $x1 -1;
-        $height     = $height + $y1 -1;
+        $width = $width + $x1 - 1;
+        $height = $height + $y1 - 1;
 
         // Subtract the underlying cell widths to find the end cell of the image
         while ($width >= self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end))) {
@@ -265,33 +266,33 @@ class PHPExcel_Shared_Excel5
         if (self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_start)) == 0) {
             return;
         }
-        if (self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end))   == 0) {
+        if (self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end)) == 0) {
             return;
         }
         if (self::sizeRow($sheet, $row_start + 1) == 0) {
             return;
         }
-        if (self::sizeRow($sheet, $row_end + 1)   == 0) {
+        if (self::sizeRow($sheet, $row_end + 1) == 0) {
             return;
         }
 
         // Convert the pixel values to the percentage value expected by Excel
-        $x1 = $x1     / self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_start))   * 1024;
-        $y1 = $y1     / self::sizeRow($sheet, $row_start + 1)   *  256;
-        $x2 = ($width + 1)  / self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end))     * 1024; // Distance to right side of object
-        $y2 = ($height + 1) / self::sizeRow($sheet, $row_end + 1)     *  256; // Distance to bottom of object
+        $x1 = $x1 / self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_start)) * 1024;
+        $y1 = $y1 / self::sizeRow($sheet, $row_start + 1) * 256;
+        $x2 = ($width + 1) / self::sizeCol($sheet, PHPExcel_Cell::stringFromColumnIndex($col_end)) * 1024; // Distance to right side of object
+        $y2 = ($height + 1) / self::sizeRow($sheet, $row_end + 1) * 256; // Distance to bottom of object
 
         $startCoordinates = PHPExcel_Cell::stringFromColumnIndex($col_start) . ($row_start + 1);
         $endCoordinates = PHPExcel_Cell::stringFromColumnIndex($col_end) . ($row_end + 1);
 
-        $twoAnchor = array(
+        $twoAnchor = [
             'startCoordinates' => $startCoordinates,
             'startOffsetX' => $x1,
             'startOffsetY' => $y1,
             'endCoordinates' => $endCoordinates,
             'endOffsetX' => $x2,
             'endOffsetY' => $y2,
-        );
+        ];
 
         return  $twoAnchor;
     }

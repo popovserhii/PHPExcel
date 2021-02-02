@@ -1,46 +1,46 @@
 <?php
 
-class WorksheetRowTest extends PHPUnit_Framework_TestCase
+class WorksheetRowTest extends PHPUnit\Framework\TestCase
 {
     public $mockWorksheet;
+
     public $mockRow;
 
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
-        
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
+
         $this->mockWorksheet = $this->getMockBuilder('PHPExcel_Worksheet')
             ->disableOriginalConstructor()
             ->getMock();
-        $this->mockWorksheet->expects($this->any())
-                 ->method('getHighestColumn')
-                 ->will($this->returnValue('E'));
+        $this->mockWorksheet->expects(self::any())
+            ->method('getHighestColumn')
+            ->willReturn('E');
     }
 
-
-    public function testInstantiateRowDefault()
+    public function testInstantiateRowDefault(): void
     {
         $row = new PHPExcel_Worksheet_Row($this->mockWorksheet);
-        $this->assertInstanceOf('PHPExcel_Worksheet_Row', $row);
+        self::assertInstanceOf('PHPExcel_Worksheet_Row', $row);
         $rowIndex = $row->getRowIndex();
-        $this->assertEquals(1, $rowIndex);
+        self::assertEquals(1, $rowIndex);
     }
 
-    public function testInstantiateRowSpecified()
+    public function testInstantiateRowSpecified(): void
     {
         $row = new PHPExcel_Worksheet_Row($this->mockWorksheet, 5);
-        $this->assertInstanceOf('PHPExcel_Worksheet_Row', $row);
+        self::assertInstanceOf('PHPExcel_Worksheet_Row', $row);
         $rowIndex = $row->getRowIndex();
-        $this->assertEquals(5, $rowIndex);
+        self::assertEquals(5, $rowIndex);
     }
 
-    public function testGetCellIterator()
+    public function testGetCellIterator(): void
     {
         $row = new PHPExcel_Worksheet_Row($this->mockWorksheet);
         $cellIterator = $row->getCellIterator();
-        $this->assertInstanceOf('PHPExcel_Worksheet_RowCellIterator', $cellIterator);
+        self::assertInstanceOf('PHPExcel_Worksheet_RowCellIterator', $cellIterator);
     }
 }

@@ -11,7 +11,7 @@ if (ini_get('mbstring.func_overload') & 2) {
 PHPExcel_Shared_String::buildCharacterSets();
 
 /**
- * PHPExcel
+ * PHPExcel.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -29,17 +29,14 @@ PHPExcel_Shared_String::buildCharacterSets();
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Autoloader
 {
     /**
-     * Register the Autoloader with SPL
-     *
+     * Register the Autoloader with SPL.
      */
     public static function register()
     {
@@ -49,14 +46,14 @@ class PHPExcel_Autoloader
         }
         // Register ourselves with SPL
         if (version_compare(PHP_VERSION, '5.3.0') >= 0) {
-            return spl_autoload_register(array('PHPExcel_Autoloader', 'load'), true, true);
-        } else {
-            return spl_autoload_register(array('PHPExcel_Autoloader', 'load'));
+            return spl_autoload_register(['PHPExcel_Autoloader', 'load'], true, true);
         }
+
+        return spl_autoload_register(['PHPExcel_Autoloader', 'load']);
     }
 
     /**
-     * Autoload a class identified by name
+     * Autoload a class identified by name.
      *
      * @param    string    $pClassName        Name of the object to load
      */
@@ -76,6 +73,6 @@ class PHPExcel_Autoloader
             return false;
         }
 
-        require($pClassFilePath);
+        require $pClassFilePath;
     }
 }

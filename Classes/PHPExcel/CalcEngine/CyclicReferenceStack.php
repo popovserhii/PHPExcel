@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_CalcEngine_CyclicReferenceStack
+ * PHPExcel_CalcEngine_CyclicReferenceStack.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,25 +19,23 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Calculation
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_CalcEngine_CyclicReferenceStack
 {
     /**
-     *  The call stack for calculated cells
+     *  The call stack for calculated cells.
      *
-     *  @var mixed[]
+     * @var mixed[]
      */
-    private $stack = array();
+    private $stack = [];
 
     /**
-     * Return the number of entries on the stack
+     * Return the number of entries on the stack.
      *
-     * @return  integer
+     * @return  int
      */
     public function count()
     {
@@ -45,17 +43,17 @@ class PHPExcel_CalcEngine_CyclicReferenceStack
     }
 
     /**
-     * Push a new entry onto the stack
+     * Push a new entry onto the stack.
      *
      * @param  mixed  $value
      */
-    public function push($value)
+    public function push($value): void
     {
         $this->stack[$value] = $value;
     }
 
     /**
-     * Pop the last entry from the stack
+     * Pop the last entry from the stack.
      *
      * @return  mixed
      */
@@ -65,7 +63,7 @@ class PHPExcel_CalcEngine_CyclicReferenceStack
     }
 
     /**
-     * Test to see if a specified entry exists on the stack
+     * Test to see if a specified entry exists on the stack.
      *
      * @param  mixed  $value  The value to test
      */
@@ -75,15 +73,15 @@ class PHPExcel_CalcEngine_CyclicReferenceStack
     }
 
     /**
-     * Clear the stack
+     * Clear the stack.
      */
-    public function clear()
+    public function clear(): void
     {
-        $this->stack = array();
+        $this->stack = [];
     }
 
     /**
-     * Return an array of all entries on the stack
+     * Return an array of all entries on the stack.
      *
      * @return  mixed[]
      */

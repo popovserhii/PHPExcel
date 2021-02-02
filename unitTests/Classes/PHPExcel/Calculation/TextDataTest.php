@@ -1,17 +1,15 @@
 <?php
 
-
 require_once 'testDataFileIterator.php';
 
-class TextDataTest extends PHPUnit_Framework_TestCase
+class TextDataTest extends PHPUnit\Framework\TestCase
 {
-
-    public function setUp()
+    protected function setUp(): void
     {
         if (!defined('PHPEXCEL_ROOT')) {
             define('PHPEXCEL_ROOT', APPLICATION_PATH . '/');
         }
-        require_once(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+        require_once PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
 
         PHPExcel_Calculation_Functions::setCompatibilityMode(PHPExcel_Calculation_Functions::COMPATIBILITY_EXCEL);
     }
@@ -19,12 +17,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCHAR
      */
-    public function testCHAR()
+    public function testCHAR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','CHARACTER'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'CHARACTER'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerCHAR()
@@ -35,12 +33,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCODE
      */
-    public function testCODE()
+    public function testCODE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','ASCIICODE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'ASCIICODE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerCODE()
@@ -51,12 +49,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCONCATENATE
      */
-    public function testCONCATENATE()
+    public function testCONCATENATE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','CONCATENATE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'CONCATENATE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerCONCATENATE()
@@ -67,12 +65,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerLEFT
      */
-    public function testLEFT()
+    public function testLEFT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','LEFT'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'LEFT'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerLEFT()
@@ -83,12 +81,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerMID
      */
-    public function testMID()
+    public function testMID(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','MID'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'MID'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerMID()
@@ -99,12 +97,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerRIGHT
      */
-    public function testRIGHT()
+    public function testRIGHT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','RIGHT'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'RIGHT'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerRIGHT()
@@ -115,12 +113,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerLOWER
      */
-    public function testLOWER()
+    public function testLOWER(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','LOWERCASE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'LOWERCASE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerLOWER()
@@ -131,12 +129,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerUPPER
      */
-    public function testUPPER()
+    public function testUPPER(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','UPPERCASE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'UPPERCASE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerUPPER()
@@ -147,12 +145,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerPROPER
      */
-    public function testPROPER()
+    public function testPROPER(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','PROPERCASE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'PROPERCASE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerPROPER()
@@ -163,12 +161,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerLEN
      */
-    public function testLEN()
+    public function testLEN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','STRINGLENGTH'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'STRINGLENGTH'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerLEN()
@@ -179,12 +177,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerSEARCH
      */
-    public function testSEARCH()
+    public function testSEARCH(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','SEARCHINSENSITIVE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'SEARCHINSENSITIVE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerSEARCH()
@@ -195,12 +193,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerFIND
      */
-    public function testFIND()
+    public function testFIND(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','SEARCHSENSITIVE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'SEARCHSENSITIVE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerFIND()
@@ -211,12 +209,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerREPLACE
      */
-    public function testREPLACE()
+    public function testREPLACE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','REPLACE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'REPLACE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerREPLACE()
@@ -227,12 +225,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerSUBSTITUTE
      */
-    public function testSUBSTITUTE()
+    public function testSUBSTITUTE(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','SUBSTITUTE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'SUBSTITUTE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerSUBSTITUTE()
@@ -243,12 +241,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerTRIM
      */
-    public function testTRIM()
+    public function testTRIM(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','TRIMSPACES'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'TRIMSPACES'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerTRIM()
@@ -259,12 +257,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerCLEAN
      */
-    public function testCLEAN()
+    public function testCLEAN(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','TRIMNONPRINTABLE'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'TRIMNONPRINTABLE'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerCLEAN()
@@ -275,12 +273,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerDOLLAR
      */
-    public function testDOLLAR()
+    public function testDOLLAR(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','DOLLAR'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'DOLLAR'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerDOLLAR()
@@ -291,12 +289,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerFIXED
      */
-    public function testFIXED()
+    public function testFIXED(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','FIXEDFORMAT'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'FIXEDFORMAT'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerFIXED()
@@ -307,12 +305,12 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerT
      */
-    public function testT()
+    public function testT(): void
     {
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData','RETURNSTRING'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'RETURNSTRING'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerT()
@@ -323,17 +321,17 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerTEXT
      */
-    public function testTEXT()
+    public function testTEXT(): void
     {
         //    Enforce decimal and thousands separator values to UK/US, and currency code to USD
-        call_user_func(array('PHPExcel_Shared_String', 'setDecimalSeparator'), '.');
-        call_user_func(array('PHPExcel_Shared_String', 'setThousandsSeparator'), ',');
-        call_user_func(array('PHPExcel_Shared_String', 'setCurrencyCode'), '$');
+        call_user_func(['PHPExcel_Shared_String', 'setDecimalSeparator'], '.');
+        call_user_func(['PHPExcel_Shared_String', 'setThousandsSeparator'], ',');
+        call_user_func(['PHPExcel_Shared_String', 'setCurrencyCode'], '$');
 
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData', 'TEXTFORMAT'), $args);
-        $this->assertEquals($expectedResult, $result);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'TEXTFORMAT'], $args);
+        self::assertEquals($expectedResult, $result);
     }
 
     public function providerTEXT()
@@ -344,16 +342,16 @@ class TextDataTest extends PHPUnit_Framework_TestCase
     /**
      * @dataProvider providerVALUE
      */
-    public function testVALUE()
+    public function testVALUE(): void
     {
-        call_user_func(array('PHPExcel_Shared_String', 'setDecimalSeparator'), '.');
-        call_user_func(array('PHPExcel_Shared_String', 'setThousandsSeparator'), ' ');
-        call_user_func(array('PHPExcel_Shared_String', 'setCurrencyCode'), '$');
+        call_user_func(['PHPExcel_Shared_String', 'setDecimalSeparator'], '.');
+        call_user_func(['PHPExcel_Shared_String', 'setThousandsSeparator'], ' ');
+        call_user_func(['PHPExcel_Shared_String', 'setCurrencyCode'], '$');
 
         $args = func_get_args();
         $expectedResult = array_pop($args);
-        $result = call_user_func_array(array('PHPExcel_Calculation_TextData', 'VALUE'), $args);
-        $this->assertEquals($expectedResult, $result, null, 1E-8);
+        $result = call_user_func_array(['PHPExcel_Calculation_TextData', 'VALUE'], $args);
+        self::assertEquals($expectedResult, $result, null, 1E-8);
     }
 
     public function providerVALUE()

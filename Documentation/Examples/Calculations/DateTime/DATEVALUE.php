@@ -5,7 +5,6 @@ set_time_limit(0);
 
 date_default_timezone_set('Europe/London');
 
-
 ?>
 <html>
 <head>
@@ -20,38 +19,35 @@ date_default_timezone_set('Europe/London');
 <h2>Converts a date in the form of text to a serial number.</h2>
 <?php
 
-/** Include path **/
+/** Include path */
 set_include_path(get_include_path() . PATH_SEPARATOR . '../../../../Classes/');
 
 /** Include PHPExcel */
 include 'PHPExcel.php';
-
 
 // Create new PHPExcel object
 $objPHPExcel = new PHPExcel();
 $worksheet = $objPHPExcel->getActiveSheet();
 
 // Add some data
-$testDates = array(	'26 March 2012',	'29 Feb 2012',	'April 1, 2012',	'25/12/2012',
-					'2012-Oct-31',		'5th November',	'January 1st',		'April 2012',
-					'17-03',			'03-2012',		'29 Feb 2011',		'03-05-07',
-					'03-MAY-07',		'03-13-07',
-				  );
+$testDates = ['26 March 2012',	'29 Feb 2012',	'April 1, 2012',	'25/12/2012',
+    '2012-Oct-31',		'5th November',	'January 1st',		'April 2012',
+    '17-03',			'03-2012',		'29 Feb 2011',		'03-05-07',
+    '03-MAY-07',		'03-13-07',
+];
 $testDateCount = count($testDates);
 
-for($row = 1; $row <= $testDateCount; ++$row) {
-	$worksheet->setCellValue('A'.$row, $testDates[$row-1]);
-	$worksheet->setCellValue('B'.$row, '=DATEVALUE(A'.$row.')');
-	$worksheet->setCellValue('C'.$row, '=B'.$row);
+for ($row = 1; $row <= $testDateCount; ++$row) {
+    $worksheet->setCellValue('A' . $row, $testDates[$row - 1]);
+    $worksheet->setCellValue('B' . $row, '=DATEVALUE(A' . $row . ')');
+    $worksheet->setCellValue('C' . $row, '=B' . $row);
 }
 
-$worksheet->getStyle('C1:C'.$testDateCount)
-          ->getNumberFormat()
-          ->setFormatCode('yyyy-mmm-dd');
-
+$worksheet->getStyle('C1:C' . $testDateCount)
+    ->getNumberFormat()
+    ->setFormatCode('yyyy-mmm-dd');
 
 echo '<hr />';
-
 
 // Test the formulae
 ?>
@@ -64,13 +60,13 @@ echo '<hr />';
 		<th>Formatted DateStamp</th>
 	</tr>
 	<?php
-	for ($row = 1; $row <= $testDateCount; ++$row) {
-		echo '<tr>';
-		    echo '<td>' , $worksheet->getCell('A'.$row)->getFormattedValue() , '</td>';
-			echo '<td>' , $worksheet->getCell('B'.$row)->getValue() , '</td>';
-			echo '<td>' , $worksheet->getCell('B'.$row)->getFormattedValue() , '</td>';
-			echo '<td>' , $worksheet->getCell('C'.$row)->getFormattedValue() , '</td>';
-		echo '</tr>';
-	}
-	?>
+    for ($row = 1; $row <= $testDateCount; ++$row) {
+        echo '<tr>';
+        echo '<td>' , $worksheet->getCell('A' . $row)->getFormattedValue() , '</td>';
+        echo '<td>' , $worksheet->getCell('B' . $row)->getValue() , '</td>';
+        echo '<td>' , $worksheet->getCell('B' . $row)->getFormattedValue() , '</td>';
+        echo '<td>' , $worksheet->getCell('C' . $row)->getFormattedValue() , '</td>';
+        echo '</tr>';
+    }
+    ?>
 </table>

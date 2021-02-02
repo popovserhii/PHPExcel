@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_RichText_TextElement
+ * PHPExcel_RichText_TextElement.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,23 +17,21 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_RichText
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_RichText_TextElement implements PHPExcel_RichText_ITextElement
 {
     /**
-     * Text
+     * Text.
      *
      * @var string
      */
     private $text;
 
     /**
-     * Create a new PHPExcel_RichText_TextElement instance
+     * Create a new PHPExcel_RichText_TextElement instance.
      *
      * @param     string        $pText        Text
      */
@@ -44,7 +42,7 @@ class PHPExcel_RichText_TextElement implements PHPExcel_RichText_ITextElement
     }
 
     /**
-     * Get text
+     * Get text.
      *
      * @return string    Text
      */
@@ -54,19 +52,21 @@ class PHPExcel_RichText_TextElement implements PHPExcel_RichText_ITextElement
     }
 
     /**
-     * Set text
+     * Set text.
      *
-     * @param     $pText string    Text
+     * @param     string $pText    Text
+     *
      * @return PHPExcel_RichText_ITextElement
      */
     public function setText($pText = '')
     {
         $this->text = $pText;
+
         return $this;
     }
 
     /**
-     * Get font
+     * Get font.
      *
      * @return PHPExcel_Style_Font
      */
@@ -76,7 +76,7 @@ class PHPExcel_RichText_TextElement implements PHPExcel_RichText_ITextElement
     }
 
     /**
-     * Get hash code
+     * Get hash code.
      *
      * @return string    Hash code
      */

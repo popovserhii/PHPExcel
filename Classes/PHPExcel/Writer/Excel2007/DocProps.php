@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Writer_Excel2007_DocProps
+ * PHPExcel_Writer_Excel2007_DocProps.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,22 +19,20 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Writer_Excel2007
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Writer_Excel2007_DocProps extends PHPExcel_Writer_Excel2007_WriterPart
 {
     /**
-     * Write docProps/app.xml to XML format
+     * Write docProps/app.xml to XML format.
      *
      * @param     PHPExcel    $pPHPExcel
+     *
      * @return     string         XML Output
-     * @throws     PHPExcel_Writer_Exception
      */
-    public function writeDocPropsApp(PHPExcel $pPHPExcel = null)
+    public function writeDocPropsApp(?PHPExcel $pPHPExcel = null)
     {
         // Create XML writer
         $objWriter = null;
@@ -125,13 +123,13 @@ class PHPExcel_Writer_Excel2007_DocProps extends PHPExcel_Writer_Excel2007_Write
     }
 
     /**
-     * Write docProps/core.xml to XML format
+     * Write docProps/core.xml to XML format.
      *
      * @param     PHPExcel    $pPHPExcel
+     *
      * @return     string         XML Output
-     * @throws     PHPExcel_Writer_Exception
      */
-    public function writeDocPropsCore(PHPExcel $pPHPExcel = null)
+    public function writeDocPropsCore(?PHPExcel $pPHPExcel = null)
     {
         // Create XML writer
         $objWriter = null;
@@ -192,13 +190,13 @@ class PHPExcel_Writer_Excel2007_DocProps extends PHPExcel_Writer_Excel2007_Write
     }
 
     /**
-     * Write docProps/custom.xml to XML format
+     * Write docProps/custom.xml to XML format.
      *
      * @param     PHPExcel    $pPHPExcel
+     *
      * @return     string         XML Output
-     * @throws     PHPExcel_Writer_Exception
      */
-    public function writeDocPropsCustom(PHPExcel $pPHPExcel = null)
+    public function writeDocPropsCustom(?PHPExcel $pPHPExcel = null)
     {
         $customPropertyList = $pPHPExcel->getProperties()->getCustomProperties();
         if (empty($customPropertyList)) {
@@ -221,39 +219,42 @@ class PHPExcel_Writer_Excel2007_DocProps extends PHPExcel_Writer_Excel2007_Write
         $objWriter->writeAttribute('xmlns', 'http://schemas.openxmlformats.org/officeDocument/2006/custom-properties');
         $objWriter->writeAttribute('xmlns:vt', 'http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes');
 
-
         foreach ($customPropertyList as $key => $customProperty) {
             $propertyValue = $pPHPExcel->getProperties()->getCustomPropertyValue($customProperty);
             $propertyType = $pPHPExcel->getProperties()->getCustomPropertyType($customProperty);
 
             $objWriter->startElement('property');
             $objWriter->writeAttribute('fmtid', '{D5CDD505-2E9C-101B-9397-08002B2CF9AE}');
-            $objWriter->writeAttribute('pid', $key+2);
+            $objWriter->writeAttribute('pid', $key + 2);
             $objWriter->writeAttribute('name', $customProperty);
 
             switch ($propertyType) {
                 case 'i':
                     $objWriter->writeElement('vt:i4', $propertyValue);
+
                     break;
                 case 'f':
                     $objWriter->writeElement('vt:r8', $propertyValue);
+
                     break;
                 case 'b':
                     $objWriter->writeElement('vt:bool', ($propertyValue) ? 'true' : 'false');
+
                     break;
                 case 'd':
                     $objWriter->startElement('vt:filetime');
                     $objWriter->writeRawData(date(DATE_W3C, $propertyValue));
                     $objWriter->endElement();
+
                     break;
                 default:
                     $objWriter->writeElement('vt:lpwstr', $propertyValue);
+
                     break;
             }
 
             $objWriter->endElement();
         }
-
 
         $objWriter->endElement();
 

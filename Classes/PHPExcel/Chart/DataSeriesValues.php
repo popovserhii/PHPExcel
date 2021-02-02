@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Chart_DataSeriesValues
+ * PHPExcel_Chart_DataSeriesValues.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,69 +19,73 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
- * @package        PHPExcel_Chart
- * @copyright    Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version        ##VERSION##, ##DATE##
  */
 class PHPExcel_Chart_DataSeriesValues
 {
+    const DATASERIES_TYPE_STRING = 'String';
+    const DATASERIES_TYPE_NUMBER = 'Number';
 
-    const DATASERIES_TYPE_STRING    = 'String';
-    const DATASERIES_TYPE_NUMBER    = 'Number';
-
-    private static $dataTypeValues = array(
+    private static $dataTypeValues = [
         self::DATASERIES_TYPE_STRING,
         self::DATASERIES_TYPE_NUMBER,
-    );
+    ];
 
     /**
-     * Series Data Type
+     * Series Data Type.
      *
      * @var    string
      */
     private $dataType;
 
     /**
-     * Series Data Source
+     * Series Data Source.
      *
      * @var    string
      */
     private $dataSource;
 
     /**
-     * Format Code
+     * Format Code.
      *
      * @var    string
      */
     private $formatCode;
 
     /**
-     * Series Point Marker
+     * Series Point Marker.
      *
      * @var    string
      */
     private $pointMarker;
 
     /**
-     * Point Count (The number of datapoints in the dataseries)
+     * Point Count (The number of datapoints in the dataseries).
      *
-     * @var    integer
+     * @var    int
      */
     private $pointCount = 0;
 
     /**
-     * Data Values
+     * Data Values.
      *
      * @var    array of mixed
      */
-    private $dataValues = array();
+    private $dataValues = [];
 
     /**
-     * Create a new PHPExcel_Chart_DataSeriesValues object
+     * Create a new PHPExcel_Chart_DataSeriesValues object.
+     *
+     * @param mixed $dataType
+     * @param null|mixed $dataSource
+     * @param null|mixed $formatCode
+     * @param mixed $pointCount
+     * @param mixed $dataValues
+     * @param null|mixed $marker
      */
-    public function __construct($dataType = self::DATASERIES_TYPE_NUMBER, $dataSource = null, $formatCode = null, $pointCount = 0, $dataValues = array(), $marker = null)
+    public function __construct($dataType = self::DATASERIES_TYPE_NUMBER, $dataSource = null, $formatCode = null, $pointCount = 0, $dataValues = [], $marker = null)
     {
         $this->setDataType($dataType);
         $this->dataSource = $dataSource;
@@ -92,7 +96,7 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Get Series Data Type
+     * Get Series Data Type.
      *
      * @return    string
      */
@@ -102,7 +106,7 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Set Series Data Type
+     * Set Series Data Type.
      *
      * @param    string    $dataType    Datatype of this data series
      *                                Typical values are:
@@ -110,6 +114,7 @@ class PHPExcel_Chart_DataSeriesValues
      *                                        Normally used for axis point values
      *                                    PHPExcel_Chart_DataSeriesValues::DATASERIES_TYPE_NUMBER
      *                                        Normally used for chart data values
+     *
      * @return    PHPExcel_Chart_DataSeriesValues
      */
     public function setDataType($dataType = self::DATASERIES_TYPE_NUMBER)
@@ -123,7 +128,7 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Get Series Data Source (formula)
+     * Get Series Data Source (formula).
      *
      * @return    string
      */
@@ -133,9 +138,11 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Set Series Data Source (formula)
+     * Set Series Data Source (formula).
      *
      * @param    string    $dataSource
+     * @param mixed $refreshDataValues
+     *
      * @return    PHPExcel_Chart_DataSeriesValues
      */
     public function setDataSource($dataSource = null, $refreshDataValues = true)
@@ -150,7 +157,7 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Get Point Marker
+     * Get Point Marker.
      *
      * @return string
      */
@@ -160,9 +167,10 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Set Point Marker
+     * Set Point Marker.
      *
      * @param    string    $marker
+     *
      * @return    PHPExcel_Chart_DataSeriesValues
      */
     public function setPointMarker($marker = null)
@@ -173,7 +181,7 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Get Series Format Code
+     * Get Series Format Code.
      *
      * @return    string
      */
@@ -183,9 +191,10 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Set Series Format Code
+     * Set Series Format Code.
      *
      * @param    string    $formatCode
+     *
      * @return    PHPExcel_Chart_DataSeriesValues
      */
     public function setFormatCode($formatCode = null)
@@ -196,9 +205,9 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Get Series Point Count
+     * Get Series Point Count.
      *
-     * @return    integer
+     * @return    int
      */
     public function getPointCount()
     {
@@ -206,22 +215,23 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Identify if the Data Series is a multi-level or a simple series
+     * Identify if the Data Series is a multi-level or a simple series.
      *
-     * @return    boolean
+     * @return    bool
      */
     public function isMultiLevelSeries()
     {
         if (count($this->dataValues) > 0) {
             return is_array($this->dataValues[0]);
         }
+
         return null;
     }
 
     /**
-     * Return the level count of a multi-level Data Series
+     * Return the level count of a multi-level Data Series.
      *
-     * @return    boolean
+     * @return    bool
      */
     public function multiLevelCount()
     {
@@ -229,11 +239,12 @@ class PHPExcel_Chart_DataSeriesValues
         foreach ($this->dataValues as $dataValueSet) {
             $levelCount = max($levelCount, count($dataValueSet));
         }
+
         return $levelCount;
     }
 
     /**
-     * Get Series Data Values
+     * Get Series Data Values.
      *
      * @return    array of mixed
      */
@@ -243,7 +254,7 @@ class PHPExcel_Chart_DataSeriesValues
     }
 
     /**
-     * Get the first Series Data value
+     * Get the first Series Data value.
      *
      * @return    mixed
      */
@@ -255,19 +266,21 @@ class PHPExcel_Chart_DataSeriesValues
         } elseif ($count == 1) {
             return $this->dataValues[0];
         }
+
         return $this->dataValues;
     }
 
     /**
-     * Set Series Data Values
+     * Set Series Data Values.
      *
      * @param    array    $dataValues
-     * @param    boolean    $refreshDataSource
+     * @param    bool    $refreshDataSource
      *                    TRUE - refresh the value of dataSource based on the values of $dataValues
      *                    FALSE - don't change the value of dataSource
+     *
      * @return    PHPExcel_Chart_DataSeriesValues
      */
-    public function setDataValues($dataValues = array(), $refreshDataSource = true)
+    public function setDataValues($dataValues = [], $refreshDataSource = true)
     {
         $this->dataValues = PHPExcel_Calculation_Functions::flattenArray($dataValues);
         $this->pointCount = count($dataValues);
@@ -284,13 +297,13 @@ class PHPExcel_Chart_DataSeriesValues
         return $var !== null;
     }
 
-    public function refresh(PHPExcel_Worksheet $worksheet, $flatten = true)
+    public function refresh(PHPExcel_Worksheet $worksheet, $flatten = true): void
     {
         if ($this->dataSource !== null) {
             $calcEngine = PHPExcel_Calculation::getInstance($worksheet->getParent());
             $newDataValues = PHPExcel_Calculation::unwrapResult(
                 $calcEngine->_calculateFormulaValue(
-                    '='.$this->dataSource,
+                    '=' . $this->dataSource,
                     null,
                     $worksheet->getCell('A1')
                 )
@@ -306,7 +319,7 @@ class PHPExcel_Chart_DataSeriesValues
             } else {
                 $cellRange = explode('!', $this->dataSource);
                 if (count($cellRange) > 1) {
-                    list(, $cellRange) = $cellRange;
+                    [, $cellRange] = $cellRange;
                 }
 
                 $dimensions = PHPExcel_Cell::rangeDimension(str_replace('$', '', $cellRange));
@@ -315,7 +328,7 @@ class PHPExcel_Chart_DataSeriesValues
                 } else {
                     $newArray = array_values(array_shift($newDataValues));
                     foreach ($newArray as $i => $newDataSet) {
-                        $newArray[$i] = array($newDataSet);
+                        $newArray[$i] = [$newDataSet];
                     }
 
                     foreach ($newDataValues as $newDataSet) {

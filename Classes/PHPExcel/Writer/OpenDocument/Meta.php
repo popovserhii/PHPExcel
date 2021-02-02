@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Writer_OpenDocument_Meta
+ * PHPExcel_Writer_OpenDocument_Meta.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,22 +19,20 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Writer_OpenDocument
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Writer_OpenDocument_Meta extends PHPExcel_Writer_OpenDocument_WriterPart
 {
     /**
-     * Write meta.xml to XML format
+     * Write meta.xml to XML format.
      *
      * @param   PHPExcel                   $pPHPExcel
+     *
      * @return  string                     XML Output
-     * @throws  PHPExcel_Writer_Exception
      */
-    public function write(PHPExcel $pPHPExcel = null)
+    public function write(?PHPExcel $pPHPExcel = null)
     {
         if (!$pPHPExcel) {
             $pPHPExcel = $this->getParentWriter()->getPHPExcel();
@@ -80,7 +78,7 @@ class PHPExcel_Writer_OpenDocument_Meta extends PHPExcel_Writer_OpenDocument_Wri
         $objWriter->writeAttribute('meta:name', 'Company');
         $objWriter->writeRaw($pPHPExcel->getProperties()->getCompany());
         $objWriter->endElement();
- 
+
         $objWriter->startElement('meta:user-defined');
         $objWriter->writeAttribute('meta:name', 'category');
         $objWriter->writeRaw($pPHPExcel->getProperties()->getCategory());

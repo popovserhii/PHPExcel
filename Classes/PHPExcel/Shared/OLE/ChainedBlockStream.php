@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Shared_OLE_ChainedBlockStream
+ * PHPExcel_Shared_OLE_ChainedBlockStream.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,34 +19,36 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Shared_OLE
- * @copyright  Copyright (c) 2006 - 2007 Christian Schmidt
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version ##VERSION##, ##DATE##
  */
 class PHPExcel_Shared_OLE_ChainedBlockStream
 {
     /**
      * The OLE container of the file that is being read.
+     *
      * @var OLE
      */
     public $ole;
 
     /**
      * Parameters specified by fopen().
+     *
      * @var array
      */
     public $params;
 
     /**
      * The binary data of the file.
+     *
      * @var  string
      */
     public $data;
 
     /**
      * The file pointer.
+     *
      * @var  int  byte offset
      */
     public $pos;
@@ -59,7 +61,8 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
      *                                    ole-chainedblockstream://oleInstanceId=1
      * @param    string    $mode            only "r" is supported
      * @param    int        $options        mask of STREAM_REPORT_ERRORS and STREAM_USE_PATH
-     * @param    string  &$openedPath    absolute path of the opened stream (out parameter)
+     * @param    string  $openedPath    absolute path of the opened stream (out parameter)
+     *
      * @return    bool    true on success
      */
     public function stream_open($path, $mode, $options, &$openedPath)
@@ -68,6 +71,7 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
             if ($options & STREAM_REPORT_ERRORS) {
                 trigger_error('Only reading is supported', E_USER_WARNING);
             }
+
             return false;
         }
 
@@ -77,6 +81,7 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
             if ($options & STREAM_REPORT_ERRORS) {
                 trigger_error('OLE stream not found', E_USER_WARNING);
             }
+
             return false;
         }
         $this->ole = $GLOBALS['_OLE_INSTANCES'][$this->params['oleInstanceId']];
@@ -114,9 +119,8 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
 
     /**
      * Implements support for fclose().
-     *
      */
-    public function stream_close()
+    public function stream_close(): void
     {
         $this->ole = null;
         unset($GLOBALS['_OLE_INSTANCES']);
@@ -126,6 +130,7 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
      * Implements support for fread(), fgets() etc.
      *
      * @param   int        $count    maximum number of bytes to read
+     *
      * @return  string
      */
     public function stream_read($count)
@@ -135,6 +140,7 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
         }
         $s = substr($this->data, $this->pos, $count);
         $this->pos += $count;
+
         return $s;
     }
 
@@ -164,6 +170,7 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
      *
      * @param    int        $offset    byte offset
      * @param    int        $whence    SEEK_SET, SEEK_CUR or SEEK_END
+     *
      * @return    bool
      */
     public function stream_seek($offset, $whence)
@@ -172,24 +179,26 @@ class PHPExcel_Shared_OLE_ChainedBlockStream
             $this->pos = $offset;
         } elseif ($whence == SEEK_CUR && -$offset <= $this->pos) {
             $this->pos += $offset;
-        } elseif ($whence == SEEK_END && -$offset <= sizeof($this->data)) {
+        } elseif ($whence == SEEK_END && -$offset <= count($this->data)) {
             $this->pos = strlen($this->data) + $offset;
         } else {
             return false;
         }
+
         return true;
     }
 
     /**
      * Implements support for fstat(). Currently the only supported field is
      * "size".
+     *
      * @return  array
      */
     public function stream_stat()
     {
-        return array(
+        return [
             'size' => strlen($this->data),
-            );
+        ];
     }
 
     // Methods used by stream_wrapper_register() that are not implemented:

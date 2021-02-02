@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PHPExcel_Worksheet_Drawing
+ * PHPExcel_Worksheet_Drawing.
  *
  * Copyright (c) 2006 - 2015 PHPExcel
  *
@@ -19,23 +19,21 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category   PHPExcel
- * @package    PHPExcel_Worksheet_Drawing
- * @copyright  Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ *
  * @version    ##VERSION##, ##DATE##
  */
 class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implements PHPExcel_IComparable
 {
     /**
-     * Path
+     * Path.
      *
      * @var string
      */
     private $path;
 
     /**
-     * Create a new PHPExcel_Worksheet_Drawing
+     * Create a new PHPExcel_Worksheet_Drawing.
      */
     public function __construct()
     {
@@ -47,7 +45,7 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
     }
 
     /**
-     * Get Filename
+     * Get Filename.
      *
      * @return string
      */
@@ -57,7 +55,7 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
     }
 
     /**
-     * Get indexed filename (using image index)
+     * Get indexed filename (using image index).
      *
      * @return string
      */
@@ -65,22 +63,24 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
     {
         $fileName = $this->getFilename();
         $fileName = str_replace(' ', '_', $fileName);
+
         return str_replace('.' . $this->getExtension(), '', $fileName) . $this->getImageIndex() . '.' . $this->getExtension();
     }
 
     /**
-     * Get Extension
+     * Get Extension.
      *
      * @return string
      */
     public function getExtension()
     {
-        $exploded = explode(".", basename($this->path));
+        $exploded = explode('.', basename($this->path));
+
         return $exploded[count($exploded) - 1];
     }
 
     /**
-     * Get Path
+     * Get Path.
      *
      * @return string
      */
@@ -90,11 +90,11 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
     }
 
     /**
-     * Set Path
+     * Set Path.
      *
      * @param     string         $pValue            File path
-     * @param     boolean        $pVerifyFile    Verify file
-     * @throws     PHPExcel_Exception
+     * @param     bool        $pVerifyFile    Verify file
+     *
      * @return PHPExcel_Worksheet_Drawing
      */
     public function setPath($pValue = '', $pVerifyFile = true)
@@ -105,7 +105,7 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
 
                 if ($this->width == 0 && $this->height == 0) {
                     // Get width/height
-                    list($this->width, $this->height) = getimagesize($pValue);
+                    [$this->width, $this->height] = getimagesize($pValue);
                 }
             } else {
                 throw new PHPExcel_Exception("File $pValue not found!");
@@ -113,11 +113,12 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
         } else {
             $this->path = $pValue;
         }
+
         return $this;
     }
 
     /**
-     * Get hash code
+     * Get hash code.
      *
      * @return string    Hash code
      */
