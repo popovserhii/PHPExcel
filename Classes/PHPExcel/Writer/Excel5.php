@@ -98,6 +98,10 @@ class PHPExcel_Writer_Excel5 extends PHPExcel_Writer_Abstract implements PHPExce
 	 */
 	private $_documentSummaryInformation;
 
+    private $_writerWorkbook;
+
+    private $_writerWorksheets;
+
 	/**
 	 * Create a new PHPExcel_Writer_Excel5
 	 *

@@ -189,6 +189,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
 	 */
 	private $_escher;
 
+    private $rangeBounds;
 
 	/**
 	 * Class constructor
@@ -675,7 +676,7 @@ class PHPExcel_Writer_Excel5_Workbook extends PHPExcel_Writer_Excel5_BIFFwriter
 					$formulaData = $this->_parser->toReversePolish();
 
 					// make sure tRef3d is of type tRef3dR (0x3A)
-					if (isset($formulaData{0}) and ($formulaData{0} == "\x7A" or $formulaData{0} == "\x5A")) {
+					if (isset($formulaData[0]) and ($formulaData[0] == "\x7A" or $formulaData[0] == "\x5A")) {
 						$formulaData = "\x3A" . substr($formulaData, 1);
 					}
 
